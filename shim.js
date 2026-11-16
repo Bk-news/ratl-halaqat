@@ -48,29 +48,35 @@ window.dash = (function () {
   var LIVE = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
   // الأرقام مباشرة من الجدول، وإذا تعذّر خلال 8 ثوانٍ نرجع للنسخة المحفوظة data.json
   function getLive() {
-    var timeout = new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, 8000); });
-    var live = fetch(LIVE, { cache: 'no-store', redirect: 'follow' }).then(function (r) { if (!r.ok) throw new Error('live ' + r.status); return r.json(); })
+    return fetch(LIVE + '?t=' + Date.now(), { cache: 'no-store', redirect: 'follow' }).then(function (r) { if (!r.ok) throw new Error('live ' + r.status); return r.json(); })
       .then(function (j) {
         if (!j || !Array.isArray(j.rows) || j.rows.length < 70 || !j.rows.every(function (h) { return h.name && (h.section === 'رجال' || h.section === 'نساء'); })) throw new Error('live data invalid');
-        j.live = true; return j;
+        return j;
       });
-    return Promise.race([live, timeout]).catch(function (e) { console.warn('fallback to data.json:', e.message); return getJSON('data.json'); });
+  }
+  function compute(rows) {
+    store.halaqat = { status: 'ok', data: rows };
+    calcs.forEach(function (c) {
+      var args = (c[1].inputs || []).map(function (i) { return data(i).data; });
+      try { store[c[0]] = { status: 'ok', data: c[1].fn.apply(null, args) }; }
+      catch (e) { store[c[0]] = { status: 'error', data: null }; console.error(c[0], e); }
+    });
   }
   function start() {
     var fontsReady = (document.fonts && document.fonts.load)
       ? Promise.race([Promise.all(['400 16px TS', '500 16px TS', '700 16px TS', '400 16px TD', '700 16px TD'].map(function (f) { return document.fonts.load(f, 'ثمانية'); })), new Promise(function (r) { setTimeout(r, 3000); })]).catch(function () {})
       : Promise.resolve();
-    Promise.all([getLive(), getJSON('brand.json'), fontsReady]).then(function (res) {
-      api.meta.updated = res[0].updated;
-      store.halaqat = { status: 'ok', data: res[0].rows };
+    Promise.all([getJSON('data.json'), getJSON('brand.json'), fontsReady]).then(function (res) {
+      api.meta.updated = res[0].updated; api.meta.live = false;
       store.brand = { status: 'ok', data: res[1] };
-      calcs.forEach(function (c) {
-        var args = (c[1].inputs || []).map(function (i) { return data(i).data; });
-        try { store[c[0]] = { status: 'ok', data: c[1].fn.apply(null, args) }; }
-        catch (e) { store[c[0]] = { status: 'error', data: null }; console.error(c[0], e); }
-      });
+      compute(res[0].rows);
       ready = true;
       Object.keys(draws).forEach(run);
+      getLive().then(function (j) {
+        api.meta.updated = j.updated; api.meta.live = true;
+        compute(j.rows);
+        Object.keys(draws).forEach(run);
+      }).catch(function (e) { api.meta.liveError = e.message; console.warn('live failed:', e.message); run('updated'); });
     }).catch(function (e) {
       console.error(e);
       ['halaqat', 'halaqa', 'totals', 'bysection', 'byplace', 'zero'].forEach(function (k) { store[k] = { status: 'error', data: null }; });

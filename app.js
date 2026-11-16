@@ -358,7 +358,9 @@ dash.calc('zero', {
   var lastData = null, lastAt = null;
   dash.draw('updated', function (el) {
     var u = dash.meta && dash.meta.updated ? new Date(dash.meta.updated) : null;
-    el.textContent = u ? u.toLocaleString('ar-SA-u-nu-latn-ca-gregory', { weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Riyadh' }) : '—';
+    var t = u ? u.toLocaleString('ar-SA-u-nu-latn-ca-gregory', { weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Riyadh' }) : '—';
+    var m = dash.meta || {};
+    el.textContent = t + (m.live ? ' · مباشر من الجدول' : m.liveError ? ' · نسخة محفوظة (تعذّر الاتصال بالجدول)' : ' · جاري جلب آخر الأرقام…');
   });
 
   function qrCanvas(text, px, fg, bg) {
