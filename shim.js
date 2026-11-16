@@ -45,11 +45,22 @@ window.dash = (function () {
     }
   };
   function getJSON(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
+  var LIVE = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
+  // الأرقام مباشرة من الجدول، وإذا تعذّر خلال 8 ثوانٍ نرجع للنسخة المحفوظة data.json
+  function getLive() {
+    var timeout = new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, 8000); });
+    var live = fetch(LIVE, { cache: 'no-store', redirect: 'follow' }).then(function (r) { if (!r.ok) throw new Error('live ' + r.status); return r.json(); })
+      .then(function (j) {
+        if (!j || !Array.isArray(j.rows) || j.rows.length < 70 || !j.rows.every(function (h) { return h.name && (h.section === 'رجال' || h.section === 'نساء'); })) throw new Error('live data invalid');
+        j.live = true; return j;
+      });
+    return Promise.race([live, timeout]).catch(function (e) { console.warn('fallback to data.json:', e.message); return getJSON('data.json'); });
+  }
   function start() {
     var fontsReady = (document.fonts && document.fonts.load)
       ? Promise.race([Promise.all(['400 16px TS', '500 16px TS', '700 16px TS', '400 16px TD', '700 16px TD'].map(function (f) { return document.fonts.load(f, 'ثمانية'); })), new Promise(function (r) { setTimeout(r, 3000); })]).catch(function () {})
       : Promise.resolve();
-    Promise.all([getJSON('data.json'), getJSON('brand.json'), fontsReady]).then(function (res) {
+    Promise.all([getLive(), getJSON('brand.json'), fontsReady]).then(function (res) {
       api.meta.updated = res[0].updated;
       store.halaqat = { status: 'ok', data: res[0].rows };
       store.brand = { status: 'ok', data: res[1] };
