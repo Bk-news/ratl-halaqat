@@ -46,7 +46,10 @@ window.dash = (function () {
   };
   function getJSON(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
   function start() {
-    Promise.all([getJSON('data.json'), getJSON('brand.json')]).then(function (res) {
+    var fontsReady = (document.fonts && document.fonts.load)
+      ? Promise.race([Promise.all(['400 16px TS', '500 16px TS', '700 16px TS', '400 16px TD', '700 16px TD'].map(function (f) { return document.fonts.load(f, 'ثمانية'); })), new Promise(function (r) { setTimeout(r, 3000); })]).catch(function () {})
+      : Promise.resolve();
+    Promise.all([getJSON('data.json'), getJSON('brand.json'), fontsReady]).then(function (res) {
       api.meta.updated = res[0].updated;
       store.halaqat = { status: 'ok', data: res[0].rows };
       store.brand = { status: 'ok', data: res[1] };
