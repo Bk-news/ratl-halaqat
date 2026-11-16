@@ -1,0 +1,815 @@
+{
+"updated": "2026-11-16T14:30:00+03:00",
+"rows": [
+{
+"id": "1",
+"name": "أبو حنيفة",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "2",
+"name": "أبو عمرو البصري",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "3",
+"name": "أبو موسى الأشعري",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "4",
+"name": "أبو واقد الليثي",
+"section": "رجال",
+"place": "مجمع ابن باز",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "5",
+"name": "أحمد بن حنبل",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "6",
+"name": "أسيد بن كعب",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 19,
+"cost": 4000,
+"received": 10,
+"store": ""
+},
+{
+"id": "7",
+"name": "ابن عامر الشامي",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 25,
+"cost": 4000,
+"received": 2825,
+"store": ""
+},
+{
+"id": "8",
+"name": "الأقرع بن حابس",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "9",
+"name": "الإمام ابن باز",
+"section": "رجال",
+"place": "مجمع ابن باز",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "10",
+"name": "الإمام مالك",
+"section": "رجال",
+"place": "مسجد الإمام مالك",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "11",
+"name": "الإمام محمد بن سعود",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "12",
+"name": "الشيخ عبدالعزيز آل الشيخ",
+"section": "رجال",
+"place": "مجمع ابن باز",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "13",
+"name": "الشيخ محمد السبيل",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 19,
+"cost": 4000,
+"received": 4000,
+"store": ""
+},
+{
+"id": "14",
+"name": "الشيخ محمد بن إبراهيم",
+"section": "رجال",
+"place": "مجمع ابن باز",
+"students": 28,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "15",
+"name": "الشيخ محمد بن عثيمين",
+"section": "رجال",
+"place": "مجمع ابن عثيمين",
+"students": 20,
+"cost": 4000,
+"received": 4000,
+"store": ""
+},
+{
+"id": "16",
+"name": "المقداد بن الأسود",
+"section": "رجال",
+"place": "جامع عروة بن مسعود",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "17",
+"name": "بريدة بن الحصيب",
+"section": "رجال",
+"place": "جامع يوسف آل عفان",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "18",
+"name": "بشر بن الحارث",
+"section": "رجال",
+"place": "مسجد بشر بن الحارث",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "19",
+"name": "جبير بن مطعم",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "20",
+"name": "جندب بن عبدالله",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 14,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "21",
+"name": "أبي بن كعب",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "22",
+"name": "ذو النورين",
+"section": "رجال",
+"place": "مسجد ذو النورين",
+"students": 17,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "23",
+"name": "رفاعة بن قرظة",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 21,
+"cost": 4000,
+"received": 70,
+"store": ""
+},
+{
+"id": "24",
+"name": "زيد بن ثابت",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "25",
+"name": "سعيد بن حريث",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "26",
+"name": "سعيد بن خالد",
+"section": "رجال",
+"place": "جامع أم إبراهيم الفارس",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "27",
+"name": "سنان بن أبي سنان",
+"section": "رجال",
+"place": "جامع أم إبراهيم الفارس",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "28",
+"name": "شمّاس بن عثمان",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "29",
+"name": "طلحة بن البراء",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "30",
+"name": "عامر بن فهيرة",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "31",
+"name": "عامر بن واثلة",
+"section": "رجال",
+"place": "جامع الصحابة",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "32",
+"name": "عبدالرحمن بن عوف",
+"section": "رجال",
+"place": "مجمع ابن عثيمين",
+"students": 24,
+"cost": 4000,
+"received": 55,
+"store": ""
+},
+{
+"id": "33",
+"name": "عبدالله بن أبي حدرد",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "34",
+"name": "عبدالله بن حميد",
+"section": "رجال",
+"place": "مجمع ابن عثيمين",
+"students": 23,
+"cost": 4000,
+"received": 5,
+"store": ""
+},
+{
+"id": "35",
+"name": "عبدالله بن مسعود",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "36",
+"name": "عبدالله بن مظعون",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "37",
+"name": "عمارة بن حمزة",
+"section": "رجال",
+"place": "جامع أبو حنيفة",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "38",
+"name": "عمير بن وهب",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "39",
+"name": "معمر بن حبيب",
+"section": "رجال",
+"place": "مجمع البيان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "40",
+"name": "هشام بن عمار",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "41",
+"name": "آسيا بنت مزاحم",
+"section": "نساء",
+"place": "دار الزهراء",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "42",
+"name": "أسماء بنت أبي بكر",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 25,
+"cost": 4000,
+"received": 4000,
+"store": ""
+},
+{
+"id": "43",
+"name": "أسماء بنت عميس",
+"section": "نساء",
+"place": "دار الزهراء",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "44",
+"name": "أسماء بنت يزيد",
+"section": "نساء",
+"place": "دار النور",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "45",
+"name": "أم الدرداء",
+"section": "نساء",
+"place": "دار الزهراء",
+"students": 31,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "46",
+"name": "أم سلمة",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "47",
+"name": "أم شريك القرشية",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "48",
+"name": "أم كلثوم",
+"section": "نساء",
+"place": "دار الزهراء",
+"students": 30,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "49",
+"name": "أم محجن",
+"section": "نساء",
+"place": "دار خديجة بنت خويلد",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "50",
+"name": "أم ورقة بنت نوفل",
+"section": "نساء",
+"place": "دار النور",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "51",
+"name": "أميمة بنت خلف",
+"section": "نساء",
+"place": "دار خديجة بنت خويلد",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "52",
+"name": "أهل القرآن",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "53",
+"name": "الأترجة",
+"section": "نساء",
+"place": "دار صالح الثنيان",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "54",
+"name": "الجواهر الحسان",
+"section": "نساء",
+"place": "دار صالح الثنيان",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "55",
+"name": "تاج الوقار",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "56",
+"name": "تاجي وقاري",
+"section": "نساء",
+"place": "دار صالح الثنيان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "57",
+"name": "جويرية بنت الحارث",
+"section": "نساء",
+"place": "دار الخنساء",
+"students": 30,
+"cost": 4000,
+"received": 50,
+"store": ""
+},
+{
+"id": "58",
+"name": "حفصة بنت عمر",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "59",
+"name": "حواء الأنصارية",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "60",
+"name": "خديجة بنت خويلد",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "61",
+"name": "خولة بنت حكيم",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "62",
+"name": "رفيدة الأسلمية",
+"section": "نساء",
+"place": "دار الخنساء",
+"students": 39,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "63",
+"name": "رقية الأسلمية",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "64",
+"name": "سودة بنت زمعة",
+"section": "نساء",
+"place": "دار الخنساء",
+"students": 33,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "65",
+"name": "شجرة الدر",
+"section": "نساء",
+"place": "دار النور",
+"students": 27,
+"cost": 4000,
+"received": 10,
+"store": ""
+},
+{
+"id": "66",
+"name": "صفية بنت عبدالمطلب",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "67",
+"name": "ضياء القرآن",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "68",
+"name": "عائشة بنت أبي بكر",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 31,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "69",
+"name": "عفراء بنت عبيد",
+"section": "نساء",
+"place": "دار خديجة بنت خويلد",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "70",
+"name": "فاطمة بنت الخطاب أ",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "71",
+"name": "فاطمة بنت الخطاب ب",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "72",
+"name": "لبابة بنت الحارث",
+"section": "نساء",
+"place": "دار النور",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "73",
+"name": "مارية القبطية 1",
+"section": "نساء",
+"place": "دار خديجة بنت خويلد",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "74",
+"name": "مارية القبطية 2",
+"section": "نساء",
+"place": "دار خديجة بنت خويلد",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "75",
+"name": "مريم بنت عمران",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "76",
+"name": "ميمونة بنت الحارث",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "77",
+"name": "نسائم الهدى",
+"section": "نساء",
+"place": "دار صالح الثنيان",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "78",
+"name": "الامام مالك",
+"section": "رجال",
+"place": "مسجد الامام مالك",
+"students": 19,
+"cost": 4000,
+"received": 250,
+"store": ""
+},
+{
+"id": "79",
+"name": "الحسين بن علي",
+"section": "رجال",
+"place": "مسجد وضحى بنت عبدالله",
+"students": 20,
+"cost": 4000,
+"received": 4000,
+"store": ""
+},
+{
+"id": "80",
+"name": "الشفاء بنت الحارث",
+"section": "نساء",
+"place": "دار الإحسان",
+"students": 24,
+"cost": 4000,
+"received": 4000,
+"store": ""
+},
+{
+"id": "81",
+"name": "ابن القيم",
+"section": "رجال",
+"place": "جامع نورة الدغيثر",
+"students": 30,
+"cost": 4000,
+"received": 4000,
+"store": ""
+}
+]
+}

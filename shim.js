@@ -1,0 +1,68 @@
+// توافق مع المتصفحات القديمة (iOS القديم)
+(function () {
+  var C = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
+  if (C && !C.roundRect) C.roundRect = function (x, y, w, h, r) {
+    r = Math.max(0, Math.min(typeof r === 'number' ? r : 0, w / 2, h / 2));
+    this.moveTo(x + r, y); this.arcTo(x + w, y, x + w, y + h, r); this.arcTo(x + w, y + h, x, y + h, r);
+    this.arcTo(x, y + h, x, y, r); this.arcTo(x, y, x + w, y, r); this.closePath(); return this;
+  };
+  [Element.prototype, DocumentFragment.prototype].forEach(function (P) {
+    if (!P.replaceChildren) P.replaceChildren = function () { while (this.firstChild) this.removeChild(this.firstChild); for (var i = 0; i < arguments.length; i++) this.appendChild(typeof arguments[i] === 'string' ? document.createTextNode(arguments[i]) : arguments[i]); };
+  });
+  if (!Array.prototype.find) Array.prototype.find = function (f) { for (var i = 0; i < this.length; i++) if (f(this[i], i)) return this[i]; };
+})();
+
+// تشغيل مستقل للوحة: يقرأ data.json وbrand.json ويرسم كل [data-draw]
+window.dash = (function () {
+  var calcs = [], draws = {}, made = {}, store = {}, ready = false;
+  function data(id) { return store[id] || { status: 'loading', data: null }; }
+  function els(name) { return document.querySelectorAll('[data-draw="' + name + '"]'); }
+  function run(name) {
+    var d = draws[name]; if (!d) return;
+    els(name).forEach(function (el, i) {
+      try {
+        if (typeof d === 'function') d(el);
+        else {
+          var key = name + '#' + i;
+          if (!made[key] || made[key].el !== el) made[key] = { el: el, v: d.mount ? d.mount(el) : null };
+          if (d.update) d.update(el, made[key].v);
+        }
+      } catch (e) { console.error('draw ' + name, e); }
+    });
+  }
+  var api = {
+    meta: {},
+    loader: function () {},
+    calc: function (id, def) { calcs.push([id, def]); },
+    data: data,
+    draw: function (name, def) {
+      if (def !== undefined) { draws[name] = def; if (ready) run(name); return; }
+      if (ready) run(name);
+    },
+    setLink: function (frag) {
+      var h = frag && frag !== 'list' ? '#' + frag : ' ';
+      try { history.replaceState(null, '', h === ' ' ? location.pathname + location.search : h); } catch (e) {}
+    }
+  };
+  function getJSON(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
+  function start() {
+    Promise.all([getJSON('data.json'), getJSON('brand.json')]).then(function (res) {
+      api.meta.updated = res[0].updated;
+      store.halaqat = { status: 'ok', data: res[0].rows };
+      store.brand = { status: 'ok', data: res[1] };
+      calcs.forEach(function (c) {
+        var args = (c[1].inputs || []).map(function (i) { return data(i).data; });
+        try { store[c[0]] = { status: 'ok', data: c[1].fn.apply(null, args) }; }
+        catch (e) { store[c[0]] = { status: 'error', data: null }; console.error(c[0], e); }
+      });
+      ready = true;
+      Object.keys(draws).forEach(run);
+    }).catch(function (e) {
+      console.error(e);
+      ['halaqat', 'halaqa', 'totals', 'bysection', 'byplace', 'zero'].forEach(function (k) { store[k] = { status: 'error', data: null }; });
+      ready = true; Object.keys(draws).forEach(run);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else setTimeout(start, 0);
+  return api;
+})();
