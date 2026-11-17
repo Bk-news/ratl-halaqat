@@ -101,8 +101,8 @@ window.RH = window.RH || {};
     document.getElementById('k-mode').setAttribute('aria-label', on ? 'المظهر الداكن مفعّل، اضغط للفاتح' : 'المظهر الفاتح مفعّل، اضغط للداكن');
     try { localStorage.setItem('k-dark', on ? '1' : '0'); } catch (e) {}
   }
-  var startDark = false;
-  try { var sv = localStorage.getItem('k-dark'); startDark = sv ? sv === '1' : !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches); } catch (e) {}
+  var startDark = true;
+  try { var sv = localStorage.getItem('k-dark'); if (sv) startDark = sv === '1'; } catch (e) {}
   setDark(startDark);
   document.getElementById('k-mode').addEventListener('click', function () { setDark(!document.getElementById('k-root').classList.contains('dark')); });
 

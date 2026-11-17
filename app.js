@@ -541,15 +541,21 @@ dash.calc('zero', {
     RH.open = null; dash.setLink('list');
     redrawList();
   };
-  var dark = false;
+  // الوضع الداكن هو الأساسي، والموقع يتذكر اختيار المستخدم
+  var dark = true;
+  try { var sv = localStorage.getItem('rh-dark'); if (sv) dark = sv === '1'; } catch (e) {}
+  function applyTheme() {
+    document.querySelectorAll('#rh-root').forEach(function (r) { r.classList.toggle('dark', dark); });
+    document.querySelectorAll('#rh-sun').forEach(function (s) { s.hidden = dark; });
+    document.querySelectorAll('#rh-moon').forEach(function (s) { s.hidden = !dark; });
+    document.querySelectorAll('#rh-mode').forEach(function (b) { b.setAttribute('aria-label', dark ? 'المظهر الداكن مفعّل، اضغط للفاتح' : 'المظهر الفاتح مفعّل، اضغط للداكن'); });
+    document.body.classList.toggle('dark', dark);
+    document.documentElement.style.background = dark ? '#1C140B' : '#F3EADB';
+    var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = dark ? '#1C140B' : '#F3EADB';
+  }
+  applyTheme();
   document.querySelectorAll('#rh-mode').forEach(function (b) {
-    b.addEventListener('click', function () {
-      dark = !dark;
-      document.querySelectorAll('#rh-root').forEach(function (r) { r.classList.toggle('dark', dark); });
-      document.querySelectorAll('#rh-sun').forEach(function (s) { s.hidden = dark; });
-      document.querySelectorAll('#rh-moon').forEach(function (s) { s.hidden = !dark; });
-      b.setAttribute('aria-label', dark ? 'المظهر الداكن مفعّل، اضغط للفاتح' : 'المظهر الفاتح مفعّل، اضغط للداكن');
-    });
+    b.addEventListener('click', function () { dark = !dark; try { localStorage.setItem('rh-dark', dark ? '1' : '0'); } catch (e) {} applyTheme(); });
   });
   document.querySelectorAll('input[name="rh-shot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.shotDark = i.value === 'dark' && i.checked; dash.draw('shot'); }); });
   document.querySelectorAll('#rh-shot-name').forEach(function (i) { i.addEventListener('input', function () { RH.shotName = i.value; dash.draw('shot'); }); });
