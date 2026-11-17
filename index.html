@@ -27,7 +27,7 @@
   fetch('page.html?t=' + t, { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (html) {
     var boot = document.getElementById('boot'); var wrap = document.createElement('div'); wrap.innerHTML = html;
     while (wrap.firstChild) document.body.insertBefore(wrap.firstChild, boot); boot.remove();
-    return load('shim.js').then(function () { return load('qr.js'); }).then(function () { return load('app.js'); }).then(function () { return load('theme.js'); }).then(function () { window.dash.start(); });
+    return load('shim.js').then(function () { return load('qr.js'); }).then(function () { return load('app.js'); }).then(function () { return load('theme.js'); }).then(function () { window.dash.start(); window.RATL_AUDIENCE = 'team'; return load('push.js').then(function () { RatlPush.bind(document.getElementById('rh-push')); }); });
   }).catch(function () { document.getElementById('boot').textContent = 'تعذّر التحميل، حدّث الصفحة.'; });
 })();
 </script>

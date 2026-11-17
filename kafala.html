@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preload" href="fonts/thmanyahsans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/thmanyahserifdisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="manifest-kafala.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="اكفل حلقة">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#1C140B">
 <title>اكفل حلقة قرآنية — جمعية رتّل</title>
 <meta name="description" content="ساهم في كفالة الحلقات القرآنية بجمعية رتّل لتحفيظ القرآن الكريم بنجران.">
@@ -20,9 +27,10 @@
   fetch('kafala-page.html?t=' + t, { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (html) {
     var boot = document.getElementById('boot'); var wrap = document.createElement('div'); wrap.innerHTML = html;
     while (wrap.firstChild) document.body.insertBefore(wrap.firstChild, boot); boot.remove();
-    return load('shim.js').then(function () { return load('kafala.js'); }).then(function () { window.dash.start(); });
+    return load('shim.js').then(function () { return load('kafala.js'); }).then(function () { window.dash.start(); window.RATL_AUDIENCE = 'donor'; return load('push.js').then(function () { RatlPush.bind(document.getElementById('k-push')); }); });
   }).catch(function () { document.getElementById('boot').textContent = 'تعذّر التحميل، حدّث الصفحة.'; });
 })();
 </script>
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});</script>
 </body>
 </html>
