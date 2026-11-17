@@ -6,6 +6,15 @@
 @font-face{font-family:TD;font-weight:700;font-display:swap;src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2")}
 [hidden]{display:none!important}
 .k{direction:rtl;font-family:TS,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;--bg:#F3EADB;--panel:#FBF8F2;--line:#E7D6BC;--line2:#DCC29B;--fg:#2B2925;--head:#3B2814;--muted:#8C8173;--men:#6E4A1F;--women:#7A2E2A;--gold:#C49958;--goldL:#DDB76C;--track:#E7D6BC;--menbg:#EDE0C8;--womenbg:#F0DCD6;--donebg:#DCEEE5;--done:#1B7F5B;background:var(--bg);color:var(--fg);position:relative;isolation:isolate;min-height:100vh;max-width:1100px;margin:0 auto;padding:22px clamp(14px,3vw,32px) 48px;display:flex;flex-direction:column;gap:20px}
+.k.dark{--bg:#1C140B;--panel:#271C10;--line:#3B2814;--line2:#4C3720;--fg:#F3EADB;--head:#FBF8F2;--muted:#B9AC98;--men:#DDB76C;--women:#D98C82;--track:#3B2814;--menbg:#2E2213;--womenbg:#311A17;--donebg:#11261C;--done:#4FB58C}
+.k.dark .k-pat{opacity:.07}
+.k.dark .k-logo img{filter:brightness(0) invert(1)}
+.k.dark .k-btn{color:#1C140B}
+.k.dark .k-seg button[aria-pressed=true]{color:#1C140B}
+.k.dark .k-near{background:linear-gradient(135deg,#3B2814,#5A3D1C)}
+.k.dark .k-foot a{color:var(--men)}
+.k-mode{margin-inline-start:auto;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--panel);color:var(--head);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.k-mode svg{width:22px;height:22px}
 .k *{box-sizing:border-box}
 .k-pat{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:repeat;background-size:120px 120px;opacity:.10}
 .k-top{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px}
@@ -59,6 +68,10 @@
       <h1 data-draw="k_title">اكفل حلقة قرآنية</h1>
       <div class="k-sub">جمعية رتّل لتحفيظ القرآن الكريم بنجران · الفصل الدراسي الأول 1448هـ</div>
     </div>
+    <button type="button" class="k-mode" id="k-mode" aria-label="المظهر الفاتح مفعّل، اضغط للداكن">
+      <svg id="k-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg id="k-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    </button>
   </header>
 
   <section class="k-hero">

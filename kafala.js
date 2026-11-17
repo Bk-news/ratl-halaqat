@@ -92,6 +92,20 @@ window.RH = window.RH || {};
     });
   });
 
+  function setDark(on) {
+    var root = document.getElementById('k-root'); if (!root) return;
+    root.classList.toggle('dark', on);
+    document.documentElement.style.background = document.body.style.background = on ? '#1C140B' : '#F3EADB';
+    var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = on ? '#1C140B' : '#F3EADB';
+    document.getElementById('k-sun').hidden = on; document.getElementById('k-moon').hidden = !on;
+    document.getElementById('k-mode').setAttribute('aria-label', on ? 'المظهر الداكن مفعّل، اضغط للفاتح' : 'المظهر الفاتح مفعّل، اضغط للداكن');
+    try { localStorage.setItem('k-dark', on ? '1' : '0'); } catch (e) {}
+  }
+  var startDark = false;
+  try { var sv = localStorage.getItem('k-dark'); startDark = sv ? sv === '1' : !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches); } catch (e) {}
+  setDark(startDark);
+  document.getElementById('k-mode').addEventListener('click', function () { setDark(!document.getElementById('k-root').classList.contains('dark')); });
+
   function redraw() { dash.draw('k_cards'); dash.draw('k_count'); }
   document.getElementById('k-q').addEventListener('input', function (ev) { Q = ev.target.value; redraw(); });
   var seg = document.getElementById('k-sec');
