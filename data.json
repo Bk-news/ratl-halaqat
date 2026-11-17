@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-17T00:55:03+03:00",
+"updated": "2026-11-17T08:55:23+03:00",
 "rows": [
 {
 "id": "1",
@@ -9,7 +9,7 @@
 "students": 26,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أبو-حنيفة"
 },
 {
 "id": "2",
@@ -19,7 +19,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أبو-عمرو-البصري"
 },
 {
 "id": "3",
@@ -29,7 +29,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أبو-موسى-الأشعري"
 },
 {
 "id": "4",
@@ -39,7 +39,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أبو-واقد-الليثي"
 },
 {
 "id": "5",
@@ -49,7 +49,7 @@
 "students": 23,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أحمد-بن-حنبل"
 },
 {
 "id": "6",
@@ -59,7 +59,7 @@
 "students": 19,
 "cost": 4000,
 "received": 10,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أسيد-بن-كعب"
 },
 {
 "id": "7",
@@ -68,7 +68,7 @@
 "place": "مجمع الفرقان",
 "students": 25,
 "cost": 4000,
-"received": 2835,
+"received": 2840,
 "store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-ابن-عامر-الشامي"
 },
 {
@@ -79,7 +79,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الأقرع-بن-حابس"
 },
 {
 "id": "9",
@@ -89,7 +89,7 @@
 "students": 26,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الأمام-ابن-باز"
 },
 {
 "id": "10",
