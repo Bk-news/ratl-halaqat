@@ -105,7 +105,8 @@ dash.calc('zero', {
   function span(txt) { var s = document.createElement('span'); s.textContent = txt; return s; }
   function link(txt, href, cls) { var a = document.createElement('a'); a.className = 'rh-btn' + (cls ? ' ' + cls : ''); a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = txt; return a; }
   function barEl(pct, cls) { var b = document.createElement('div'); b.className = 'rh-bar' + (cls ? ' ' + cls : ''); var i = document.createElement('i'); i.style.width = Math.max(0, Math.min(100, pct)) + '%'; b.appendChild(i); return b; }
-  function storeOf(h) { return h && /^https?:\/\//.test(h.store || '') ? h.store : RH.STORE; }
+  function linkOf(h) { if (!h) return ''; if (/^https?:\/\//.test(h.store || '')) return h.store; var l = (RH.LINKS || {})[h.name]; return /^https?:\/\//.test(l || '') ? l : ''; }
+  function storeOf(h) { return linkOf(h) || RH.STORE; }
   function brand(key) { var b = dash.data('brand'); var v = b.status === 'ok' && b.data ? b.data[key] : null; return typeof v === 'string' && v.indexOf('data:image/') === 0 ? v : null; }
 
   dash.draw('pattern', function (el) {
@@ -417,7 +418,7 @@ dash.calc('zero', {
     if (!c) { el.textContent = 'الرابط طويل مرة على رمز QR'; return; }
     var img = document.createElement('img'); img.src = c.toDataURL('image/png'); img.alt = 'رمز QR لصفحة الحلقة في المتجر'; img.className = 'rh-qr';
     var note = document.createElement('p'); note.className = 'rh-note'; note.style.margin = '8px 0';
-    note.textContent = h.store ? 'يودّي لصفحة الحلقة في المتجر' : 'يودّي لمتجر الجمعية العام (ما أُضيف رابط الحلقة في الجدول بعد)';
+    note.textContent = linkOf(h) ? 'يودّي لصفحة الحلقة في المتجر' : 'يودّي لمتجر الجمعية العام (ما أُضيف رابط الحلقة في الجدول بعد)';
     var a = document.createElement('a'); a.className = 'rh-btn p'; a.textContent = 'تنزيل رمز QR'; a.href = img.src; a.download = 'qr-' + h.name + '.png';
     el.appendChild(img); el.appendChild(note); el.appendChild(a);
   });

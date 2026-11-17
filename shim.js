@@ -66,7 +66,8 @@ window.dash = (function () {
     var fontsReady = (document.fonts && document.fonts.load)
       ? Promise.race([Promise.all(['400 16px TS', '500 16px TS', '700 16px TS', '400 16px TD', '700 16px TD'].map(function (f) { return document.fonts.load(f, 'ثمانية'); })), new Promise(function (r) { setTimeout(r, 3000); })]).catch(function () {})
       : Promise.resolve();
-    Promise.all([getJSON('data.json'), getJSON('brand.json'), fontsReady]).then(function (res) {
+    Promise.all([getJSON('data.json'), getJSON('brand.json'), fontsReady, getJSON('links.json').catch(function () { return {}; })]).then(function (res) {
+      if (window.RH) window.RH.LINKS = res[3] || {};
       api.meta.updated = res[0].updated; api.meta.live = false;
       store.brand = { status: 'ok', data: res[1] };
       compute(res[0].rows);
