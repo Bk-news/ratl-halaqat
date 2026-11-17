@@ -86,7 +86,7 @@ dash.calc('byplace', {
       s.count += 1; s.total += h.cost; s.received += Math.min(h.received, h.cost);
     });
     return Object.keys(m).map(function (k) { var s = m[k]; s.pct = s.total > 0 ? Math.round(s.received / s.total * 1000) / 10 : 0; return s; })
-      .sort(function (a, b) { return b.pct - a.pct || a.place.localeCompare(b.place, 'ar'); });
+      .sort(function (a, b) { return a.pct - b.pct || a.place.localeCompare(b.place, 'ar'); });
   }
 });
 
