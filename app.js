@@ -286,15 +286,14 @@ dash.calc('zero', {
   // شرائح النسبة: 0 = ما وصلها شي، 25 = 1–49، 50 = 50–74، 75 = 75–99، 100 = مكتملة
   function bandOf(p) { return p <= 0 ? 0 : p < 50 ? 25 : p < 75 ? 50 : p < 100 ? 75 : 100; }
   RH.bandOf = bandOf;
-  dash.draw('bands', function (sel) {
+  dash.draw('bands', function (el) {
     var d = dash.data('halaqa'); var all = d.status === 'ok' && d.data ? d.data : [];
     var cnt = { 0: 0, 25: 0, 50: 0, 75: 0, 100: 0 };
     all.forEach(function (h) { cnt[bandOf(h.pct)]++; });
-    Array.prototype.forEach.call(sel.options, function (o) {
-      if (!o.getAttribute('data-l')) o.setAttribute('data-l', o.textContent);
-      o.textContent = o.getAttribute('data-l') + (o.value !== '' ? ' (' + cnt[Number(o.value)] + ')' : '');
+    el.querySelectorAll('button[data-band]').forEach(function (b) {
+      var k = Number(b.getAttribute('data-band')); var n = b.querySelector('i'); if (n) n.textContent = String(cnt[k]);
+      b.setAttribute('aria-pressed', (RH.bands || []).indexOf(k) !== -1 ? 'true' : 'false');
     });
-    sel.value = RH.bands && RH.bands.length ? String(RH.bands[0]) : '';
   });
   function filtered() {
     var d = dash.data('halaqa');
@@ -556,7 +555,14 @@ dash.calc('zero', {
   document.querySelectorAll('#rh-shot-name').forEach(function (i) { i.addEventListener('input', function () { RH.shotName = i.value; dash.draw('shot'); }); });
   document.querySelectorAll('#rh-back').forEach(function (b) { b.addEventListener('click', window.rhClose); });
   RH.bands = [];
-  document.querySelectorAll('#rh-band').forEach(function (s) { s.addEventListener('change', function () { RH.bands = s.value === '' ? [] : [Number(s.value)]; redrawList(); }); });
+  document.querySelectorAll('#rh-bands button[data-band]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = Number(b.getAttribute('data-band')); var i = RH.bands.indexOf(k);
+      if (i === -1) RH.bands.push(k); else RH.bands.splice(i, 1);
+      dash.draw('bands'); redrawList();
+    });
+  });
+  document.querySelectorAll('#rh-bands-clear').forEach(function (b) { b.addEventListener('click', function () { RH.bands = []; dash.draw('bands'); redrawList(); }); });
   document.querySelectorAll('input[name="rh-hshot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.hDark = i.value === 'dark' && i.checked; dash.draw('h_shot'); }); });
   document.querySelectorAll('#rh-q').forEach(function (i) { i.addEventListener('input', function () { RH.q = i.value; redrawList(); }); });
   document.querySelectorAll('#rh-sec').forEach(function (s) { s.addEventListener('change', function () { RH.sec = s.value; redrawList(); }); });
