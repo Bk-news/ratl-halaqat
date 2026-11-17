@@ -112,8 +112,17 @@ body.dark{background:#1C140B}
 .rh-dmedia{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
 .rh-qr{width:180px;height:180px;border-radius:12px;border:1px solid var(--line);background:#fff;display:block}
 .rh-hshot{width:min(100%,240px);border-radius:12px;border:1px solid var(--line);display:block}
-.rh-near{align-self:center}
-.rh-near[aria-pressed=true]{background:var(--goldL);border-color:var(--gold);color:#2B1A08}
+.rh-bands{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px}
+.rh-bands-l{font-size:12px;color:var(--muted);margin-inline-end:2px}
+.rh-band{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:var(--panel);color:var(--fg);border-radius:99px;padding:6px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.rh-band small{font-weight:400;font-size:11px;color:var(--muted)}
+.rh-band i{font-style:normal;font-size:11px;font-weight:700;background:var(--track);color:var(--head);border-radius:99px;padding:1px 7px}
+.rh-band[aria-pressed=true]{background:var(--men);border-color:var(--men);color:#fff}
+.rh-band[aria-pressed=true] small{color:rgba(255,255,255,.85)}
+.rh-band[aria-pressed=true] i{background:rgba(255,255,255,.25);color:#fff}
+.rh-band.done[aria-pressed=true]{background:var(--done);border-color:var(--done)}
+.rh.dark .rh-band[aria-pressed=true]{color:#1C140B}.rh.dark .rh-band[aria-pressed=true] small{color:rgba(28,20,11,.8)}
+.rh-band-clear{border:0;background:transparent;color:var(--men);font:inherit;font-size:12px;text-decoration:underline;cursor:pointer;padding:6px}
 @media (max-width:480px){
 .rh{padding:16px 12px 32px;gap:16px}
 .rh-logo img{width:52px}
@@ -228,13 +237,21 @@ body.dark{background:#1C140B}
         <option value="نساء">حلقات النساء</option>
       </select>
       <select class="dash-select" id="rh-place" aria-label="المجمع أو الدار" data-draw="place_opts"></select>
-      <button type="button" class="rh-chip rh-near" id="rh-near" aria-pressed="false">قربت تكتمل (75٪ فأكثر)</button>
       <select class="dash-select" id="rh-sort" aria-label="الترتيب">
         <option value="near">الأقرب للاكتمال</option>
         <option value="far">الأبعد عن الاكتمال</option>
         <option value="name">حسب الاسم</option>
         <option value="students">الأكثر طلابًا</option>
       </select>
+    </div>
+    <div class="rh-bands" id="rh-bands" data-draw="bands" role="group" aria-label="تصفية حسب نسبة الإكمال">
+      <span class="rh-bands-l">نسبة الإكمال:</span>
+      <button type="button" class="rh-band" data-band="0" aria-pressed="false">0٪ <small>ما وصلها شي</small> <i>—</i></button>
+      <button type="button" class="rh-band" data-band="25" aria-pressed="false">25٪ <small>من 1 إلى 49</small> <i>—</i></button>
+      <button type="button" class="rh-band" data-band="50" aria-pressed="false">50٪ <small>من 50 إلى 74</small> <i>—</i></button>
+      <button type="button" class="rh-band" data-band="75" aria-pressed="false">75٪ <small>قربت تكتمل</small> <i>—</i></button>
+      <button type="button" class="rh-band done" data-band="100" aria-pressed="false">100٪ <small>مكتملة</small> <i>—</i></button>
+      <button type="button" class="rh-band-clear" id="rh-bands-clear">الكل</button>
     </div>
     <p class="rh-count" data-draw="count">—</p>
     <div class="rh-grid" data-draw="cards"></div>

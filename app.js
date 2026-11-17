@@ -283,6 +283,18 @@ dash.calc('zero', {
     sel.value = RH.place || '';
   });
 
+  // شرائح النسبة: 0 = ما وصلها شي، 25 = 1–49، 50 = 50–74، 75 = 75–99، 100 = مكتملة
+  function bandOf(p) { return p <= 0 ? 0 : p < 50 ? 25 : p < 75 ? 50 : p < 100 ? 75 : 100; }
+  RH.bandOf = bandOf;
+  dash.draw('bands', function (el) {
+    var d = dash.data('halaqa'); var all = d.status === 'ok' && d.data ? d.data : [];
+    var cnt = { 0: 0, 25: 0, 50: 0, 75: 0, 100: 0 };
+    all.forEach(function (h) { cnt[bandOf(h.pct)]++; });
+    el.querySelectorAll('button[data-band]').forEach(function (b) {
+      var k = Number(b.getAttribute('data-band')); var n = b.querySelector('i'); if (n) n.textContent = String(cnt[k]);
+      b.setAttribute('aria-pressed', (RH.bands || []).indexOf(k) !== -1 ? 'true' : 'false');
+    });
+  });
   function filtered() {
     var d = dash.data('halaqa');
     if (d.status !== 'ok' || !d.data) return null;
@@ -290,7 +302,7 @@ dash.calc('zero', {
     var rows = d.data.filter(function (h) {
       if (RH.sec && h.section !== RH.sec) return false;
       if (RH.place && h.place !== RH.place) return false;
-      if (RH.near && !(h.pct >= 75 && h.pct < 100)) return false;
+      if (RH.bands && RH.bands.length && RH.bands.indexOf(bandOf(h.pct)) === -1) return false;
       if (q && (h.name + ' ' + h.place).indexOf(q) === -1) return false;
       return true;
     });
@@ -542,7 +554,15 @@ dash.calc('zero', {
   document.querySelectorAll('input[name="rh-shot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.shotDark = i.value === 'dark' && i.checked; dash.draw('shot'); }); });
   document.querySelectorAll('#rh-shot-name').forEach(function (i) { i.addEventListener('input', function () { RH.shotName = i.value; dash.draw('shot'); }); });
   document.querySelectorAll('#rh-back').forEach(function (b) { b.addEventListener('click', window.rhClose); });
-  document.querySelectorAll('#rh-near').forEach(function (b) { b.addEventListener('click', function () { RH.near = !RH.near; b.setAttribute('aria-pressed', RH.near ? 'true' : 'false'); redrawList(); }); });
+  RH.bands = [];
+  document.querySelectorAll('#rh-bands button[data-band]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = Number(b.getAttribute('data-band')); var i = RH.bands.indexOf(k);
+      if (i === -1) RH.bands.push(k); else RH.bands.splice(i, 1);
+      dash.draw('bands'); redrawList();
+    });
+  });
+  document.querySelectorAll('#rh-bands-clear').forEach(function (b) { b.addEventListener('click', function () { RH.bands = []; dash.draw('bands'); redrawList(); }); });
   document.querySelectorAll('input[name="rh-hshot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.hDark = i.value === 'dark' && i.checked; dash.draw('h_shot'); }); });
   document.querySelectorAll('#rh-q').forEach(function (i) { i.addEventListener('input', function () { RH.q = i.value; redrawList(); }); });
   document.querySelectorAll('#rh-sec').forEach(function (s) { s.addEventListener('change', function () { RH.sec = s.value; redrawList(); }); });
