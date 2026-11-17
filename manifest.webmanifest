@@ -1,0 +1,18 @@
+{
+  "name": "متابعة كفالات الحلقات — جمعية رتّل",
+  "short_name": "كفالات رتّل",
+  "description": "متابعة كفالات حلقات جمعية رتّل لتحفيظ القرآن الكريم بنجران",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3EADB",
+  "theme_color": "#F3EADB",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
