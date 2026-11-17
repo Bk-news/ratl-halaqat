@@ -15,6 +15,10 @@
 .k.dark .k-foot a{color:var(--men)}
 .k-mode{margin-inline-start:auto;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--panel);color:var(--head);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
 .k-mode svg{width:22px;height:22px}
+.k-store{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--head);background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-weight:700;font-size:15px}
+.k-store svg{width:22px;height:22px;color:var(--gold);flex:none}
+.k-store small{margin-inline-start:auto;font-weight:400;font-size:12px;color:var(--muted)}
+.k-store small::after{content:" ←"}
 .k *{box-sizing:border-box}
 .k-pat{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:repeat;background-size:120px 120px;opacity:.10}
 .k-top{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px}
@@ -74,6 +78,12 @@
     </button>
   </header>
 
+  <a class="k-store" href="https://store.qurannajran.org.sa/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg>
+    <span>متجر جمعية رتّل</span>
+    <small>تصفّح كل فرص التبرع</small>
+  </a>
+
   <section class="k-hero">
     <div class="k-big"><span data-draw="k_pct">—</span>٪</div>
     <div class="k-bar" data-draw="k_bar"></div>
@@ -97,7 +107,6 @@
   <a class="k-all" href="kafala.html" data-draw="k_all" hidden>عرض كل حلقات الجمعية ←</a>
 
   <footer class="k-foot">
-    قيمة السهم 50 ريال أو بأي مبلغ · تذهب تبرعاتكم لكفالة الحلقات القرآنية<br>
-    <a href="https://store.qurannajran.org.sa/" target="_blank" rel="noopener">متجر جمعية رتّل</a>
+    قيمة السهم 50 ريال أو بأي مبلغ · تذهب تبرعاتكم لكفالة الحلقات القرآنية
   </footer>
 </div>
