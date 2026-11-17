@@ -173,6 +173,8 @@ dash.calc('zero', {
       document.body.removeChild(ta); done ? ok() : no();
     });
   }
+  function placeUrl(place) { var base = location.href.split('#')[0].split('?')[0].replace(/[^\/]*$/, ''); return base + 'kafala.html?place=' + encodeURIComponent(place); }
+  RH.placeUrl = placeUrl;
   function placeMsg(place) {
     var d = dash.data('halaqa'); var list = (d.data || []).filter(function (h) { return h.place === place; });
     list.sort(function (a, b) { return (a.pct >= 100) - (b.pct >= 100) || b.pct - a.pct || a.name.localeCompare(b.name, 'ar'); });
@@ -185,6 +187,7 @@ dash.calc('zero', {
       out.push(storeOf(h)); out.push('');
     });
     if (done.length) { out.push('اكتملت كفالتها ✓: ' + done.map(function (h) { return h.name; }).join('، ')); out.push(''); }
+    out.push('صفحة حلقات ' + place + ' كاملة: ' + placeUrl(place));
     out.push('قيمة السهم 50 ريال أو بأي مبلغ.');
     return out.join('\n').trim();
   }
@@ -207,7 +210,12 @@ dash.calc('zero', {
       });
       var wa = document.createElement('a'); wa.className = 'rh-btn rh-mini p'; wa.target = '_blank'; wa.rel = 'noopener'; wa.textContent = 'واتساب';
       wa.href = 'https://wa.me/?text=' + encodeURIComponent(placeMsg(s.place));
-      acts.appendChild(cp); acts.appendChild(wa);
+      var pl = document.createElement('button'); pl.type = 'button'; pl.className = 'rh-btn rh-mini'; pl.textContent = 'رابط صفحة المجمع';
+      pl.addEventListener('click', function () {
+        copyText(placeUrl(s.place)).then(function () { pl.textContent = 'تم نسخ الرابط ✓'; }, function () { window.open(placeUrl(s.place), '_blank'); });
+        setTimeout(function () { pl.textContent = 'رابط صفحة المجمع'; }, 2500);
+      });
+      acts.appendChild(cp); acts.appendChild(pl); acts.appendChild(wa);
       box.appendChild(row); box.appendChild(acts); el.appendChild(box);
     });
   });
@@ -389,7 +397,7 @@ dash.calc('zero', {
       c.appendChild(l); c.appendChild(v); c.appendChild(s); g.appendChild(c);
     });
     var acts = document.createElement('div'); acts.className = 'rh-acts'; acts.style.marginTop = '12px';
-    acts.appendChild(link('اكفل الآن — صفحة الحلقة في المتجر', storeOf(h), 'p'));
+    if (h.remaining > 0) acts.appendChild(link((h.pct > 0 ? 'أكمل الحلقة' : 'اكفل الحلقة') + ' — باقي ' + RH.fmt(h.remaining) + ' ريال', storeOf(h), 'p'));
     acts.appendChild(link('تبرع بأمان', RH.TABARRU));
     el.appendChild(nm); el.appendChild(pl); el.appendChild(g); el.appendChild(barEl(h.pct, h.section === 'نساء' ? 'w' : 'm')); el.appendChild(acts);
   });

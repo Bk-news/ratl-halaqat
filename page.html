@@ -21,7 +21,7 @@ body.dark{background:#1C140B}
 .rh-seg{display:inline-flex;gap:14px;font-size:14px;color:var(--fg)}
 .rh-shotctl input[type=text]{padding:9px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--fg);font:inherit;max-width:320px}
 .rh-big{font-size:26px;margin-top:12px}
-.rh-tools{display:flex;align-items:center;gap:8px}
+.rh-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .rh-tools .rh-btn{height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--panel)}
 .rh *{box-sizing:border-box}
 .rh-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px}
@@ -59,7 +59,7 @@ body.dark{background:#1C140B}
 .rh-pbox.done .rh-btn.p{background:var(--done);border-color:var(--done)}
 .rh-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:-4px 0 12px}
 .rh-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
-.rh-pacts{display:flex;gap:6px}
+.rh-pacts{display:flex;flex-wrap:wrap;gap:6px}
 .rh-mini{padding:5px 10px;font-size:12px}
 .rh-place>span{text-align:left;font-variant-numeric:tabular-nums;color:var(--muted)}
 .rh-chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -143,6 +143,7 @@ body.dark{background:#1C140B}
       </div>
     </div>
     <div class="rh-tools">
+    <a class="rh-btn" href="kafala.html" target="_blank" rel="noopener" style="height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--panel)">صفحة المتبرعين</a>
     <button type="button" class="rh-btn" id="rh-shotbtn">صورة التقدم</button>
     <button type="button" class="rh-mode" id="rh-mode" aria-label="المظهر الفاتح مفعّل، اضغط للداكن">
       <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
@@ -241,7 +242,7 @@ body.dark{background:#1C140B}
 
   <section class="rh-card" id="places">
     <h2 class="rh-h2">التقدم حسب المجمع أو الدار</h2>
-    <p class="rh-note">انسخ روابط حلقات أي مجمع أو دار بضغطة، أو أرسلها واتساب لمديره على طول.</p>
+    <p class="rh-note">انسخ روابط حلقات أي مجمع أو دار، أو رابط صفحته الخاصة للمتبرعين، أو أرسلها واتساب لمديره على طول.</p>
     <div class="rh-legend"><span><i style="background:var(--men)"></i>مجمعات الرجال</span><span><i style="background:var(--women)"></i>دور النساء</span><span><i style="background:var(--done)"></i>اكتملت</span></div>
     <div class="rh-places" data-draw="places"></div>
   </section>

@@ -1,0 +1,90 @@
+<style>
+@font-face{font-family:TS;font-weight:400;font-display:swap;src:url("fonts/thmanyahsans-Regular.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:500;font-display:swap;src:url("fonts/thmanyahsans-Medium.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:700;font-display:swap;src:url("fonts/thmanyahsans-Bold.woff2") format("woff2")}
+@font-face{font-family:TD;font-weight:400;font-display:swap;src:url("fonts/thmanyahserifdisplay-Regular.woff2") format("woff2")}
+@font-face{font-family:TD;font-weight:700;font-display:swap;src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2")}
+[hidden]{display:none!important}
+.k{direction:rtl;font-family:TS,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;--bg:#F3EADB;--panel:#FBF8F2;--line:#E7D6BC;--line2:#DCC29B;--fg:#2B2925;--head:#3B2814;--muted:#8C8173;--men:#6E4A1F;--women:#7A2E2A;--gold:#C49958;--goldL:#DDB76C;--track:#E7D6BC;--menbg:#EDE0C8;--womenbg:#F0DCD6;--donebg:#DCEEE5;--done:#1B7F5B;background:var(--bg);color:var(--fg);position:relative;isolation:isolate;min-height:100vh;max-width:1100px;margin:0 auto;padding:22px clamp(14px,3vw,32px) 48px;display:flex;flex-direction:column;gap:20px}
+.k *{box-sizing:border-box}
+.k-pat{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:repeat;background-size:120px 120px;opacity:.10}
+.k-top{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px}
+.k-logo img{width:64px;height:auto;display:block}
+.k h1{font-family:TD,serif;font-weight:700;font-size:clamp(22px,4vw,32px);color:var(--head);margin:0;line-height:1.3}
+.k-sub{color:var(--muted);font-size:13px;margin-top:2px}
+.k-hero{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;border-top:6px solid var(--gold)}
+.k-hero p{margin:0;line-height:1.9;font-size:15px}
+.k-hero b{color:var(--head);font-variant-numeric:tabular-nums}
+.k-big{font-family:TD,serif;font-size:44px;line-height:1.1;color:var(--head)}
+.k-bar{height:12px;border-radius:99px;background:var(--track);overflow:hidden}
+.k-bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(135deg,#8A5E2C,#C49958 55%,#F0D08A)}
+.k-bar.m>i{background:var(--men)}.k-bar.w>i{background:var(--women)}
+.k-near{display:flex;flex-direction:column;gap:6px;background:linear-gradient(135deg,#6E4A1F,#8A5E2C);color:#FBF8F2;border-radius:16px;padding:16px;text-decoration:none}
+.k-near small{opacity:.85;font-size:13px}
+.k-near strong{font-size:19px;font-weight:700}
+.k-near span.cta{align-self:flex-start;margin-top:4px;background:#F0D08A;color:#2B1A08;border-radius:99px;padding:8px 16px;font-weight:700;font-size:14px}
+.k-controls{display:flex;flex-wrap:wrap;gap:8px}
+.k-search{flex:1 1 200px;min-width:0;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--fg);font:inherit;font-size:16px}
+.k-seg{display:inline-flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:var(--panel)}
+.k-seg button{border:0;background:transparent;font:inherit;font-size:14px;padding:9px 14px;color:var(--fg);cursor:pointer}
+.k-seg button[aria-pressed=true]{background:var(--men);color:#fff}
+.k-count{font-size:12px;color:var(--muted);margin:0}
+.k-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.k-h{position:relative;overflow:hidden;background:var(--menbg);border:1px solid var(--line);border-top:5px solid var(--men);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:9px}
+.k-h.w{background:var(--womenbg);border-color:color-mix(in srgb,var(--women) 35%,transparent);border-top-color:var(--women)}
+.k-h.done{background:var(--donebg);border-color:var(--done);border-top-color:var(--done)}
+.k-h-name{font-weight:700;font-size:17px;color:var(--head);line-height:1.35}
+.k-h-place{font-size:12px;color:var(--muted)}
+.k-h-row{display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.k-h-pct{font-family:TD,serif;font-size:24px;color:var(--head)}
+.k-h.done .k-bar>i{background:var(--done)}
+.k-left{font-size:14px;color:var(--fg);line-height:1.7}
+.k-left b{color:var(--head)}
+.k-btn{display:block;text-align:center;text-decoration:none;font:inherit;font-weight:700;font-size:14px;padding:11px 12px;border-radius:12px;background:var(--men);color:#fff;border:0}
+.k-h.w .k-btn{background:var(--women)}
+.k-done{display:flex;align-items:center;gap:8px;color:var(--done);font-weight:700;font-size:14px}
+.k-tag{position:absolute;left:10px;top:12px;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--goldL);color:#2B1A08}
+.k-empty{color:var(--muted);text-align:center;padding:24px;font-size:14px}
+.k-foot{text-align:center;color:var(--muted);font-size:12px;line-height:1.9;margin-top:8px}
+.k-foot a{color:var(--men)}
+.k-all{align-self:center;font-size:13px;color:var(--men)}
+@media (max-width:480px){.k{padding:16px 12px 40px;gap:16px}.k-logo img{width:50px}.k-big{font-size:36px}}
+</style>
+
+<div class="k" id="k-root" lang="ar">
+  <div class="k-pat" data-draw="k_pattern" aria-hidden="true"></div>
+  <header class="k-top">
+    <span class="k-logo" data-draw="k_logo"></span>
+    <div>
+      <h1 data-draw="k_title">اكفل حلقة قرآنية</h1>
+      <div class="k-sub">جمعية رتّل لتحفيظ القرآن الكريم بنجران · الفصل الدراسي الأول 1448هـ</div>
+    </div>
+  </header>
+
+  <section class="k-hero">
+    <div class="k-big"><span data-draw="k_pct">—</span>٪</div>
+    <div class="k-bar" data-draw="k_bar"></div>
+    <p data-draw="k_take">—</p>
+  </section>
+
+  <a class="k-near" data-draw="k_near" target="_blank" rel="noopener" hidden></a>
+
+  <section>
+    <div class="k-controls">
+      <input class="k-search" id="k-q" type="search" placeholder="ابحث باسم الحلقة أو المجمع…" aria-label="بحث">
+      <div class="k-seg" id="k-sec" role="group" aria-label="القسم">
+        <button type="button" data-v="" aria-pressed="true">الكل</button>
+        <button type="button" data-v="رجال" aria-pressed="false">رجال</button>
+        <button type="button" data-v="نساء" aria-pressed="false">نساء</button>
+      </div>
+    </div>
+  </section>
+  <p class="k-count" data-draw="k_count">—</p>
+  <div class="k-grid" data-draw="k_cards"></div>
+  <a class="k-all" href="kafala.html" data-draw="k_all" hidden>عرض كل حلقات الجمعية ←</a>
+
+  <footer class="k-foot">
+    قيمة السهم 50 ريال أو بأي مبلغ · تذهب تبرعاتكم لكفالة الحلقات القرآنية<br>
+    <a href="https://store.qurannajran.org.sa/" target="_blank" rel="noopener">متجر جمعية رتّل</a>
+  </footer>
+</div>
