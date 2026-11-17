@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-17T08:55:23+03:00",
+"updated": "2026-11-17T09:56:37+03:00",
 "rows": [
 {
 "id": "1",
@@ -98,8 +98,8 @@
 "place": "مسجد الإمام مالك",
 "students": 19,
 "cost": 4000,
-"received": 0,
-"store": ""
+"received": 250,
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الإمام-مالك"
 },
 {
 "id": "11",
@@ -109,7 +109,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الإمام-محمد-بن-سعود"
 },
 {
 "id": "12",
@@ -119,7 +119,7 @@
 "students": 27,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الشيخ-عبدالعزيز-آل-الشيخ"
 },
 {
 "id": "13",
@@ -129,7 +129,7 @@
 "students": 19,
 "cost": 4000,
 "received": 4000,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الشيخ-محمد-السبيل"
 },
 {
 "id": "14",
@@ -139,7 +139,7 @@
 "students": 28,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الشيخ-محمد-بن-إبراهيم"
 },
 {
 "id": "15",
@@ -149,7 +149,7 @@
 "students": 20,
 "cost": 4000,
 "received": 4000,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الشيخ-محمد-بن-عثيمين"
 },
 {
 "id": "16",
@@ -159,7 +159,7 @@
 "students": 19,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-المقداد-بن-الأسود"
 },
 {
 "id": "17",
@@ -169,7 +169,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-بريدة-بن-الحصيب"
 },
 {
 "id": "18",
@@ -179,7 +179,7 @@
 "students": 15,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-بشر-بن-الحارث"
 },
 {
 "id": "19",
@@ -189,7 +189,7 @@
 "students": 23,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-جبير-بن-مطعم"
 },
 {
 "id": "20",
@@ -199,7 +199,7 @@
 "students": 14,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-جندب-بن-عبدالله"
 },
 {
 "id": "21",
@@ -209,7 +209,7 @@
 "students": 19,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أبي-بن-كعب"
 },
 {
 "id": "22",
@@ -219,7 +219,7 @@
 "students": 17,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-ذو-النورين"
 },
 {
 "id": "23",
@@ -229,7 +229,7 @@
 "students": 21,
 "cost": 4000,
 "received": 70,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-رفاعة-بن-قرظة"
 },
 {
 "id": "24",
@@ -239,7 +239,7 @@
 "students": 23,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-زيد-بن-ثابت"
 },
 {
 "id": "25",
@@ -249,7 +249,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-سعيد-بن-حريث"
 },
 {
 "id": "26",
@@ -259,7 +259,7 @@
 "students": 15,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-سعيد-بن-خالد"
 },
 {
 "id": "27",
@@ -269,7 +269,7 @@
 "students": 15,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-سنان-بن-أبي-سنان"
 },
 {
 "id": "28",
@@ -279,7 +279,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-شماس-بن-عثمان-2"
 },
 {
 "id": "29",
@@ -289,7 +289,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-طلحة-بن-البراء"
 },
 {
 "id": "30",
@@ -299,7 +299,7 @@
 "students": 15,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عامر-بن-فهيرة"
 },
 {
 "id": "31",
@@ -309,7 +309,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عامر-بن-واثلة"
 },
 {
 "id": "32",
@@ -319,7 +319,7 @@
 "students": 24,
 "cost": 4000,
 "received": 55,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عبدالرحمن-بن-عوف"
 },
 {
 "id": "33",
@@ -329,7 +329,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عبدالله-بن-أبي-حدرد"
 },
 {
 "id": "34",
@@ -339,7 +339,7 @@
 "students": 23,
 "cost": 4000,
 "received": 5,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عبدالله-بن-حميد"
 },
 {
 "id": "35",
@@ -349,7 +349,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عبدالله-بن-مسعود"
 },
 {
 "id": "36",
@@ -359,7 +359,7 @@
 "students": 18,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عبدالله-بن-مظعون"
 },
 {
 "id": "37",
@@ -369,7 +369,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عمارة-بن-حمزة"
 },
 {
 "id": "38",
@@ -379,7 +379,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عمير-بن-وهب"
 },
 {
 "id": "39",
@@ -389,7 +389,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-معمر-بن-حبيب"
 },
 {
 "id": "40",
@@ -399,7 +399,7 @@
 "students": 19,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-هشام-بن-عمار-1"
 },
 {
 "id": "41",
@@ -409,7 +409,7 @@
 "students": 24,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-آسيا-بنت-مزاحم"
 },
 {
 "id": "42",
@@ -419,7 +419,7 @@
 "students": 25,
 "cost": 4000,
 "received": 4000,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أسماء-بنت-أبي-بكر"
 },
 {
 "id": "43",
@@ -429,7 +429,7 @@
 "students": 27,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أسماء-بنت-عميس"
 },
 {
 "id": "44",
@@ -439,7 +439,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أسماء-بنت-يزيد"
 },
 {
 "id": "45",
@@ -449,7 +449,7 @@
 "students": 31,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-الدرداء"
 },
 {
 "id": "46",
@@ -459,7 +459,7 @@
 "students": 23,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-سلمة"
 },
 {
 "id": "47",
@@ -469,7 +469,7 @@
 "students": 24,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-شريك-القرشية"
 },
 {
 "id": "48",
@@ -479,7 +479,7 @@
 "students": 30,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-كلثوم"
 },
 {
 "id": "49",
@@ -489,7 +489,7 @@
 "students": 27,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-محجن"
 },
 {
 "id": "50",
@@ -499,7 +499,7 @@
 "students": 18,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أم-ورقة-بنت-نوفل"
 },
 {
 "id": "51",
@@ -509,7 +509,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أميمة-بنت-خلف"
 },
 {
 "id": "52",
@@ -519,7 +519,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-أهل-القرآن"
 },
 {
 "id": "53",
@@ -529,7 +529,7 @@
 "students": 19,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الأترجة"
 },
 {
 "id": "54",
@@ -539,7 +539,7 @@
 "students": 24,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الجواهر-الحسان"
 },
 {
 "id": "55",
@@ -549,7 +549,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-تاج-الوقار"
 },
 {
 "id": "56",
@@ -559,7 +559,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-تاجي-وقاري"
 },
 {
 "id": "57",
@@ -569,7 +569,7 @@
 "students": 30,
 "cost": 4000,
 "received": 50,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-جويرية-بنت-الحارث"
 },
 {
 "id": "58",
@@ -579,7 +579,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-حفصة-بنت-عمر"
 },
 {
 "id": "59",
@@ -589,7 +589,7 @@
 "students": 26,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-حواء-الأنصارية"
 },
 {
 "id": "60",
@@ -599,7 +599,7 @@
 "students": 20,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-خديجة-بنت-خويلد"
 },
 {
 "id": "61",
@@ -609,7 +609,7 @@
 "students": 26,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-خولة-بنت-حكيم"
 },
 {
 "id": "62",
@@ -619,7 +619,7 @@
 "students": 39,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-رفيدة-الأسلمية"
 },
 {
 "id": "63",
@@ -629,7 +629,7 @@
 "students": 27,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-رقية-الأسلمية"
 },
 {
 "id": "64",
@@ -639,7 +639,7 @@
 "students": 33,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-سودة-بنت-زمعة"
 },
 {
 "id": "65",
@@ -649,7 +649,7 @@
 "students": 27,
 "cost": 4000,
 "received": 10,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-شجرة-الدر"
 },
 {
 "id": "66",
@@ -659,7 +659,7 @@
 "students": 26,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-صفية-بنت-عبدالمطلب"
 },
 {
 "id": "67",
@@ -669,7 +669,7 @@
 "students": 22,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-ضياء-القرآن"
 },
 {
 "id": "68",
@@ -679,7 +679,7 @@
 "students": 31,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عائشة-بنت-أبي-بكر"
 },
 {
 "id": "69",
@@ -689,7 +689,7 @@
 "students": 24,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-عفراء-بنت-عبيد"
 },
 {
 "id": "70",
@@ -699,7 +699,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-فاطمة-بنت-الخطاب-أ"
 },
 {
 "id": "71",
@@ -709,7 +709,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-فاطمة-بنت-الخطاب-ب"
 },
 {
 "id": "72",
@@ -719,7 +719,7 @@
 "students": 18,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-لبابة-بنت-الحارث"
 },
 {
 "id": "73",
@@ -729,7 +729,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-مارية-القبطية"
 },
 {
 "id": "74",
@@ -739,7 +739,7 @@
 "students": 25,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-مارية-القبطية-2"
 },
 {
 "id": "75",
@@ -749,7 +749,7 @@
 "students": 24,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-مريم-بنت-عمران"
 },
 {
 "id": "76",
@@ -759,7 +759,7 @@
 "students": 15,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-ميمونة-بنت-الحارث"
 },
 {
 "id": "77",
@@ -769,40 +769,30 @@
 "students": 21,
 "cost": 4000,
 "received": 0,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-نسائم-الهدى"
 },
 {
 "id": "78",
-"name": "الامام مالك",
-"section": "رجال",
-"place": "مسجد الامام مالك",
-"students": 19,
-"cost": 4000,
-"received": 250,
-"store": ""
-},
-{
-"id": "79",
 "name": "الحسين بن علي",
 "section": "رجال",
 "place": "مسجد وضحى بنت عبدالله",
 "students": 20,
 "cost": 4000,
 "received": 4000,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الحسين-بن-علي"
 },
 {
-"id": "80",
+"id": "79",
 "name": "الشفاء بنت الحارث",
 "section": "نساء",
 "place": "دار الإحسان",
 "students": 24,
 "cost": 4000,
 "received": 4000,
-"store": ""
+"store": "https://store.qurannajran.org.sa/products/كفالة-حلقة-الشفاء-بنت-الحارث"
 },
 {
-"id": "81",
+"id": "80",
 "name": "ابن القيم",
 "section": "رجال",
 "place": "جامع نورة الدغيثر",
