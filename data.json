@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-17T09:56:37+03:00",
+"updated": "2026-11-17T13:56:06+03:00",
 "rows": [
 {
 "id": "1",
@@ -799,6 +799,836 @@
 "students": 30,
 "cost": 4000,
 "received": 4000,
+"store": ""
+},
+{
+"id": "81",
+"name": "أبو بكر الصديق",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 13,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "82",
+"name": "أبو حميد الساعدي",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "83",
+"name": "أبو سعيد الخدري",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "84",
+"name": "أم حبيبة",
+"section": "نساء",
+"place": "مسجد أبي سعيد الخدري",
+"students": 43,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "85",
+"name": "أم سلمه",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 16,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "86",
+"name": "إياس بن معاذ",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 10,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "87",
+"name": "اقرأ وارتق",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "88",
+"name": "الإمام ابن تيمية",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "89",
+"name": "الإمام عبدالرزاق الصنعاني",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 14,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "90",
+"name": "البراء بن مالك",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "91",
+"name": "الخنساء بنت عمرو 3",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "92",
+"name": "الزهراوان",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "93",
+"name": "السائب بن عثمان",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 12,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "94",
+"name": "الشاكرين",
+"section": "نساء",
+"place": "دار فاطمة الوادعي",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "95",
+"name": "بالقرآن نحيا",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "96",
+"name": "بسر بن أرطأة",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 14,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "97",
+"name": "بلال بن الحارث",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 12,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "98",
+"name": "تاج الوقار",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "99",
+"name": "تاج الوقار",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 2",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "100",
+"name": "تصحيح التلاوة",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "101",
+"name": "ثابت بن رفاعة",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "102",
+"name": "حاجب بن زرارة",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 28,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "103",
+"name": "حاملات المسك",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "104",
+"name": "أبو الدرداء",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "105",
+"name": "أمامة بنت أبي العاص",
+"section": "نساء",
+"place": "دار السكينة",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "106",
+"name": "الإتقان",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 46,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "107",
+"name": "الإداريات",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "108",
+"name": "الإمام حافظ حكمي",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "109",
+"name": "الإيمان (عن بعد)",
+"section": "رجال",
+"place": "الحلقات الإفتراضية (عن بعد)",
+"students": 10,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "110",
+"name": "التأهيل للسند 1",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "111",
+"name": "التقوى (عن بعد)",
+"section": "رجال",
+"place": "الحلقات الإفتراضية (عن بعد)",
+"students": 10,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "112",
+"name": "الحافظات من 3 أجزاء فأكثر",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "113",
+"name": "السند لغير الناطقات بالعربية",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 2,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "114",
+"name": "السندلناطقات بالعربية",
+"section": "نساء",
+"place": "مجتمع إجادة",
+"students": 11,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "115",
+"name": "تصحيح التلاوة (عن بعد)",
+"section": "رجال",
+"place": "الحلقات الإفتراضية (عن بعد)",
+"students": 30,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "116",
+"name": "حمزة الكوفي",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 7,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "117",
+"name": "شداد بن أوس",
+"section": "رجال",
+"place": "مجمع الفرقان",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "118",
+"name": "ظلال القرآن",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "119",
+"name": "فاطمة بنت الأسد",
+"section": "نساء",
+"place": "دار السكينة",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "120",
+"name": "هند بنت العوام",
+"section": "نساء",
+"place": "دار السكينة",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "121",
+"name": "حليمة السعديه",
+"section": "نساء",
+"place": "حلقات البيان",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "122",
+"name": "حمزة بن عمرو",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "123",
+"name": "خالد بن الوليد",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "124",
+"name": "خديجة بنت خويلد",
+"section": "نساء",
+"place": "دار آل الجميح",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "125",
+"name": "رحاب القران",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 2",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "126",
+"name": "روح وريحان",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "127",
+"name": "روض الجنان",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "128",
+"name": "رياض القران",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 2",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "129",
+"name": "زيد بن حارثة",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 29,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "130",
+"name": "زينب بنت جحش (١)",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 29,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "131",
+"name": "زينب بنت جحش (٢)",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 16,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "132",
+"name": "سعد بن أبي وقاص",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "133",
+"name": "سعيد بن العاص",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "134",
+"name": "سلمة بن الأكوع",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "135",
+"name": "سمرة بن جندب",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 14,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "136",
+"name": "سمية بنت الخياط",
+"section": "نساء",
+"place": "حلقات البيان",
+"students": 30,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "137",
+"name": "سهل بن صخر",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 10,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "138",
+"name": "صيت السماء",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "139",
+"name": "طلحة بن عبيد الله",
+"section": "رجال",
+"place": "مجمع أقوم",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "140",
+"name": "عائشة بنت أبي بكر",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "141",
+"name": "عاليات الهمم",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 16,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "142",
+"name": "عبد الله بن ربيعة",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 7,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "143",
+"name": "عبدالله بن ثعلبة",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 18,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "144",
+"name": "عبدالله بن جعفر",
+"section": "رجال",
+"place": "مجمع ابن باز",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "145",
+"name": "علي بن أبي طالب",
+"section": "رجال",
+"place": "مجمع الرحمة",
+"students": 15,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "146",
+"name": "عليّان العمر",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 28,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "147",
+"name": "عمر بن الخطّاب",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 26,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "148",
+"name": "فاطمة الزهراء",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 1",
+"students": 32,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "149",
+"name": "قافلة النور",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 3",
+"students": 22,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "150",
+"name": "قبس من نور",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "151",
+"name": "لبنات الغد",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 3",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "152",
+"name": "ماريه القبطيه",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 25,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "153",
+"name": "محمد بن أبي بكر",
+"section": "رجال",
+"place": "مجمع العزّام",
+"students": 10,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "154",
+"name": "محمود بن الربيع (عن بعد)",
+"section": "رجال",
+"place": "الحلقات الإفتراضية (عن بعد)",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "155",
+"name": "مصعب بن عمير",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 21,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "156",
+"name": "معاوية بن أبي سفيان",
+"section": "رجال",
+"place": "الحلقات الفردية بجمعية رتّل",
+"students": 23,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "157",
+"name": "نبراس",
+"section": "نساء",
+"place": "حلقات عن بعد",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "158",
+"name": "نبع الهدى",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 2",
+"students": 29,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "159",
+"name": "نزهة المتقين 1",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 24,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "160",
+"name": "نزهة المتقين 2",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 19,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "161",
+"name": "نسيبة بنت كعب",
+"section": "نساء",
+"place": "دار والدة الأمير جلوي بن عبدالعزيز",
+"students": 20,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "162",
+"name": "هاله بنت خويلد",
+"section": "نساء",
+"place": "حلقات البيان",
+"students": 27,
+"cost": 4000,
+"received": 0,
+"store": ""
+},
+{
+"id": "163",
+"name": "ربيع الأمة",
+"section": "نساء",
+"place": "دار زهراء آل دغيش 3",
+"students": 18,
+"cost": 4000,
+"received": 0,
 "store": ""
 }
 ]
