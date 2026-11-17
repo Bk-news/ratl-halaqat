@@ -72,11 +72,22 @@ window.dash = (function () {
       compute(res[0].rows);
       ready = true;
       Object.keys(draws).forEach(run);
-      getLive().then(function (j) {
-        api.meta.updated = j.updated; api.meta.live = true;
-        compute(j.rows);
-        Object.keys(draws).forEach(run);
-      }).catch(function (e) { api.meta.liveError = e.message; console.warn('live failed:', e.message); run('updated'); });
+      var lastSig = null, busy = false;
+      function refresh() {
+        if (busy) return; busy = true;
+        getLive().then(function (j) {
+          busy = false;
+          api.meta.live = true; api.meta.liveError = null;
+          var sig = JSON.stringify(j.rows);
+          api.meta.updated = j.updated;
+          if (sig !== lastSig) { lastSig = sig; compute(j.rows); Object.keys(draws).forEach(run); }
+          else run('updated');
+        }).catch(function (e) { busy = false; if (!api.meta.live) { api.meta.liveError = e.message; run('updated'); } console.warn('live failed:', e.message); });
+      }
+      refresh();
+      // تحديث تلقائي كل دقيقة والصفحة مفتوحة، وفور الرجوع للصفحة
+      setInterval(function () { if (document.visibilityState !== 'hidden') refresh(); }, 60000);
+      document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') refresh(); });
     }).catch(function (e) {
       console.error(e);
       ['halaqat', 'halaqa', 'totals', 'bysection', 'byplace', 'zero'].forEach(function (k) { store[k] = { status: 'error', data: null }; });
