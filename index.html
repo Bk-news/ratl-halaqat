@@ -57,6 +57,10 @@ body.dark{background:#1C140B}
 .rh-place{display:grid;grid-template-columns:minmax(0,1fr) 90px 46px;gap:8px;align-items:center;font-size:13px}
 .rh-place b{font-weight:var(--cds-font-weight-medium);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rh-place .rh-bar{height:8px}
+.rh-places{gap:14px 26px}
+.rh-pbox{display:flex;flex-direction:column;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.rh-pacts{display:flex;gap:6px}
+.rh-mini{padding:5px 10px;font-size:12px}
 .rh-place>span{text-align:left;font-variant-numeric:tabular-nums;color:var(--muted)}
 .rh-chips{display:flex;flex-wrap:wrap;gap:6px}
 .rh-chip{border:1px solid var(--line2);background:var(--bg);color:var(--fg);border-radius:99px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
@@ -239,6 +243,7 @@ body.dark{background:#1C140B}
 
   <section class="rh-card" id="places">
     <h2 class="rh-h2">التقدم حسب المجمع أو الدار</h2>
+    <p class="rh-note">انسخ روابط حلقات أي مجمع أو دار بضغطة، أو أرسلها واتساب لمديره على طول.</p>
     <div class="rh-places" data-draw="places"></div>
   </section>
 
@@ -248,9 +253,9 @@ body.dark{background:#1C140B}
     <div class="rh-chips" data-draw="zero_list"></div>
   </section>
 </div>
-<script src="shim.js?v=6"></script>
-<script src="qr.js?v=6"></script>
-<script src="app.js?v=6"></script>
+<script src="shim.js?v=7"></script>
+<script src="qr.js?v=7"></script>
+<script src="app.js?v=7"></script>
 <script>
 document.getElementById('rh-mode').addEventListener('click', function () {
   var d = document.getElementById('rh-root').classList.contains('dark');

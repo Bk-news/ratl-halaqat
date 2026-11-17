@@ -162,14 +162,51 @@ dash.calc('zero', {
     });
   });
 
+  function copyText(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt);
+    return new Promise(function (ok, no) {
+      var ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.fontSize = '16px'; document.body.appendChild(ta);
+      ta.select(); ta.setSelectionRange(0, txt.length);
+      var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done ? ok() : no();
+    });
+  }
+  function placeMsg(place) {
+    var d = dash.data('halaqa'); var list = (d.data || []).filter(function (h) { return h.place === place; });
+    list.sort(function (a, b) { return (a.pct >= 100) - (b.pct >= 100) || b.pct - a.pct || a.name.localeCompare(b.name, 'ar'); });
+    var women = list.length && list[0].section === 'نساء';
+    var open = list.filter(function (h) { return h.pct < 100; }), done = list.filter(function (h) { return h.pct >= 100; });
+    var out = ['روابط كفالة حلقات ' + place + ' — جمعية رتّل لتحفيظ القرآن الكريم بنجران', ''];
+    open.forEach(function (h, i) {
+      out.push((i + 1) + '. حلقة ' + h.name + ' (' + h.students + (women ? ' طالبة' : ' طالب') + ')');
+      out.push('وصلت ' + h.pct + '٪ · المتبقي ' + RH.fmt(h.remaining) + ' ريال');
+      out.push(storeOf(h)); out.push('');
+    });
+    if (done.length) { out.push('اكتملت كفالتها ✓: ' + done.map(function (h) { return h.name; }).join('، ')); out.push(''); }
+    out.push('قيمة السهم 50 ريال أو بأي مبلغ.');
+    return out.join('\n').trim();
+  }
+
   dash.draw('places', function (el) {
     var d = dash.data('byplace'); el.replaceChildren();
     if (d.status !== 'ok' || !d.data) { el.textContent = d.status === 'error' ? 'تعذّر التحميل' : '—'; return; }
     d.data.forEach(function (s) {
+      var box = document.createElement('div'); box.className = 'rh-pbox';
       var row = document.createElement('div'); row.className = 'rh-place';
       var n = document.createElement('b'); n.textContent = s.place + ' (' + s.count + ')';
-      var p = document.createElement('span'); p.appendChild(mark(span(String(s.pct)), 'byplace', 'pct', 'place=' + RH.enc(s.place))); p.appendChild(span('٪'));
-      row.appendChild(n); row.appendChild(barEl(s.pct, s.section === 'نساء' ? 'w' : 'm')); row.appendChild(p); el.appendChild(row);
+      var p = document.createElement('span'); p.appendChild(span(String(s.pct))); p.appendChild(span('٪'));
+      row.appendChild(n); row.appendChild(barEl(s.pct, s.section === 'نساء' ? 'w' : 'm')); row.appendChild(p);
+      var acts = document.createElement('div'); acts.className = 'rh-pacts';
+      var cp = document.createElement('button'); cp.type = 'button'; cp.className = 'rh-btn rh-mini'; cp.textContent = 'نسخ روابط الحلقات';
+      cp.addEventListener('click', function () {
+        copyText(placeMsg(s.place)).then(function () { cp.textContent = 'تم النسخ ✓'; }, function () { cp.textContent = 'ما انسخ، جرّب واتساب'; });
+        setTimeout(function () { cp.textContent = 'نسخ روابط الحلقات'; }, 2500);
+      });
+      var wa = document.createElement('a'); wa.className = 'rh-btn rh-mini p'; wa.target = '_blank'; wa.rel = 'noopener'; wa.textContent = 'واتساب';
+      wa.href = 'https://wa.me/?text=' + encodeURIComponent(placeMsg(s.place));
+      acts.appendChild(cp); acts.appendChild(wa);
+      box.appendChild(row); box.appendChild(acts); el.appendChild(box);
     });
   });
 
