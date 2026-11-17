@@ -562,7 +562,6 @@ dash.calc('zero', {
       dash.draw('bands'); redrawList();
     });
   });
-  document.querySelectorAll('#rh-bands-clear').forEach(function (b) { b.addEventListener('click', function () { RH.bands = []; dash.draw('bands'); redrawList(); }); });
   document.querySelectorAll('input[name="rh-hshot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.hDark = i.value === 'dark' && i.checked; dash.draw('h_shot'); }); });
   document.querySelectorAll('#rh-q').forEach(function (i) { i.addEventListener('input', function () { RH.q = i.value; redrawList(); }); });
   document.querySelectorAll('#rh-sec').forEach(function (s) { s.addEventListener('change', function () { RH.sec = s.value; redrawList(); }); });
