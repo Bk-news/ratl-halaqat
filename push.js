@@ -9,7 +9,8 @@
       try {
         await OneSignal.init({ appId: APP_ID, safari_web_id: 'web.onesignal.auto.1f868039-39c5-4cdf-b63f-2c8777cb9e04',
           serviceWorkerPath: 'ratl-halaqat/sw.js', serviceWorkerParam: { scope: '/ratl-halaqat/' },
-          notifyButton: { enable: false }, allowLocalhostAsSecureOrigin: true });
+          notifyButton: { enable: false }, allowLocalhostAsSecureOrigin: true,
+          welcomeNotification: { disable: false, title: 'جمعية رتّل', message: 'شكرًا لك ❤️.. ستصلك جميع التحديثات في حينها' } });
         res(OneSignal);
       } catch (e) { console.warn('OneSignal init', e); res(null); }
     });
