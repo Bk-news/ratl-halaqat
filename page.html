@@ -1,0 +1,254 @@
+<style>
+@font-face{font-family:TS;font-weight:400;font-display:swap;src:url("fonts/thmanyahsans-Regular.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:500;font-display:swap;src:url("fonts/thmanyahsans-Medium.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:700;font-display:swap;src:url("fonts/thmanyahsans-Bold.woff2") format("woff2")}
+@font-face{font-family:TD;font-weight:400;font-display:swap;src:url("fonts/thmanyahserifdisplay-Regular.woff2") format("woff2")}
+@font-face{font-family:TD;font-weight:700;font-display:swap;src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2")}
+:root{--font-anthropic-sans:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;--font-anthropic-serif:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;--cds-font-weight-medium:500}
+html,body{margin:0;padding:0;min-height:100%;background:#F3EADB;-webkit-text-size-adjust:100%}
+body.dark{background:#1C140B}
+.dash-select{font:inherit;font-size:14px;padding:9px 12px;border:1px solid;border-radius:10px;min-width:0}
+.dash-skeleton{opacity:.4}
+[hidden]{display:none!important}
+.rh{direction:rtl;font-family:TS,var(--font-anthropic-sans);--bg:#F3EADB;--panel:#FBF8F2;--line:#E7D6BC;--line2:#DCC29B;--fg:#2B2925;--head:#3B2814;--muted:#8C8173;--men:#6E4A1F;--women:#7A2E2A;--gold:#C49958;--goldL:#DDB76C;--track:#E7D6BC;--btn-fg:#FFFFFF;--pat:.10;background:var(--bg);color:var(--fg);position:relative;isolation:isolate;padding:24px clamp(14px,3vw,36px) 40px;display:flex;flex-direction:column;gap:22px;min-height:100vh;max-width:1280px;margin:0 auto}
+.rh.dark{--bg:#1C140B;--panel:#271C10;--line:#3B2814;--line2:#4C3720;--fg:#F3EADB;--head:#FBF8F2;--muted:#B9AC98;--men:#DDB76C;--women:#D98C82;--gold:#C49958;--goldL:#DDB76C;--track:#3B2814;--btn-fg:#1C140B;--pat:.07}
+.rh-pat{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:repeat;background-size:120px 120px;opacity:var(--pat)}
+.rh.dark .rh-logo img{filter:brightness(0) invert(1)}
+.rh-mode{width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--panel);color:var(--head);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.rh-mode svg{width:22px;height:22px}
+.rh-shotctl{display:flex;flex-direction:column;gap:12px;min-width:220px;flex:1 1 220px}
+.rh-shotctl label{font-size:13px;color:var(--muted)}
+.rh-seg{display:inline-flex;gap:14px;font-size:14px;color:var(--fg)}
+.rh-shotctl input[type=text]{padding:9px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--fg);font:inherit;max-width:320px}
+.rh-big{font-size:26px;margin-top:12px}
+.rh-tools{display:flex;align-items:center;gap:8px}
+.rh-tools .rh-btn{height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--panel)}
+.rh *{box-sizing:border-box}
+.rh-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px}
+.rh-brand{display:flex;align-items:center;gap:14px;min-width:0}
+.rh-logo img{width:70px;height:auto;display:block}
+.rh h1{font-family:TD,var(--font-anthropic-serif);font-weight:400;font-size:clamp(22px,3vw,30px);color:var(--head);margin:0;line-height:1.3}
+.rh-sub{color:var(--muted);font-size:13px;margin-top:2px}
+.rh-take{margin:0;color:var(--muted);font-size:15px;line-height:1.8}
+.rh-take b{color:var(--head);font-variant-numeric:tabular-nums}
+.rh-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.rh-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.rh-k-l{font-size:12px;color:var(--muted)}
+.rh-k-v{font-family:TD,var(--font-anthropic-serif);font-size:30px;line-height:1.25;color:var(--head);font-variant-numeric:tabular-nums;margin-top:4px}
+.rh-k-s{font-size:12px;color:var(--muted)}
+.rh-h2{font-size:18px;font-weight:var(--cds-font-weight-medium);color:var(--head);margin:0 0 12px}
+.rh-note{font-size:12px;color:var(--muted);margin:-6px 0 12px}
+.rh-bar{height:12px;border-radius:99px;background:var(--track);overflow:hidden}
+.rh-bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(135deg,#8A5E2C,#C49958 55%,#F0D08A)}
+.rh-bar.m>i{background:var(--men)}.rh-bar.w>i{background:var(--women)}
+.rh-sec-row{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;margin-top:12px;font-size:14px}
+.rh-sec-row>span{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.rh-places{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 26px}
+.rh-place{display:grid;grid-template-columns:minmax(0,1fr) 90px 46px;gap:8px;align-items:center;font-size:13px}
+.rh-place b{font-weight:var(--cds-font-weight-medium);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rh-place .rh-bar{height:8px}
+.rh-places{gap:14px 26px}
+.rh-places{gap:10px 14px}
+.rh-pbox{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:var(--menbg);border:1px solid var(--line);border-inline-start:5px solid var(--men)}
+.rh-pbox.w{background:var(--womenbg);border-color:color-mix(in srgb,var(--women) 35%,transparent);border-inline-start-color:var(--women)}
+.rh-pbox.w .rh-btn.p{background:var(--women);border-color:var(--women)}
+.rh-pbox .rh-btn:not(.p){background:transparent}
+.rh-pbox.done,.rh-pbox.w.done{background:var(--donebg);border-color:var(--done);border-inline-start-color:var(--done)}
+.rh-pbox.done .rh-bar>i{background:var(--done)}
+.rh-pbox.done .rh-place b,.rh-pbox.done .rh-place>span{color:var(--done)}
+.rh-pbox.done .rh-btn.p{background:var(--done);border-color:var(--done)}
+.rh-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:-4px 0 12px}
+.rh-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
+.rh-pacts{display:flex;gap:6px}
+.rh-mini{padding:5px 10px;font-size:12px}
+.rh-place>span{text-align:left;font-variant-numeric:tabular-nums;color:var(--muted)}
+.rh-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rh-chip{border:1px solid var(--line2);background:var(--bg);color:var(--fg);border-radius:99px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.rh-chip.w{border-color:var(--women)}
+.rh-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.rh-search{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--fg);font:inherit;font-size:16px}
+.rh .dash-select{background-color:var(--panel);color:var(--fg);border-color:var(--line2)}
+.rh-count{font-size:12px;color:var(--muted);margin:0 0 10px}
+.rh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.rh-h{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--men)}
+.rh-h.w{border-top-color:var(--women)}
+.rh{--menbg:#EDE0C8;--womenbg:#F0DCD6}
+.rh.dark{--menbg:#2E2213;--womenbg:#311A17}
+.rh-grid .rh-h.w{background:var(--womenbg);border-color:color-mix(in srgb,var(--women) 35%,transparent);border-top-width:6px}
+.rh-grid .rh-h.w .rh-badge{background:var(--women);color:var(--btn-fg)}
+.rh-grid .rh-h.w .rh-badge.done{background:var(--gold);color:#2B1A08}
+.rh-grid .rh-h.w .rh-badge.near{background:var(--goldL);color:#2B1A08}
+.rh-grid .rh-h.w .rh-btn:not(.p){background:transparent}
+.rh{--donebg:#DCEEE5;--done:#1B7F5B}
+.rh.dark{--donebg:#11261C;--done:#4FB58C}
+.rh-grid .rh-h{position:relative;overflow:hidden}
+.rh-grid .rh-h.done,.rh-grid .rh-h.w.done{background:var(--donebg);border-color:var(--done);border-top:6px solid var(--done);box-shadow:0 0 0 1px var(--done) inset}
+.rh-grid .rh-h.done .rh-bar>i{background:var(--done)}
+.rh-grid .rh-h.done .rh-badge.done{background:var(--done);color:#fff}
+.rh.dark .rh-grid .rh-h.done .rh-badge.done{color:#1C2A14}
+.rh-grid .rh-h.done .rh-btn:not(.p){background:transparent}
+.rh-stamp{position:absolute;left:10px;top:50%;width:112px;height:112px;transform:translateY(-50%) rotate(-12deg);pointer-events:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.18))}
+.rh-h-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.rh-h-name{font-weight:var(--cds-font-weight-medium);font-size:17px;line-height:1.35;color:var(--head)}
+.rh-h-place{font-size:12px;color:var(--muted)}
+.rh-badge{font-size:11px;padding:2px 9px;border-radius:99px;white-space:nowrap;background:var(--track);color:var(--muted)}
+.rh-badge.done{background:var(--gold);color:#2B1A08}
+.rh-badge.near{background:var(--goldL);color:#2B1A08}
+.rh-h-nums{display:flex;justify-content:space-between;align-items:flex-end;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rh-h-nums b{color:var(--head)}
+.rh-h-pct{font-family:TD,var(--font-anthropic-serif);font-size:22px;color:var(--head)}
+.rh-acts{display:flex;flex-wrap:wrap;gap:6px}
+.rh-btn{display:inline-block;padding:7px 12px;border-radius:10px;font-size:13px;text-decoration:none;border:1px solid var(--line2);color:var(--fg);background:var(--bg);cursor:pointer;font-family:inherit}
+.rh-btn.p{background:var(--men);border-color:var(--men);color:var(--btn-fg)}
+.rh-h.w .rh-btn.p{background:var(--women);border-color:var(--women)}
+.rh-d{border-top:6px solid var(--gold)}
+.rh-d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:14px 0}
+.rh-calc{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:14px}
+.rh-calc input{width:80px;padding:6px 8px;border:1px solid var(--line2);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:16px}
+.rh-msg{white-space:pre-line;background:var(--bg);border:1px dashed var(--line2);border-radius:10px;padding:12px;font-size:13px;line-height:1.8}
+.rh-shot{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.rh-shot img{width:min(100%,240px);border-radius:12px;border:1px solid var(--line)}
+.rh-empty{color:var(--muted);padding:18px;text-align:center;font-size:13px}
+.rh-dmedia{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.rh-qr{width:180px;height:180px;border-radius:12px;border:1px solid var(--line);background:#fff;display:block}
+.rh-hshot{width:min(100%,240px);border-radius:12px;border:1px solid var(--line);display:block}
+.rh-near{align-self:center}
+.rh-near[aria-pressed=true]{background:var(--goldL);border-color:var(--gold);color:#2B1A08}
+@media (max-width:480px){
+.rh{padding:16px 12px 32px;gap:16px}
+.rh-logo img{width:52px}
+.rh h1{font-size:21px}
+.rh-sub{font-size:12px}
+.rh-tools .rh-btn{padding:0 12px;font-size:12px}
+.rh-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rh-card{padding:14px}
+.rh-k-v{font-size:24px}
+.rh-sec-row{grid-template-columns:44px 1fr;row-gap:4px}
+.rh-sec-row>span{grid-column:1/-1}
+.rh-controls .dash-select{flex:1 1 45%}
+.rh-grid .rh-h{padding-bottom:18px}
+.rh-stamp{width:88px;height:88px;left:6px;top:auto;bottom:8px;transform:rotate(-12deg)}
+.rh-shot img{width:100%;max-width:300px}
+}
+</style>
+<div class="rh" id="rh-root" lang="ar">
+  <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
+  <header class="rh-top" id="top">
+    <div class="rh-brand">
+      <span class="rh-logo" data-draw="logo"></span>
+      <div>
+        <h1>متابعة كفالات الحلقات</h1>
+        <div class="rh-sub">جمعية رتّل لتحفيظ القرآن الكريم بنجران · الفصل الدراسي الأول 1448هـ</div>
+        <div class="rh-sub">آخر تحديث للأرقام: <span data-draw="updated">—</span></div>
+      </div>
+    </div>
+    <div class="rh-tools">
+    <button type="button" class="rh-btn" id="rh-shotbtn">صورة التقدم</button>
+    <button type="button" class="rh-mode" id="rh-mode" aria-label="المظهر الفاتح مفعّل، اضغط للداكن">
+      <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg id="rh-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    </button>
+    </div>
+  </header>
+
+  <p class="rh-take">وصلنا <b data-draw="t_received">—</b> ريال من أصل <b data-draw="t_total">—</b> ريال، يعني <b data-draw="t_pct">—</b>٪ من المطلوب. اكتملت كفالة <b data-draw="t_done">—</b> حلقة من <b data-draw="t_count">—</b>.</p>
+
+  <section class="rh-kpis" id="kpis">
+    <div class="rh-card"><div class="rh-k-l">إجمالي مبلغ الحلقات</div><div class="rh-k-v" data-draw="k_total">—</div><div class="rh-k-s">ريال</div></div>
+    <div class="rh-card"><div class="rh-k-l">الواصل</div><div class="rh-k-v" data-draw="k_received">—</div><div class="rh-k-s">ريال</div></div>
+    <div class="rh-card"><div class="rh-k-l">المتبقي</div><div class="rh-k-v" data-draw="k_remaining">—</div><div class="rh-k-s">ريال</div></div>
+    <div class="rh-card"><div class="rh-k-l">نسبة الإكمال</div><div class="rh-k-v" data-draw="k_pct">—</div><div class="rh-k-s">٪ من الإجمالي</div></div>
+    <div class="rh-card"><div class="rh-k-l">حلقات اكتملت كفالتها</div><div class="rh-k-v" data-draw="k_done">—</div><div class="rh-k-s">من <span data-draw="k_count">—</span> حلقة</div></div>
+  </section>
+
+  <section class="rh-card" id="progress">
+    <h2 class="rh-h2">التقدم العام</h2>
+    <div class="rh-bar" data-draw="bar_all" role="img" aria-label="نسبة الإكمال العامة"></div>
+    <div data-draw="bar_sections"></div>
+  </section>
+
+  <section class="rh-card" id="shot" hidden>
+    <div class="rh-acts" style="margin-bottom:12px"><button type="button" class="rh-btn" id="rh-shotback">→ رجوع للحلقات</button></div>
+    <h2 class="rh-h2">صورة التقدم للنشر</h2>
+    <p class="rh-note">صورة طولية 1080×1920 (9:16) للستوري، تتحدث مع الأرقام.</p>
+    <div class="rh-shot">
+      <div class="rh-shot-img" data-draw="shot"></div>
+      <div class="rh-shotctl">
+        <div>
+          <label>المظهر</label>
+          <div class="rh-seg" role="radiogroup" aria-label="مظهر الصورة">
+            <label><input type="radio" name="rh-shot-theme" value="light" checked> فاتح</label>
+            <label><input type="radio" name="rh-shot-theme" value="dark"> داكن</label>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label for="rh-shot-name">اسمك على الصورة (اختياري)</label>
+          <input type="text" id="rh-shot-name" maxlength="40" placeholder="مثال: محمد">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rh-card rh-d" id="detail" hidden>
+    <div class="rh-acts"><button type="button" class="rh-btn" id="rh-back">→ رجوع لكل الحلقات</button></div>
+    <div data-draw="detail"></div>
+    <div class="rh-calc">
+      <label for="rh-shares">كم سهم تبغى تكفل؟</label>
+      <input id="rh-shares" type="number" min="1" step="1" value="1">
+      <span>× 50 ريال =</span>
+      <b data-draw="calc_out">—</b>
+    </div>
+    <h3 class="rh-h2" style="margin-top:18px">نص جاهز للمشاركة</h3>
+    <div class="rh-msg" data-draw="share_text">—</div>
+    <div class="rh-acts" style="margin-top:10px" data-draw="share_btns"></div>
+    <div class="rh-dmedia">
+      <div>
+        <h3 class="rh-h2">رمز QR للتبرع</h3>
+        <div data-draw="h_qr"></div>
+      </div>
+      <div>
+        <h3 class="rh-h2">صورة ستوري للحلقة</h3>
+        <div class="rh-seg" role="radiogroup" aria-label="مظهر صورة الحلقة" style="margin-bottom:10px">
+          <label><input type="radio" name="rh-hshot-theme" value="light" checked> فاتح</label>
+          <label><input type="radio" name="rh-hshot-theme" value="dark"> داكن</label>
+        </div>
+        <div data-draw="h_shot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="list">
+    <h2 class="rh-h2">كل الحلقات</h2>
+    <div class="rh-controls">
+      <input class="rh-search" id="rh-q" type="search" placeholder="ابحث باسم الحلقة أو المجمع…" aria-label="بحث">
+      <select class="dash-select" id="rh-sec" aria-label="القسم">
+        <option value="">الرجال والنساء</option>
+        <option value="رجال">حلقات الرجال</option>
+        <option value="نساء">حلقات النساء</option>
+      </select>
+      <select class="dash-select" id="rh-place" aria-label="المجمع أو الدار" data-draw="place_opts"></select>
+      <button type="button" class="rh-chip rh-near" id="rh-near" aria-pressed="false">قربت تكتمل (75٪ فأكثر)</button>
+      <select class="dash-select" id="rh-sort" aria-label="الترتيب">
+        <option value="near">الأقرب للاكتمال</option>
+        <option value="far">الأبعد عن الاكتمال</option>
+        <option value="name">حسب الاسم</option>
+        <option value="students">الأكثر طلابًا</option>
+      </select>
+    </div>
+    <p class="rh-count" data-draw="count">—</p>
+    <div class="rh-grid" data-draw="cards"></div>
+  </section>
+
+  <section class="rh-card" id="places">
+    <h2 class="rh-h2">التقدم حسب المجمع أو الدار</h2>
+    <p class="rh-note">انسخ روابط حلقات أي مجمع أو دار بضغطة، أو أرسلها واتساب لمديره على طول.</p>
+    <div class="rh-legend"><span><i style="background:var(--men)"></i>مجمعات الرجال</span><span><i style="background:var(--women)"></i>دور النساء</span><span><i style="background:var(--done)"></i>اكتملت</span></div>
+    <div class="rh-places" data-draw="places"></div>
+  </section>
+
+  <section class="rh-card" id="zero">
+    <h2 class="rh-h2">حلقات ما وصلها شي بعد (<span data-draw="zero_count">—</span>)</h2>
+    <p class="rh-note">أعطها أولوية في النشر. اضغط على الحلقة تفتح صفحتها ونص المشاركة.</p>
+    <div class="rh-chips" data-draw="zero_list"></div>
+  </section>
+</div>

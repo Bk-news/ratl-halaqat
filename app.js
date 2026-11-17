@@ -540,6 +540,30 @@ dash.calc('zero', {
   document.querySelectorAll('#rh-place').forEach(function (s) { s.addEventListener('change', function () { RH.place = s.value; redrawList(); }); });
   document.querySelectorAll('#rh-sort').forEach(function (s) { s.addEventListener('change', function () { RH.sort = s.value; redrawList(); }); });
   document.querySelectorAll('#rh-shares').forEach(function (i) { i.addEventListener('input', function () { dash.draw('calc_out'); }); });
+  var saved = null;
+  function openShot() {
+    var root = document.getElementById('rh-root'); var shot = document.getElementById('shot');
+    if (!root || !shot || saved) return;
+    saved = [];
+    Array.prototype.forEach.call(root.children, function (el) {
+      if (el === shot || el.tagName === 'HEADER' || el.classList.contains('rh-pat') || el.tagName === 'SCRIPT') return;
+      saved.push([el, el.hidden]); el.hidden = true;
+    });
+    shot.hidden = false;
+    dash.setLink('shot');
+    dash.draw('shot');
+    if (root.scrollIntoView) root.scrollIntoView({ block: 'start' });
+  }
+  function closeShot() {
+    var shot = document.getElementById('shot');
+    if (shot) shot.hidden = true;
+    (saved || []).forEach(function (p) { p[0].hidden = p[1]; });
+    saved = null;
+    dash.setLink(RH.open != null ? 'h-' + RH.open : 'list');
+  }
+  document.querySelectorAll('#rh-shotbtn').forEach(function (b) { b.addEventListener('click', openShot); });
+  document.querySelectorAll('#rh-shotback').forEach(function (b) { b.addEventListener('click', closeShot); });
   var m = /^#h-(\d+)$/.exec(location.hash || '');
   if (m) window.rhOpen(m[1]);
+  if (location.hash === '#shot') openShot();
 })();

@@ -94,6 +94,7 @@ window.dash = (function () {
       ready = true; Object.keys(draws).forEach(run);
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else setTimeout(start, 0);
+  api.start = start;
+  if (!window.DASH_MANUAL) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else setTimeout(start, 0); }
   return api;
 })();
