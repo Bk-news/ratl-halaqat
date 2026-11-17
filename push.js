@@ -24,6 +24,7 @@
       label(btn, isIOS() && !standalone() ? 'الإشعارات بعد التثبيت' : 'الإشعارات غير مدعومة', false); btn.dataset.state = isIOS() && !standalone() ? 'install' : 'unsupported'; return;
     }
     var on = OS.Notifications.permission && OS.User.PushSubscription.optedIn;
+    if (on) { try { OS.User.addTag('audience', AUD); } catch (e) {} }
     label(btn, on ? 'الإشعارات مفعّلة' : 'فعّل الإشعارات', on); btn.dataset.state = on ? 'on' : 'off';
   }
   function toast(t) {
