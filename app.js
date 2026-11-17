@@ -192,10 +192,11 @@ dash.calc('zero', {
     var d = dash.data('byplace'); el.replaceChildren();
     if (d.status !== 'ok' || !d.data) { el.textContent = d.status === 'error' ? 'تعذّر التحميل' : '—'; return; }
     d.data.forEach(function (s) {
-      var box = document.createElement('div'); box.className = 'rh-pbox';
+      var box = document.createElement('div'); box.className = 'rh-pbox' + (s.section === 'نساء' ? ' w' : '') + (s.pct >= 100 ? ' done' : '');
       var row = document.createElement('div'); row.className = 'rh-place';
       var n = document.createElement('b'); n.textContent = s.place + ' (' + s.count + ')';
       var p = document.createElement('span'); p.appendChild(span(String(s.pct))); p.appendChild(span('٪'));
+      if (s.pct >= 100) n.textContent += ' · اكتملت ✓';
       row.appendChild(n); row.appendChild(barEl(s.pct, s.section === 'نساء' ? 'w' : 'm')); row.appendChild(p);
       var acts = document.createElement('div'); acts.className = 'rh-pacts';
       var cp = document.createElement('button'); cp.type = 'button'; cp.className = 'rh-btn rh-mini'; cp.textContent = 'نسخ روابط الحلقات';
