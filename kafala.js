@@ -9,7 +9,7 @@ window.RH = window.RH || {};
   var fmt = function (n) { return Math.round(Number(n) || 0).toLocaleString('en-US'); };
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
   function brand(key) { var b = dash.data('brand'); var v = b.status === 'ok' && b.data ? b.data[key] : null; return typeof v === 'string' && v.indexOf('data:image/') === 0 ? v : null; }
-  function linkOf(h) { if (/^https?:\/\//.test(h.store || '')) return h.store; var l = (RH.LINKS || {})[h.name]; return /^https?:\/\//.test(l || '') ? l : RH.STORE; }
+  function linkOf(h) { return /^https?:\/\//.test(h.store || '') ? h.store : RH.STORE; }
 
   dash.calc('halaqa', {
     inputs: ['halaqat'],
