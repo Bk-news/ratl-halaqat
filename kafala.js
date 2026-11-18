@@ -35,6 +35,7 @@ window.RH = window.RH || {};
 
   dash.draw('k_pattern', function (e) { var u = brand('pattern'); e.style.backgroundImage = u ? 'url("' + u + '")' : 'none'; });
   dash.draw('k_logo', function (e) { e.replaceChildren(); var u = brand('logo'); if (!u) return; var i = el('img'); i.src = u; i.alt = 'شعار جمعية رتّل'; e.appendChild(i); });
+  dash.draw('k_logo2', function (e) { e.replaceChildren(); var u = brand('logo'); if (!u) return; var i = el('img'); i.src = u; i.alt = ''; e.appendChild(i); });
   dash.draw('k_title', function (e) {
     e.textContent = PLACE ? ('حلقات ' + PLACE) : 'اكفل حلقة قرآنية';
     document.title = (PLACE ? 'حلقات ' + PLACE : 'اكفل حلقة قرآنية') + ' — جمعية رتّل';
