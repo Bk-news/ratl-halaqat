@@ -53,7 +53,7 @@ window.RH = window.RH || {};
   });
   dash.draw('k_near', function (e) {
     var r = list(); e.replaceChildren(); var h = r && nearest(r); e.hidden = !h; if (!h) return;
-    e.href = linkOf(h);
+    e.href = linkOf(h); e.dataset.h = h.name + ' · ' + h.place; e.dataset.near = '1';
     e.appendChild(el('small', null, 'تبرع للأقرب على الاكتمال'));
     e.appendChild(el('strong', null, 'حلقة ' + h.name + ' · ' + h.pct + '٪'));
     e.appendChild(el('small', null, 'باقي ' + fmt(h.remaining) + ' ريال وتكتمل كفالتها، ب' + h.place));
@@ -86,7 +86,7 @@ window.RH = window.RH || {};
         var left = el('div', 'k-left'); left.appendChild(document.createTextNode('باقي ')); left.appendChild(el('b', null, fmt(h.remaining) + ' ريال'));
         left.appendChild(document.createTextNode(' وتكتمل كفالة الحلقة'));
         c.appendChild(left);
-        var a = el('a', 'k-btn', h.pct > 0 ? 'أكمل الحلقة' : 'اكفل الحلقة'); a.href = linkOf(h); a.target = '_blank'; a.rel = 'noopener';
+        var a = el('a', 'k-btn', h.pct > 0 ? 'أكمل الحلقة' : 'اكفل الحلقة'); a.href = linkOf(h); a.dataset.h = h.name + ' · ' + h.place; a.target = '_blank'; a.rel = 'noopener';
         c.appendChild(a);
       }
       e.appendChild(c);
@@ -118,4 +118,6 @@ window.RH = window.RH || {};
       redraw();
     });
   });
+  // الإحصائيات
+  var tr = document.createElement('script'); tr.src = 'track.js?t=' + Date.now(); document.body.appendChild(tr);
 })();

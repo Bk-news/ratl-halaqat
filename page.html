@@ -151,6 +151,15 @@ body.dark{background:#1C140B}
 .rh-tr-chart .dt{fill:var(--panel);stroke:var(--gold);stroke-width:2}
 .rh-tr-chart text{fill:var(--muted);font-size:12px;font-family:inherit}
 .rh-tr-note{color:var(--muted);font-size:14px;margin:4px 0 0}
+.rh-vs-bars{display:flex;align-items:flex-end;gap:4px;height:120px;margin:4px 0 6px;direction:ltr}
+.rh-vs-bars div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.rh-vs-bars i{display:block;width:100%;max-width:26px;background:var(--gold);border-radius:4px 4px 0 0;min-height:2px}
+.rh-vs-bars span{font-size:10px;color:var(--muted);margin-top:3px;white-space:nowrap}
+.rh-vs-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:10px}
+.rh-vs-cols h3{font-size:15px;color:var(--head);margin:0 0 6px}
+.rh-vs-cols ol,.rh-vs-cols ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.rh-vs-cols li b{color:var(--head)}
+.rh-vs-cols .em{color:var(--muted);list-style:none;margin-inline-start:-20px}
 </style>
 <div class="rh" id="rh-root" lang="ar">
   <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
@@ -194,6 +203,18 @@ body.dark{background:#1C140B}
     <h2 class="rh-h2">التقدم عبر الأيام</h2>
     <div class="rh-tr-stats" data-draw="trend_stats"></div>
     <div class="rh-tr-chart" data-draw="trend"></div>
+  </section>
+
+  <section class="rh-card" id="visits" hidden>
+    <h2 class="rh-h2">زيارات صفحة المتبرعين</h2>
+    <p class="rh-note">آخر 30 يوم. زياراتك وزيارات الفريق ما تنحسب، وما نسجل أي بيانات شخصية.</p>
+    <div class="rh-tr-stats" id="vs-stats"></div>
+    <div class="rh-vs-bars" id="vs-bars"></div>
+    <div class="rh-vs-cols">
+      <div><h3>أكثر الحلقات ضغطًا على التبرع</h3><ol id="vs-top"></ol></div>
+      <div><h3>من وين جوا الزوار</h3><ul id="vs-src"></ul></div>
+      <div><h3>ضغطات ثانية</h3><ul id="vs-ev"></ul></div>
+    </div>
   </section>
 
   <section class="rh-card" id="shot" hidden>

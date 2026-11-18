@@ -247,7 +247,7 @@ dash.calc('zero', {
       out.push(storeOf(h)); out.push('');
     });
     if (done.length) { out.push('اكتملت كفالتها ✓: ' + done.map(function (h) { return h.name; }).join('، ')); out.push(''); }
-    out.push('صفحة حلقات ' + place + ' كاملة: ' + placeUrl(place));
+    out.push('صفحة حلقات ' + place + ' كاملة: ' + placeUrl(place) + '&s=wa');
     out.push('قيمة السهم 50 ريال أو بأي مبلغ.');
     return out.join('\n').trim();
   }
@@ -660,4 +660,47 @@ dash.calc('zero', {
   var m = /^#h-(\d+)$/.exec(location.hash || '');
   if (m) window.rhOpen(m[1]);
   if (location.hash === '#shot') openShot();
+})();
+
+// ===== زيارات صفحة المتبرعين (من ورقة الزيارات) =====
+(function () {
+  try { localStorage.setItem('rh-team', '1'); } catch (e) {}
+  var U = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
+  var EVN = { call: 'اتصال', whatsapp: 'واتساب الجمعية', social: 'حسابات التواصل', license: 'رابط الترخيص', push: 'زر الإشعارات', search: 'استخدام البحث', store: 'رابط المتجر العام' };
+  var MON = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  function f(n) { return Number(n || 0).toLocaleString('en-US'); }
+  function $(id) { return document.getElementById(id); }
+  function li(parent, label, n) { var l = document.createElement('li'); l.appendChild(document.createTextNode(label + ' — ')); var b = document.createElement('b'); b.textContent = f(n); l.appendChild(b); parent.appendChild(l); }
+  function empty(parent, t) { var l = document.createElement('li'); l.className = 'em'; l.textContent = t; parent.appendChild(l); }
+  function stat(lbl, val) { var d = document.createElement('div'); var s = document.createElement('small'); s.textContent = lbl; var b = document.createElement('b'); b.textContent = val; d.appendChild(s); d.appendChild(b); return d; }
+  function render(s) {
+    var sec = $('visits'); if (!sec) return;
+    sec.hidden = false;
+    var st = $('vs-stats'); st.replaceChildren();
+    st.appendChild(stat('زوار اليوم', f(s.today.visitors)));
+    st.appendChild(stat('زوار آخر 7 أيام', f(s.week.visitors)));
+    st.appendChild(stat('ضغطات التبرع آخر 7 أيام', f(s.week.clicks)));
+    st.appendChild(stat('نسبة اللي ضغطوا تبرع', s.week.views ? Math.round(s.week.clicks / s.week.views * 100) + '٪' : '—'));
+    var bars = $('vs-bars'); bars.replaceChildren();
+    var days = [], m = {}; (s.days || []).forEach(function (d) { m[d.d] = d; });
+    for (var i = 13; i >= 0; i--) { var k = new Date(Date.now() + 3 * 3600e3 - i * 864e5).toISOString().slice(0, 10); days.push(m[k] || { d: k, visitors: 0, clicks: 0 }); }
+    var max = Math.max.apply(null, days.map(function (d) { return d.visitors; })) || 1;
+    days.forEach(function (d) {
+      var c = document.createElement('div'); var b = document.createElement('i'); b.style.height = Math.round(d.visitors / max * 100) + '%';
+      var p = d.d.split('-'); c.title = Number(p[2]) + ' ' + MON[Number(p[1]) - 1] + ': ' + d.visitors + ' زائر، ' + d.clicks + ' ضغطة تبرع';
+      var t = document.createElement('span'); t.textContent = Number(p[2]) + '/' + Number(p[1]);
+      c.appendChild(b); c.appendChild(t); bars.appendChild(c);
+    });
+    var top = $('vs-top'); top.replaceChildren();
+    (s.top || []).length ? s.top.forEach(function (h) { li(top, h.name, h.n); }) : empty(top, 'ما فيه ضغطات للحين');
+    var src = $('vs-src'); src.replaceChildren();
+    (s.sources || []).length ? s.sources.forEach(function (x) { li(src, x.name, x.n); }) : empty(src, 'ما فيه زيارات للحين');
+    var ev = $('vs-ev'); ev.replaceChildren(); var any = false;
+    Object.keys(EVN).forEach(function (k) { if (s.events && s.events[k]) { any = true; li(ev, EVN[k], s.events[k]); } });
+    if (s.devices) Object.keys(s.devices).forEach(function (k) { if (k) { any = true; li(ev, 'زيارات من ' + k, s.devices[k]); } });
+    if (!any) empty(ev, '—');
+  }
+  function load() { fetch(U + '?stats=1&t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(render).catch(function (e) { console.warn('stats failed', e); }); }
+  function go() { if ($('visits')) load(); else setTimeout(go, 500); }
+  go(); setInterval(function () { if (document.visibilityState !== 'hidden') load(); }, 120000);
 })();
