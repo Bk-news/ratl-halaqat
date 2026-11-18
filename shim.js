@@ -81,8 +81,9 @@ window.dash = (function () {
           api.meta.live = true; api.meta.liveError = null;
           var sig = JSON.stringify(j.rows);
           api.meta.updated = j.updated;
+          api.meta.history = Array.isArray(j.history) ? j.history : [];
           if (sig !== lastSig) { lastSig = sig; compute(j.rows); Object.keys(draws).forEach(run); }
-          else run('updated');
+          else { run('updated'); if (draws.trend) run('trend'); }
         }).catch(function (e) { busy = false; if (!api.meta.live) { api.meta.liveError = e.message; run('updated'); } console.warn('live failed:', e.message); });
       }
       refresh();

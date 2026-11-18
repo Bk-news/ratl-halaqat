@@ -151,6 +151,66 @@ dash.calc('zero', {
     });
   });
 
+
+  // ===== التقدم عبر الأيام (من ورقة السجل) =====
+  function dayKey(d) { return new Date(d.getTime() + 3 * 3600e3).toISOString().slice(0, 10); } // توقيت الرياض
+  function trendDays() {
+    var h = (dash.meta && dash.meta.history) || [], m = {};
+    h.forEach(function (r) { var d = new Date(r.t); if (isNaN(d)) return; m[dayKey(d)] = { t: d, v: Number(r.received) || 0 }; });
+    var r = tot(); if (r && h.length) m[dayKey(new Date())] = { t: new Date(), v: r.received };
+    return Object.keys(m).sort().map(function (k) { return { k: k, t: m[k].t, v: m[k].v }; });
+  }
+  var AR_MON = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  function dLabel(k) { var p = k.split('-'); return Number(p[2]) + ' ' + AR_MON[Number(p[1]) - 1]; }
+  function stat(lbl, val) { var d = document.createElement('div'); var s = document.createElement('small'); s.textContent = lbl; var b = document.createElement('b'); b.textContent = val; d.appendChild(s); d.appendChild(b); return d; }
+
+  dash.draw('trend_stats', function (el) {
+    var sec = document.getElementById('trend'); var days = trendDays(); var r = tot(); el.replaceChildren();
+    if (sec) sec.hidden = !days.length || !r;
+    if (!days.length || !r) return;
+    var last = days[days.length - 1], now = last.t.getTime();
+    var wk = days.filter(function (d) { return now - d.t.getTime() <= 7 * 864e5; })[0] || days[0];
+    var gain7 = Math.max(0, last.v - wk.v);
+    el.appendChild(stat('وصل آخر 7 أيام', days.length > 1 ? RH.fmt(gain7) + ' ريال' : '—'));
+    var first = days.filter(function (d) { return now - d.t.getTime() <= 14 * 864e5; })[0] || days[0];
+    var span = (now - first.t.getTime()) / 864e5, rate = span >= 1 ? (last.v - first.v) / span : 0;
+    el.appendChild(stat('معدل يومي', rate > 0 ? RH.fmt(Math.round(rate)) + ' ريال' : '—'));
+    var proj = '—';
+    if (r.remaining <= 0) proj = 'اكتملت ❤️';
+    else if (rate > 0) { var dd = Math.ceil(r.remaining / rate); proj = dd > 730 ? 'أكثر من سنتين بهالمعدل' : dLabel(dayKey(new Date(now + dd * 864e5))) + ' ' + new Date(now + dd * 864e5).getFullYear() + ' (بعد ' + dd + ' يوم)'; }
+    el.appendChild(stat('موعد الإكمال المتوقع', proj));
+  });
+
+  dash.draw('trend', function (el) {
+    var days = trendDays(); el.replaceChildren();
+    dash.draw('trend_stats');
+    if (days.length < 2) {
+      var p = document.createElement('p'); p.className = 'rh-tr-note';
+      p.textContent = days.length ? 'بدأ تسجيل التقدم يوم ' + dLabel(days[0].k) + '، والرسم يظهر من بكرة بعد ما يتجمع يومين.' : '';
+      el.appendChild(p); return;
+    }
+    var W = 640, H = 200, L = 60, R = 12, T = 14, B = 26, NS = 'http://www.w3.org/2000/svg';
+    var max = Math.max.apply(null, days.map(function (d) { return d.v; })), min = Math.min.apply(null, days.map(function (d) { return d.v; }));
+    var lo = Math.max(0, min - (max - min) * 0.15), hi = max + (max - min) * 0.1 || max + 1000; if (hi === lo) hi = lo + 1000;
+    var t0 = days[0].t.getTime(), t1 = days[days.length - 1].t.getTime(), ts = t1 - t0 || 1;
+    function X(d) { return L + (d.t.getTime() - t0) / ts * (W - L - R); }
+    function Y(v) { return T + (1 - (v - lo) / (hi - lo)) * (H - T - B); }
+    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'الواصل عبر الأيام من ' + RH.fmt(days[0].v) + ' إلى ' + RH.fmt(days[days.length - 1].v) + ' ريال');
+    function n(tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
+    [lo, (lo + hi) / 2, hi].forEach(function (v) { n('line', { x1: L, x2: W - R, y1: Y(v), y2: Y(v), class: 'ax' }); var t = n('text', { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end' }); t.textContent = RH.fmt(Math.round(v / 100) * 100); });
+    var pts = days.map(function (d) { return X(d).toFixed(1) + ',' + Y(d.v).toFixed(1); });
+    n('path', { d: 'M' + pts.join('L') + 'L' + X(days[days.length - 1]) + ',' + (H - B) + 'L' + X(days[0]) + ',' + (H - B) + 'Z', class: 'ar' });
+    n('path', { d: 'M' + pts.join('L'), class: 'ln' });
+    var step = Math.max(1, Math.ceil(days.length / 6));
+    days.forEach(function (d, i) {
+      var c = n('circle', { cx: X(d), cy: Y(d.v), r: days.length > 30 ? 2 : 3.5, class: 'dt' });
+      var tt = document.createElementNS(NS, 'title'); tt.textContent = dLabel(d.k) + ': ' + RH.fmt(d.v) + ' ريال'; c.appendChild(tt);
+      if (i % step === 0 || i === days.length - 1) { var t = n('text', { x: X(d), y: H - 6, 'text-anchor': i === 0 ? 'start' : (i === days.length - 1 ? 'end' : 'middle') }); t.textContent = dLabel(d.k); }
+    });
+    el.appendChild(svg);
+  });
+
   dash.draw('zero_list', function (el) {
     var d = dash.data('halaqa'); el.replaceChildren();
     if (d.status !== 'ok' || !d.data) { el.textContent = '—'; return; }

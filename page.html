@@ -140,6 +140,17 @@ body.dark{background:#1C140B}
 .rh-stamp{width:88px;height:88px;left:6px;top:auto;bottom:8px;transform:rotate(-12deg)}
 .rh-shot img{width:100%;max-width:300px}
 }
+.rh-tr-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:6px 0 12px}
+.rh-tr-stats div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.rh-tr-stats small{display:block;color:var(--muted);font-size:13px}
+.rh-tr-stats b{font-size:20px;color:var(--head)}
+.rh-tr-chart svg{direction:ltr;width:100%;height:auto;display:block;overflow:visible}
+.rh-tr-chart .ax{stroke:var(--line);stroke-width:1}
+.rh-tr-chart .ln{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.rh-tr-chart .ar{fill:var(--gold);opacity:.14}
+.rh-tr-chart .dt{fill:var(--panel);stroke:var(--gold);stroke-width:2}
+.rh-tr-chart text{fill:var(--muted);font-size:12px;font-family:inherit}
+.rh-tr-note{color:var(--muted);font-size:14px;margin:4px 0 0}
 </style>
 <div class="rh" id="rh-root" lang="ar">
   <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
@@ -177,6 +188,12 @@ body.dark{background:#1C140B}
     <h2 class="rh-h2">التقدم العام</h2>
     <div class="rh-bar" data-draw="bar_all" role="img" aria-label="نسبة الإكمال العامة"></div>
     <div data-draw="bar_sections"></div>
+  </section>
+
+  <section class="rh-card" id="trend" hidden>
+    <h2 class="rh-h2">التقدم عبر الأيام</h2>
+    <div class="rh-tr-stats" data-draw="trend_stats"></div>
+    <div class="rh-tr-chart" data-draw="trend"></div>
   </section>
 
   <section class="rh-card" id="shot" hidden>
