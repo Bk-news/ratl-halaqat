@@ -422,38 +422,36 @@ dash.calc('zero', {
 
   dash.draw('cards', function (el) {
     var d = dash.data('halaqa'); el.replaceChildren();
-    if (d.status !== 'ok' || !d.data) { var m0 = document.createElement('div'); m0.className = 'rh-empty'; m0.textContent = d.status === 'error' ? 'تعذّر تحميل الحلقات' : 'جاري التحميل…'; el.appendChild(m0); return; }
-    var rows = filtered();
-    if (!rows.length) { var e = document.createElement('div'); e.className = 'rh-empty'; e.textContent = 'ما فيه حلقات تطابق البحث'; el.appendChild(e); return; }
-    rows.forEach(function (h) {
-      var c = document.createElement('article'); c.className = 'rh-h' + (h.section === 'نساء' ? ' w' : '') + (h.pct >= 100 ? ' done' : ''); c.id = 'h-' + h.id;
-      var top = document.createElement('div'); top.className = 'rh-h-top';
-      var t = document.createElement('div');
-      var nm = document.createElement('div'); nm.className = 'rh-h-name'; nm.textContent = h.name;
-      var pl = document.createElement('div'); pl.className = 'rh-h-place';
-      pl.textContent = h.place + ' · ' + h.students + (h.section === 'نساء' ? ' طالبة' : ' طالب');
-      t.appendChild(nm); t.appendChild(pl);
-      var badge = document.createElement('span');
-      badge.className = 'rh-badge' + (h.pct >= 100 ? ' done' : h.pct >= 75 ? ' near' : '');
-      badge.textContent = h.pct >= 100 ? 'اكتملت ✓' : h.pct >= 75 ? 'قربت تكتمل' : h.section;
-      top.appendChild(t); top.appendChild(badge);
-      var pr = document.createElement('div'); pr.className = 'rh-h-nums';
-      var pv = document.createElement('div'); pv.className = 'rh-h-pct'; pv.textContent = h.pct + '٪';
-      var sl = document.createElement('div'); sl.textContent = h.remaining > 0 ? ('باقي ' + h.shares_left + ' سهم') : 'مكتملة';
-      pr.appendChild(pv); pr.appendChild(sl);
-      var nums = document.createElement('div'); nums.className = 'rh-h-nums';
-      var r1 = document.createElement('span'); r1.appendChild(span('الواصل ')); var rb = document.createElement('b'); rb.textContent = RH.fmt(h.received); r1.appendChild(rb);
-      var r2 = document.createElement('span'); r2.appendChild(span('المتبقي ')); var mb = document.createElement('b'); mb.textContent = RH.fmt(h.remaining); r2.appendChild(mb);
-      nums.appendChild(r1); nums.appendChild(r2);
-      var acts = document.createElement('div'); acts.className = 'rh-acts';
-      if (h.remaining > 0) acts.appendChild(link('اكفل الآن', storeOf(h), 'p'));
-      var det = document.createElement('button'); det.type = 'button'; det.className = 'rh-btn'; det.textContent = 'صفحة الحلقة';
-      det.addEventListener('click', function () { window.rhOpen(h.id); });
-      acts.appendChild(det);
-      c.appendChild(top); c.appendChild(pr); c.appendChild(barEl(h.pct, h.section === 'نساء' ? 'w' : 'm')); c.appendChild(nums); c.appendChild(acts);
-      if (h.pct >= 100) c.appendChild(stampEl());
-      el.appendChild(c);
+    if (d.status !== 'ok' || !d.data) { var e0 = document.createElement('div'); e0.className = 'rh-empty'; e0.textContent = d.status === 'error' ? 'تعذّر التحميل، حدّث الصفحة.' : 'جاري التحميل…'; el.appendChild(e0); return; }
+    var rows = filtered() || [];
+    if (!rows.length) { var e1 = document.createElement('div'); e1.className = 'rh-empty'; e1.textContent = 'ما فيه حلقات تطابق البحث'; el.appendChild(e1); return; }
+    var mk = function (tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+    var hd = mk('div', 'rh-tr hd'); ['الحلقة', 'المجمع / الدار', 'الواصل', 'النسبة', 'إجراءات'].forEach(function (t) { hd.appendChild(mk('span', null, t)); }); el.appendChild(hd);
+    var lim = RH.showAll ? rows.length : 40;
+    rows.slice(0, lim).forEach(function (h) {
+      var women = h.section === 'نساء', done = h.pct >= 100;
+      var r = mk('div', 'rh-tr' + (women ? ' w' : '') + (done ? ' done' : ''));
+      var nm = mk('div', 'nm');
+      nm.appendChild(mk('span', 'tg' + (!done && h.pct >= 75 ? ' near' : ''), done ? 'مكتملة' : (h.pct >= 75 ? 'قربت تكتمل' : h.section)));
+      nm.appendChild(mk('b', null, h.name)); r.appendChild(nm);
+      r.appendChild(mk('div', 'pl', h.place + ' · ' + h.students + (women ? ' طالبة' : ' طالب')));
+      r.appendChild(mk('div', 'rc', RH.fmt(h.received) + ' من ' + RH.fmt(h.cost)));
+      var pr = mk('div', 'pr'); pr.appendChild(barEl(h.pct, women ? 'w' : 'm')); pr.appendChild(mk('span', 'pc', h.pct + '%')); r.appendChild(pr);
+      var pc2 = mk('span', 'pc', h.pct + '%'); r.insertBefore(pc2, r.children[1]);
+      var ac = mk('div', 'ac');
+      var op = mk('button', 'rh-btn p', 'صفحة الحلقة'); op.type = 'button'; op.addEventListener('click', function () { window.rhOpen(h.id); });
+      var cp = mk('button', 'rh-btn', 'نسخ الرابط'); cp.type = 'button';
+      cp.addEventListener('click', function () { copyText(storeOf(h)).then(function () { cp.textContent = 'تم النسخ ✓'; }, function () { window.open(storeOf(h), '_blank'); }); setTimeout(function () { cp.textContent = 'نسخ الرابط'; }, 2200); });
+      var wa = link('واتساب', 'https://wa.me/?text=' + encodeURIComponent(shareMsg(h)), 'wa');
+      ac.appendChild(op); ac.appendChild(cp); ac.appendChild(wa); r.appendChild(ac);
+      el.appendChild(r);
     });
+  });
+  dash.draw('cards_more', function (el) {
+    el.replaceChildren(); var rows = filtered(); if (!rows || rows.length <= 40) return;
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = RH.showAll ? 'عرض أقل' : 'عرض كل الحلقات (' + rows.length + ')';
+    b.addEventListener('click', function () { RH.showAll = !RH.showAll; dash.draw('cards'); dash.draw('cards_more'); if (!RH.showAll) document.getElementById('list').scrollIntoView({ block: 'start' }); });
+    el.appendChild(b);
   });
 
   function current() {
@@ -600,7 +598,7 @@ dash.calc('zero', {
 
 (function () {
   var RH = window.RH;
-  function redrawList() { dash.draw('cards'); dash.draw('count'); }
+  function redrawList() { dash.draw('cards'); dash.draw('count'); dash.draw('cards_more'); }
   window.rhOpen = function (id) {
     RH.open = String(id);
     var det = document.getElementById('detail'); var list = document.getElementById('list');

@@ -257,52 +257,109 @@ body.dark{background:#1C140B}
   .rh-tools .rh-btn{flex:1;justify-content:center;padding:0 10px;font-size:13px}
 }
 @media print{.rh-side,.rh-tabs{display:none}}
+
+/* ===== النسخة الثانية: بدون قائمة جانبية، مثل النموذج ===== */
+.rh{display:block}
+.rh-side{display:none!important}
+.rh-main{max-width:1280px;padding:24px clamp(14px,3vw,36px) 70px}
+.rh-top{align-items:center}
+.rh-brand{gap:14px}
+.rh-brand .rh-logo img{width:58px}
+.rh-stat{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-top:4px;flex-wrap:wrap}
+.rh-stat .rh-live{font-size:12px}
+.rh-tools{gap:8px}
+.rh-tools .rh-btn{background:var(--panel)}
+.rh-tools .rh-btn.p{background:var(--ink);color:var(--inkFg)}
+.rh-tools .rh-ic{width:46px;height:46px;border-radius:50%;padding:0;justify-content:center;display:inline-flex;align-items:center}
+.rh-tools .rh-ic svg{width:20px;height:20px}
+.rh-tools .rh-push span{display:none}
+.rh-tools .rh-push.on{border-color:var(--accent);color:var(--accent)}
+.rh-sh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.rh-sh .rh-h2{margin:0}
+/* جدول الحلقات */
+.rh-tbl{display:flex;flex-direction:column}
+.rh-tr{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.5fr) minmax(0,1fr) minmax(0,1.5fr) auto;gap:14px;align-items:center;padding:12px 10px;border-top:1px solid var(--line)}
+.rh-tr.hd{border-top:0;font-size:13px;color:var(--muted);padding-top:4px;padding-bottom:8px}
+.rh-tr .nm{display:flex;align-items:center;gap:10px;min-width:0}
+.rh-tr .nm b{font-size:15px;color:var(--head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rh-tr .tg{flex:none;font-size:11px;font-weight:700;border-radius:99px;padding:3px 9px;background:var(--menbg);color:var(--men)}
+.rh.dark .rh-tr .tg{color:#DDB76C}
+.rh-tr.w .tg{background:var(--womenbg);color:var(--women);border:1px solid var(--womenline)}
+.rh-tr.w .nm b,.rh-tr.w .pc{color:var(--women)}
+.rh-tr.done .tg{background:var(--donebg);color:var(--done)}
+.rh-tr.done .nm b,.rh-tr.done .pc{color:var(--done)}
+.rh-tr .tg.near{background:#F6E2B8;color:#6E4A1F}
+.rh-tr .pl{color:var(--muted);font-size:14px;min-width:0}
+.rh-tr .rc{color:var(--head);font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
+.rh-tr .pr{display:flex;align-items:center;gap:10px}
+.rh-tr .pr .rh-bar{flex:1;height:8px}
+.rh-tr.w .rh-bar{background:var(--womenline)}
+.rh-tr.done .rh-bar>i{background:var(--done)}
+.rh-tr .pc{font-family:TD,serif;font-size:17px;font-weight:700;color:var(--head);direction:ltr;min-width:56px;text-align:left}
+.rh-tr .ac{display:flex;gap:6px}
+.rh-tr .ac .rh-btn{height:34px;padding:0 12px;font-size:12px;display:inline-flex;align-items:center;white-space:nowrap}
+.rh-tr .ac .wa{background:#1B7F5B;border-color:#1B7F5B;color:#fff}
+.rh-tr.w .ac .rh-btn.p{background:var(--women);border-color:var(--women);color:#fff}
+.rh-tr>.pc{display:none}
+.rh-tr:hover:not(.hd){background:var(--bg);border-radius:14px}
+.rh-moreb{display:flex;justify-content:center;margin-top:14px}
+.rh-moreb button{height:46px;padding:0 24px;border-radius:23px;border:1.5px solid var(--accent);background:transparent;color:var(--head);font-family:inherit;font-weight:700;font-size:14px;cursor:pointer}
+/* المجمعات بجنب الزيارات والتقدم */
+.rh-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.rh-col{display:flex;flex-direction:column;gap:18px;min-width:0}
+.rh-places{display:flex;flex-direction:column;gap:0}
+.rh-pbox,.rh-pbox.w,.rh-pbox.done,.rh-pbox.w.done{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 0;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px}
+.rh-pbox .rh-place{flex:1 1 240px;grid-template-columns:minmax(0,1fr) 80px 44px}
+.rh-pbox.w .rh-place b{color:var(--women)}
+.rh-pbox.done .rh-place b{color:var(--done)}
+.rh-pbox .rh-btn.p{background:#1B7F5B;border-color:#1B7F5B;color:#fff}
+.rh-pbox.w .rh-btn.p,.rh-pbox.done .rh-btn.p{background:#1B7F5B;border-color:#1B7F5B}
+.rh-pacts .rh-mini{height:32px;padding:0 11px;display:inline-flex;align-items:center}
+.rh-two .rh-tr-stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+@media (max-width:1000px){.rh-two{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .rh-tr.hd{display:none}
+  .rh-tr{grid-template-columns:1fr auto;gap:8px 10px;padding:14px;margin-top:10px;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
+  .rh-tr.w{background:var(--womenbg);border-color:var(--womenline)}
+  .rh-tr .nm{grid-column:1}
+  .rh-tr>.pc{display:block;grid-column:2;grid-row:1}
+  .rh-tr .pl{grid-column:1/-1;font-size:12px}
+  .rh-tr .rc{display:none}
+  .rh-tr .pr{grid-column:1/-1}
+  .rh-tr .pr .pc{display:none}
+  .rh-tr .ac{grid-column:1/-1}
+  .rh-tr .ac .rh-btn{flex:1;justify-content:center;height:38px}
+  .rh-tools{flex-wrap:nowrap}
+  .rh-tools .hm{display:none!important}
+  .rh-tools .rh-btn{flex:1 1 0;min-width:0;padding:0 8px}
+  .rh-tools .rh-ic{flex:none}
+}
 </style>
 <div class="rh" id="rh-root" lang="ar">
   <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
-
-  <aside class="rh-side" aria-label="القائمة">
-    <div class="rh-sbrand"><span class="rh-logo" data-draw="logo"></span><span><b>كفالات الحلقات</b><small>لوحة الفريق · جمعية رتّل</small></span></div>
-    <nav class="rh-nav" id="rh-nav">
-      <a href="#kpis" class="on"><i></i>الرئيسية</a>
-      <a href="#list"><i></i>الحلقات</a>
-      <a href="#places"><i></i>المجمعات والدور</a>
-      <a href="#zero"><i></i>اللي ما وصلها شي</a>
-      <a href="#trend"><i></i>التقدم عبر الأيام</a>
-      <a href="#visits"><i></i>زيارات صفحة المتبرعين</a>
-      <a href="report.html" target="_blank" rel="noopener" class="ext"><i></i>التقرير الأسبوعي</a>
-      <a href="codes.html" target="_blank" rel="noopener" class="ext"><i></i>باركود المجمعات</a>
-      <a href="kafala.html" target="_blank" rel="noopener" class="ext"><i></i>صفحة المتبرعين</a>
-    </nav>
-    <div class="rh-status">
-      <div class="rh-live"><i></i>مباشر من الجدول</div>
-      <div class="rh-upd">آخر تحديث: <span data-draw="updated">—</span></div>
-      <div class="row">
-        <button type="button" class="rh-btn rh-push" id="rh-push"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>الإشعارات</span></button>
-        <button type="button" class="rh-mode" id="rh-mode" aria-label="حوّل للثيم الداكن">
-          <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-          <svg id="rh-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
-        </button>
-      </div>
-    </div>
-  </aside>
-
   <div class="rh-main" id="rh-main">
   <header class="rh-top" id="top">
     <div class="rh-brand">
+      <span class="rh-logo" data-draw="logo"></span>
       <div>
-        <div class="rh-kick">الفصل الدراسي الأول 1448هـ</div>
+        <div class="rh-kick">كفالات الحلقات · الفصل الدراسي الأول 1448هـ</div>
         <h1>لوحة الكفالات</h1>
+        <div class="rh-stat"><span class="rh-live"><i></i>مباشر من الجدول</span><span>آخر تحديث: <span data-draw="updated">—</span></span></div>
       </div>
     </div>
     <div class="rh-tools">
+      <a class="rh-btn hm" href="kafala.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center">صفحة المتبرعين</a>
+      <a class="rh-btn hm" href="codes.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center">باركود المجمعات</a>
       <button type="button" class="rh-btn" id="rh-shotbtn">صورة التقدم</button>
       <a class="rh-btn p" href="report.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center">التقرير الأسبوعي</a>
+      <button type="button" class="rh-btn rh-ic rh-push" id="rh-push" aria-label="الإشعارات"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>الإشعارات</span></button>
+      <button type="button" class="rh-btn rh-ic rh-mode" id="rh-mode" aria-label="حوّل للثيم الداكن">
+        <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg id="rh-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+      </button>
     </div>
   </header>
-
   <p class="rh-take">وصلنا <b data-draw="t_received">—</b> ريال من أصل <b data-draw="t_total">—</b> ريال، يعني <b data-draw="t_pct">—</b>٪ من المطلوب. اكتملت كفالة <b data-draw="t_done">—</b> حلقة من <b data-draw="t_count">—</b>.</p>
-
   <section class="rh-bento" id="kpis">
     <div class="rh-hero">
       <div class="rh-pat2" data-draw="pattern2" aria-hidden="true"></div>
@@ -326,24 +383,6 @@ body.dark{background:#1C140B}
       <div data-draw="bar_sections"></div>
     </div>
   </section>
-  <section class="rh-card" id="trend" hidden>
-    <h2 class="rh-h2">التقدم عبر الأيام</h2>
-    <div class="rh-tr-stats" data-draw="trend_stats"></div>
-    <div class="rh-tr-chart" data-draw="trend"></div>
-  </section>
-
-  <section class="rh-card" id="visits" hidden>
-    <h2 class="rh-h2">زيارات صفحة المتبرعين</h2>
-    <p class="rh-note">آخر 30 يوم. زياراتك وزيارات الفريق ما تنحسب، وما نسجل أي بيانات شخصية.</p>
-    <div class="rh-tr-stats" id="vs-stats"></div>
-    <div class="rh-vs-bars" id="vs-bars"></div>
-    <div class="rh-vs-cols">
-      <div><h3>أكثر الحلقات ضغطًا على التبرع</h3><ol id="vs-top"></ol></div>
-      <div><h3>من وين جوا الزوار</h3><ul id="vs-src"></ul></div>
-      <div><h3>ضغطات ثانية</h3><ul id="vs-ev"></ul></div>
-    </div>
-  </section>
-
   <section class="rh-card" id="shot" hidden>
     <div class="rh-acts" style="margin-bottom:12px"><button type="button" class="rh-btn" id="rh-shotback">→ رجوع للحلقات</button></div>
     <h2 class="rh-h2">صورة التقدم للنشر</h2>
@@ -365,7 +404,6 @@ body.dark{background:#1C140B}
       </div>
     </div>
   </section>
-
   <section class="rh-card rh-d" id="detail" hidden>
     <div class="rh-acts"><button type="button" class="rh-btn" id="rh-back">→ رجوع لكل الحلقات</button></div>
     <div data-draw="detail"></div>
@@ -393,9 +431,8 @@ body.dark{background:#1C140B}
       </div>
     </div>
   </section>
-
   <section id="list">
-    <h2 class="rh-h2">كل الحلقات</h2>
+    <div class="rh-sh"><h2 class="rh-h2">كل الحلقات</h2><p class="rh-count" data-draw="count" style="margin:0">—</p></div>
     <div class="rh-controls">
       <input class="rh-search" id="rh-q" type="search" placeholder="ابحث باسم الحلقة أو المجمع…" aria-label="بحث">
       <select class="dash-select" id="rh-sec" aria-label="القسم">
@@ -419,18 +456,36 @@ body.dark{background:#1C140B}
       <button type="button" class="rh-band" data-band="75" aria-pressed="false">75٪ <small>قربت تكتمل</small> <i>—</i></button>
       <button type="button" class="rh-band done" data-band="100" aria-pressed="false">100٪ <small>مكتملة</small> <i>—</i></button>
     </div>
-    <p class="rh-count" data-draw="count">—</p>
-    <div class="rh-grid" data-draw="cards"></div>
+    <div class="rh-tbl" data-draw="cards"></div>
+    <div class="rh-moreb" data-draw="cards_more"></div>
   </section>
-
+  <div class="rh-two">
   <section class="rh-card" id="places">
-    <h2 class="rh-h2">التقدم حسب المجمع أو الدار</h2>
+    <div class="rh-sh"><h2 class="rh-h2">المجمعات والدور</h2><a href="codes.html" target="_blank" rel="noopener" style="font-weight:700;font-size:14px;color:var(--accent)">باركود للطباعة ←</a></div>
     <p class="rh-note">انسخ روابط حلقات أي مجمع أو دار، أو رابط صفحته الخاصة للمتبرعين، أو أرسلها واتساب لمديره على طول.</p>
-    <p style="margin:0 0 12px"><a class="rh-btn" href="codes.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:99px;background:var(--panel)">باركود المجمعات والدور للطباعة ←</a></p>
+    
     <div class="rh-legend"><span><i style="background:var(--men)"></i>مجمعات الرجال</span><span><i style="background:var(--women)"></i>دور النساء</span><span><i style="background:var(--done)"></i>اكتملت</span></div>
     <div class="rh-places" data-draw="places"></div>
   </section>
-
+    <div class="rh-col">
+  <section class="rh-card" id="visits" hidden>
+    <h2 class="rh-h2">زيارات صفحة المتبرعين</h2>
+    <p class="rh-note">آخر 30 يوم. زياراتك وزيارات الفريق ما تنحسب، وما نسجل أي بيانات شخصية.</p>
+    <div class="rh-tr-stats" id="vs-stats"></div>
+    <div class="rh-vs-bars" id="vs-bars"></div>
+    <div class="rh-vs-cols">
+      <div><h3>أكثر الحلقات ضغطًا على التبرع</h3><ol id="vs-top"></ol></div>
+      <div><h3>من وين جوا الزوار</h3><ul id="vs-src"></ul></div>
+      <div><h3>ضغطات ثانية</h3><ul id="vs-ev"></ul></div>
+    </div>
+  </section>
+  <section class="rh-card" id="trend" hidden>
+    <h2 class="rh-h2">التقدم عبر الأيام</h2>
+    <div class="rh-tr-stats" data-draw="trend_stats"></div>
+    <div class="rh-tr-chart" data-draw="trend"></div>
+  </section>
+    </div>
+  </div>
   <section class="rh-card" id="zero">
     <h2 class="rh-h2">حلقات ما وصلها شي بعد (<span data-draw="zero_count">—</span>)</h2>
     <p class="rh-note">أعطها أولوية في النشر. اضغط على الحلقة تفتح صفحتها ونص المشاركة.</p>
