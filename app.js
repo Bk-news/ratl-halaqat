@@ -130,6 +130,20 @@ dash.calc('zero', {
   simple('t_received', 'totals', 'received', true); simple('t_total', 'totals', 'total', true); simple('t_pct', 'totals', 'pct'); simple('t_done', 'totals', 'done'); simple('t_count', 'totals', 'count');
   simple('k_total', 'totals', 'total', true); simple('k_received', 'totals', 'received', true); simple('k_remaining', 'totals', 'remaining', true); simple('k_pct', 'totals', 'pct'); simple('k_done', 'totals', 'done'); simple('k_count', 'totals', 'count');
   simple('zero_count', 'zero', 'count');
+  dash.draw('pattern2', function (el) { var u = brand('pattern'); el.style.backgroundImage = u ? 'url("' + u + '")' : 'none'; });
+  dash.draw('k_ring', function (el) {
+    var r = tot(), c = el.querySelector('.pr'); if (!r || !c) return;
+    var L = 2 * Math.PI * 80; requestAnimationFrame(function () { c.setAttribute('stroke-dasharray', (L * Math.min(100, r.pct) / 100).toFixed(1) + ' ' + L.toFixed(1)); });
+    el.setAttribute('aria-label', 'نسبة الإكمال ' + r.pct + ' بالمئة');
+  });
+  function weekStats() {
+    var w = dash.meta && dash.meta.week, d = dash.data('halaqa'); if (!w || !w.m || d.status !== 'ok' || !d.data) return null;
+    var gain = 0, done = 0;
+    d.data.forEach(function (h) { var b = Number(w.m[h.id] || 0), x = h.received - b; if (x > 0) { gain += x; if (h.cost && h.received >= h.cost && b < h.cost) done++; } });
+    return { gain: gain, done: done };
+  }
+  dash.draw('k_week', function (el) { var s = weekStats(); el.hidden = !s || !s.gain; if (s) el.textContent = '+' + RH.fmt(s.gain) + ' ريال هذا الأسبوع'; });
+  dash.draw('k_weekdone', function (el) { var s = weekStats(); el.textContent = s && s.done ? ' · ' + s.done + ' هذا الأسبوع' : ''; });
 
   dash.draw('bar_all', function (el) {
     var r = tot(); el.replaceChildren();
@@ -601,21 +615,21 @@ dash.calc('zero', {
     RH.open = null; dash.setLink('list');
     redrawList();
   };
-  // الوضع الداكن هو الأساسي، والموقع يتذكر اختيار المستخدم
-  var dark = true;
-  try { var sv = localStorage.getItem('rh-dark'); if (sv) dark = sv === '1'; } catch (e) {}
+  // الثيم الرملي الفاتح هو الأساسي، وزر يحوّل للداكن ويتذكر الاختيار
+  var dark = false;
+  try { dark = localStorage.getItem('rh-theme') === 'dark'; } catch (e) {}
   function applyTheme() {
     document.querySelectorAll('#rh-root').forEach(function (r) { r.classList.toggle('dark', dark); });
     document.querySelectorAll('#rh-sun').forEach(function (s) { s.hidden = dark; });
     document.querySelectorAll('#rh-moon').forEach(function (s) { s.hidden = !dark; });
-    document.querySelectorAll('#rh-mode').forEach(function (b) { b.setAttribute('aria-label', dark ? 'المظهر الداكن مفعّل، اضغط للفاتح' : 'المظهر الفاتح مفعّل، اضغط للداكن'); });
+    document.querySelectorAll('#rh-mode').forEach(function (b) { b.setAttribute('aria-label', dark ? 'حوّل للثيم الفاتح' : 'حوّل للثيم الداكن'); });
     document.body.classList.toggle('dark', dark);
     document.documentElement.style.background = dark ? '#1C140B' : '#F3EADB';
     var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = dark ? '#1C140B' : '#F3EADB';
   }
   applyTheme();
   document.querySelectorAll('#rh-mode').forEach(function (b) {
-    b.addEventListener('click', function () { dark = !dark; try { localStorage.setItem('rh-dark', dark ? '1' : '0'); } catch (e) {} applyTheme(); });
+    b.addEventListener('click', function () { dark = !dark; try { localStorage.setItem('rh-theme', dark ? 'dark' : 'light'); } catch (e) {} applyTheme(); });
   });
   document.querySelectorAll('input[name="rh-shot-theme"]').forEach(function (i) { i.addEventListener('change', function () { RH.shotDark = i.value === 'dark' && i.checked; dash.draw('shot'); }); });
   document.querySelectorAll('#rh-shot-name').forEach(function (i) { i.addEventListener('input', function () { RH.shotName = i.value; dash.draw('shot'); }); });
@@ -636,7 +650,7 @@ dash.calc('zero', {
   document.querySelectorAll('#rh-shares').forEach(function (i) { i.addEventListener('input', function () { dash.draw('calc_out'); }); });
   var saved = null;
   function openShot() {
-    var root = document.getElementById('rh-root'); var shot = document.getElementById('shot');
+    var root = document.getElementById('rh-main') || document.getElementById('rh-root'); var shot = document.getElementById('shot');
     if (!root || !shot || saved) return;
     saved = [];
     Array.prototype.forEach.call(root.children, function (el) {
@@ -703,4 +717,29 @@ dash.calc('zero', {
   function load() { fetch(U + '?stats=1&t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(render).catch(function (e) { console.warn('stats failed', e); }); }
   function go() { if ($('visits')) load(); else setTimeout(go, 500); }
   go(); setInterval(function () { if (document.visibilityState !== 'hidden') load(); }, 120000);
+})();
+
+// ===== القائمة الجانبية والشريط السفلي: تعليم القسم الظاهر =====
+(function () {
+  function links() { return document.querySelectorAll('#rh-nav a[href^="#"], #rh-tabs a[href^="#"]'); }
+  function mark(id) { links().forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + id); }); }
+  function setup() {
+    var ids = ['kpis', 'list', 'places', 'zero', 'trend', 'visits'].filter(function (i) { return document.getElementById(i); });
+    if (!ids.length) return setTimeout(setup, 400);
+    if (!('IntersectionObserver' in window)) return;
+    var vis = {};
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { vis[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = null, bv = 0; ids.forEach(function (i) { if ((vis[i] || 0) > bv) { bv = vis[i]; best = i; } });
+      if (best) mark(best === 'trend' || best === 'visits' ? best : best);
+    }, { threshold: [0, .15, .4, .7], rootMargin: '-10% 0px -40% 0px' });
+    ids.forEach(function (i) { io.observe(document.getElementById(i)); });
+    links().forEach(function (a) { a.addEventListener('click', function (ev) { ev.preventDefault();
+      var id = a.getAttribute('href').slice(1);
+      if (window.rhClose && document.getElementById('detail') && !document.getElementById('detail').hidden) window.rhClose();
+      var sh = document.getElementById('rh-shotback'); if (document.getElementById('shot') && !document.getElementById('shot').hidden && sh) sh.click();
+      setTimeout(function () { var t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); mark(id); }, 30);
+    }); });
+  }
+  setup();
 })();

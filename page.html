@@ -160,46 +160,172 @@ body.dark{background:#1C140B}
 .rh-vs-cols ol,.rh-vs-cols ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px;font-size:14px}
 .rh-vs-cols li b{color:var(--head)}
 .rh-vs-cols .em{color:var(--muted);list-style:none;margin-inline-start:-20px}
+
+/* ===== ديزاين الفريق الجديد (نفس هوية صفحة المتبرعين) ===== */
+.rh{--ink:#3B2814;--inkFg:#F3EADB;--muted:#6E5A43;--womenbg:#F6E9E8;--womenline:#E2C4C1;--accent:#A8772F;--shadow:rgba(59,40,20,.08);max-width:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:flex-start;gap:0}
+.rh.dark{--ink:#E8C27A;--inkFg:#1C140B;--muted:#B9AC98;--womenbg:#2B1517;--womenline:#4A2427;--accent:#DDB76C;--shadow:rgba(0,0,0,.35)}
+.rh-side{flex:0 0 250px;position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:4px}
+.rh-sbrand{display:flex;align-items:center;gap:10px;padding:0 8px 18px}
+.rh-sbrand .rh-logo img{width:48px}
+.rh-sbrand b{display:block;font-size:16px;color:var(--head)}.rh-sbrand small{display:block;font-size:12px;color:var(--muted)}
+.rh-nav{display:flex;flex-direction:column;gap:4px}
+.rh-nav a,.rh-nav button{display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-radius:14px;color:var(--head);text-decoration:none;font-weight:500;font-size:15px;background:none;border:0;font-family:inherit;cursor:pointer;text-align:right;width:100%}
+.rh-nav i{width:8px;height:8px;border-radius:50%;background:var(--line2);flex:none}
+.rh-nav a:hover,.rh-nav button:hover{background:var(--bg)}
+.rh-nav a.on{background:var(--ink);color:var(--inkFg);font-weight:700}.rh-nav a.on i{background:#E8C27A}
+.rh.dark .rh-nav a.on i{background:#3B2814}
+.rh-nav .ext::after{content:"↗";margin-inline-start:auto;font-size:13px;opacity:.6}
+.rh-status{margin-top:18px;background:var(--bg);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.rh-live{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--done)}.rh-live i{width:9px;height:9px;border-radius:50%;background:var(--done)}
+.rh-status .rh-upd{font-size:12px;color:var(--muted);line-height:1.6}
+.rh-status .row{display:flex;gap:8px}
+.rh-status .rh-btn,.rh-status .rh-mode{flex:1;height:42px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:500;width:auto;background:var(--panel)}
+.rh-main{flex:1;min-width:0;padding:26px clamp(14px,3vw,34px) 70px;display:flex;flex-direction:column;gap:22px;max-width:1240px;margin:0 auto}
+.rh-top{border-bottom:0;padding-bottom:0}
+.rh-top .rh-kick{font-size:14px;color:var(--accent);font-weight:500}
+.rh h1{font-family:TS,var(--font-anthropic-sans);font-weight:700;font-size:clamp(26px,3vw,34px);margin-top:2px}
+.rh-tools .rh-btn{height:46px;border-radius:23px;padding:0 20px;font-weight:700;font-size:14px}
+.rh-tools .rh-btn.p{background:var(--ink);border-color:var(--ink);color:var(--inkFg)}
+.rh-take{display:none}
+.rh-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.rh-hero{grid-column:span 2;grid-row:span 2;background:#3B2814;color:#F3EADB;border-radius:28px;padding:26px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden;flex-wrap:wrap}
+.rh.dark .rh-hero{background:linear-gradient(135deg,#3B2814,#5A3D1C)}
+.rh-hero .rh-pat2{position:absolute;inset:0;opacity:.08;background-size:130px;pointer-events:none}
+.rh-ring{position:relative;width:180px;height:180px;flex:none}
+.rh-ring svg{width:100%;height:100%;transform:rotate(-90deg);display:block}
+.rh-ring .pr{transition:stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)}
+.rh-ring-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rh-ring-in b{font-family:TD,serif;font-size:42px;color:#FBF8F2;direction:ltr;line-height:1}
+.rh-ring-in small{font-size:12px;color:#CDBFA8;margin-top:4px}
+.rh-hero-t{position:relative;display:flex;flex-direction:column;gap:5px;min-width:0}
+.rh-hero-t .l{font-size:14px;color:#DDB76C}
+.rh-hero-t .v{font-family:TD,serif;font-size:clamp(38px,4vw,52px);line-height:1;color:#FBF8F2}
+.rh-hero-t .s{font-size:15px;color:#CDBFA8}
+.rh-wk{margin-top:8px;font-size:13px;background:rgba(232,194,122,.16);color:#E8C27A;border-radius:99px;padding:6px 12px;align-self:flex-start}
+.rh-bento .rh-card{border-radius:24px;padding:20px}
+.rh-bento .rh-k-l{font-size:14px;color:var(--muted)}
+.rh-bento .rh-k-v{font-size:34px;margin-top:6px}
+.rh-bento .g{background:var(--donebg);border-color:color-mix(in srgb,var(--done) 35%,transparent)}.rh-bento .g .rh-k-v{color:var(--done)}
+.rh-bento a{font-size:13px;font-weight:700;color:var(--accent)}
+#progress .rh-h2{font-size:14px;color:var(--muted);font-weight:500;margin-bottom:4px}
+#progress .rh-bar[data-draw=bar_all]{display:none}
+.rh-bento #progress .rh-sec-row{grid-template-columns:auto 1fr;row-gap:5px;margin-top:10px}
+.rh-bento #progress .rh-sec-row>span{grid-column:1/-1;font-size:12px}
+.rh-card{border-radius:26px;padding:22px 24px}
+.rh-h2{font-size:22px;font-weight:700}
+#list{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:22px 24px}
+.rh-search{border-radius:23px;height:46px;padding:0 16px}
+.rh .dash-select{border-radius:23px;height:46px}
+.rh-band{border-radius:20px;padding:8px 14px}
+.rh-band[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--inkFg)}
+.rh.dark .rh-band[aria-pressed=true]{color:#1C140B}
+.rh-grid{gap:16px}
+.rh-h{border-radius:22px;padding:18px;border:1px solid var(--line);border-top:1px solid var(--line);background:var(--bg);box-shadow:0 8px 20px var(--shadow)}
+.rh-h-name{font-size:19px;font-weight:700}
+.rh-h-pct{font-size:30px}
+.rh-grid .rh-h.w{background:var(--womenbg);border:1px solid var(--womenline)}
+.rh-grid .rh-h.w .rh-h-name,.rh-grid .rh-h.w .rh-h-pct{color:var(--women)}
+.rh-grid .rh-h.w .rh-bar{background:var(--womenline)}
+.rh-grid .rh-h.done,.rh-grid .rh-h.w.done{border:1px solid color-mix(in srgb,var(--done) 45%,transparent);box-shadow:none}
+.rh-btn{border-radius:99px;padding:8px 14px;font-weight:700}
+.rh-btn.p{background:var(--ink);border-color:var(--ink);color:var(--inkFg)}
+.rh-h.w .rh-btn.p{background:var(--women);border-color:var(--women);color:#fff}
+.rh.dark .rh-h.w .rh-btn.p{color:#1C140B}
+.rh-pbox{border-radius:18px;border-inline-start-width:1px;background:var(--bg)}
+.rh-pbox.w{background:var(--womenbg);border-color:var(--womenline)}
+.rh-d{border-top:1px solid var(--line)}
+#detail [data-draw=detail]>*:first-child{margin-top:0}
+.rh-tabs{display:none}
+@media (max-width:900px){
+  .rh{display:block}
+  .rh-side{display:none}
+  .rh-main{padding:16px 14px 110px}
+  .rh-bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .rh-hero{grid-column:span 2;grid-row:auto;padding:20px;gap:16px}
+  .rh-ring{width:120px;height:120px}.rh-ring-in b{font-size:28px}.rh-ring-in small{display:none}
+  #progress{grid-column:span 2}
+  .rh-bento .rh-card.z{grid-column:span 2;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .rh-bento .rh-card.z .rh-k-v{margin:0}
+  .rh-bento .rh-k-v{font-size:24px}
+  .rh-bento .rh-card{padding:14px;border-radius:20px}
+  #list{padding:16px;border-radius:22px}
+  .rh-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;position:fixed;left:12px;right:12px;bottom:14px;height:66px;background:#3B2814;border-radius:24px;box-shadow:0 16px 34px rgba(59,40,20,.35);z-index:50}
+  .rh-tabs a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:11px;font-weight:700;color:#CDBFA8}
+  .rh-tabs a i{width:22px;height:4px;border-radius:2px;background:transparent}
+  .rh-tabs a.on{color:#E8C27A}.rh-tabs a.on i{background:#E8C27A}
+  .rh-tools{width:100%}
+  .rh-tools .rh-btn{flex:1;justify-content:center;padding:0 10px;font-size:13px}
+}
+@media print{.rh-side,.rh-tabs{display:none}}
 </style>
 <div class="rh" id="rh-root" lang="ar">
   <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
+
+  <aside class="rh-side" aria-label="القائمة">
+    <div class="rh-sbrand"><span class="rh-logo" data-draw="logo"></span><span><b>كفالات الحلقات</b><small>لوحة الفريق · جمعية رتّل</small></span></div>
+    <nav class="rh-nav" id="rh-nav">
+      <a href="#kpis" class="on"><i></i>الرئيسية</a>
+      <a href="#list"><i></i>الحلقات</a>
+      <a href="#places"><i></i>المجمعات والدور</a>
+      <a href="#zero"><i></i>اللي ما وصلها شي</a>
+      <a href="#trend"><i></i>التقدم عبر الأيام</a>
+      <a href="#visits"><i></i>زيارات صفحة المتبرعين</a>
+      <a href="report.html" target="_blank" rel="noopener" class="ext"><i></i>التقرير الأسبوعي</a>
+      <a href="codes.html" target="_blank" rel="noopener" class="ext"><i></i>باركود المجمعات</a>
+      <a href="kafala.html" target="_blank" rel="noopener" class="ext"><i></i>صفحة المتبرعين</a>
+    </nav>
+    <div class="rh-status">
+      <div class="rh-live"><i></i>مباشر من الجدول</div>
+      <div class="rh-upd">آخر تحديث: <span data-draw="updated">—</span></div>
+      <div class="row">
+        <button type="button" class="rh-btn rh-push" id="rh-push"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>الإشعارات</span></button>
+        <button type="button" class="rh-mode" id="rh-mode" aria-label="حوّل للثيم الداكن">
+          <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+          <svg id="rh-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="rh-main" id="rh-main">
   <header class="rh-top" id="top">
     <div class="rh-brand">
-      <span class="rh-logo" data-draw="logo"></span>
       <div>
-        <h1>متابعة كفالات الحلقات</h1>
-        <div class="rh-sub">جمعية رتّل لتحفيظ القرآن الكريم بنجران · الفصل الدراسي الأول 1448هـ</div>
-        <div class="rh-sub">آخر تحديث للأرقام: <span data-draw="updated">—</span></div>
+        <div class="rh-kick">الفصل الدراسي الأول 1448هـ</div>
+        <h1>لوحة الكفالات</h1>
       </div>
     </div>
     <div class="rh-tools">
-    <a class="rh-btn" href="kafala.html" target="_blank" rel="noopener" style="height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--panel)">صفحة المتبرعين</a>
-    <a class="rh-btn" href="report.html" target="_blank" rel="noopener" style="height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--panel)">التقرير الأسبوعي</a>
-    <button type="button" class="rh-btn" id="rh-shotbtn">صورة التقدم</button>
-    <button type="button" class="rh-btn rh-push" id="rh-push"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>فعّل الإشعارات</span></button>
-    <button type="button" class="rh-mode" id="rh-mode" aria-label="المظهر الفاتح مفعّل، اضغط للداكن">
-      <svg id="rh-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-      <svg id="rh-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
-    </button>
+      <button type="button" class="rh-btn" id="rh-shotbtn">صورة التقدم</button>
+      <a class="rh-btn p" href="report.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center">التقرير الأسبوعي</a>
     </div>
   </header>
 
   <p class="rh-take">وصلنا <b data-draw="t_received">—</b> ريال من أصل <b data-draw="t_total">—</b> ريال، يعني <b data-draw="t_pct">—</b>٪ من المطلوب. اكتملت كفالة <b data-draw="t_done">—</b> حلقة من <b data-draw="t_count">—</b>.</p>
 
-  <section class="rh-kpis" id="kpis">
-    <div class="rh-card"><div class="rh-k-l">إجمالي مبلغ الحلقات</div><div class="rh-k-v" data-draw="k_total">—</div><div class="rh-k-s">ريال</div></div>
-    <div class="rh-card"><div class="rh-k-l">الواصل</div><div class="rh-k-v" data-draw="k_received">—</div><div class="rh-k-s">ريال</div></div>
+  <section class="rh-bento" id="kpis">
+    <div class="rh-hero">
+      <div class="rh-pat2" data-draw="pattern2" aria-hidden="true"></div>
+      <div class="rh-ring" data-draw="k_ring" role="img" aria-label="نسبة الإكمال">
+        <svg viewBox="0 0 190 190" aria-hidden="true"><circle cx="95" cy="95" r="80" fill="none" stroke="rgba(243,234,219,.15)" stroke-width="16"/><circle class="pr" cx="95" cy="95" r="80" fill="none" stroke="#E8C27A" stroke-width="16" stroke-linecap="round" stroke-dasharray="0 503"/></svg>
+        <div class="rh-ring-in"><b><span data-draw="k_pct">—</span>%</b><small>نسبة الإكمال</small></div>
+      </div>
+      <div class="rh-hero-t">
+        <span class="l">الواصل</span>
+        <span class="v" data-draw="k_received">—</span>
+        <span class="s">ريال من أصل <span data-draw="k_total">—</span></span>
+        <span class="rh-wk" data-draw="k_week" hidden></span>
+      </div>
+    </div>
     <div class="rh-card"><div class="rh-k-l">المتبقي</div><div class="rh-k-v" data-draw="k_remaining">—</div><div class="rh-k-s">ريال</div></div>
-    <div class="rh-card"><div class="rh-k-l">نسبة الإكمال</div><div class="rh-k-v" data-draw="k_pct">—</div><div class="rh-k-s">٪ من الإجمالي</div></div>
-    <div class="rh-card"><div class="rh-k-l">حلقات اكتملت كفالتها</div><div class="rh-k-v" data-draw="k_done">—</div><div class="rh-k-s">من <span data-draw="k_count">—</span> حلقة</div></div>
+    <div class="rh-card g"><div class="rh-k-l">اكتملت كفالتها</div><div class="rh-k-v" data-draw="k_done">—</div><div class="rh-k-s">من <span data-draw="k_count">—</span> حلقة<span data-draw="k_weekdone"></span></div></div>
+    <div class="rh-card z"><div class="rh-k-l">ما وصلها شي</div><div class="rh-k-v" data-draw="zero_count">—</div><a href="#zero">أعطها أولوية في النشر ←</a></div>
+    <div class="rh-card" id="progress">
+      <h2 class="rh-h2">التقدم حسب القسم</h2>
+      <div class="rh-bar" data-draw="bar_all" role="img" aria-label="نسبة الإكمال العامة"></div>
+      <div data-draw="bar_sections"></div>
+    </div>
   </section>
-
-  <section class="rh-card" id="progress">
-    <h2 class="rh-h2">التقدم العام</h2>
-    <div class="rh-bar" data-draw="bar_all" role="img" aria-label="نسبة الإكمال العامة"></div>
-    <div data-draw="bar_sections"></div>
-  </section>
-
   <section class="rh-card" id="trend" hidden>
     <h2 class="rh-h2">التقدم عبر الأيام</h2>
     <div class="rh-tr-stats" data-draw="trend_stats"></div>
@@ -310,4 +436,12 @@ body.dark{background:#1C140B}
     <p class="rh-note">أعطها أولوية في النشر. اضغط على الحلقة تفتح صفحتها ونص المشاركة.</p>
     <div class="rh-chips" data-draw="zero_list"></div>
   </section>
+  </div>
+  <nav class="rh-tabs" id="rh-tabs" aria-label="القائمة الرئيسية">
+    <a href="#kpis" class="on"><i></i>الرئيسية</a>
+    <a href="#list"><i></i>الحلقات</a>
+    <a href="#places"><i></i>المجمعات</a>
+    <a href="report.html" target="_blank" rel="noopener"><i></i>التقرير</a>
+    <a href="kafala.html" target="_blank" rel="noopener"><i></i>المتبرعين</a>
+  </nav>
 </div>
