@@ -10,7 +10,7 @@
   var dev = /iPhone|iPad|Android|Mobi/i.test(navigator.userAgent) ? 'جوال' : 'كمبيوتر';
   function source() {
     var s = (params.get('s') || params.get('utm_source') || '').toLowerCase();
-    var map = { wa: 'واتساب', whatsapp: 'واتساب', x: 'إكس', twitter: 'إكس', ig: 'إنستقرام', instagram: 'إنستقرام', snap: 'سناب', snapchat: 'سناب', tiktok: 'تيك توك', qr: 'باركود', sms: 'رسائل' };
+    var map = { wa: 'واتساب', whatsapp: 'واتساب', x: 'إكس', twitter: 'إكس', ig: 'إنستقرام', instagram: 'إنستقرام', snap: 'سناب', snapchat: 'سناب', tiktok: 'تيك توك', qr: 'باركود', link: 'رابط مختصر', sms: 'رسائل' };
     if (s) return map[s] || s;
     var r = ''; try { r = new URL(document.referrer).hostname; } catch (e) {}
     if (!r || r === location.hostname) return 'مباشر';

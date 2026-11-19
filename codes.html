@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>باركود المجمعات والدور — كفالات الحلقات</title>
+<link rel="icon" href="icons/icon-192.png">
+<style>
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Regular.woff2);font-weight:400}
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Medium.woff2);font-weight:500}
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Bold.woff2);font-weight:700}
+@font-face{font-family:TSD;src:url(fonts/thmanyahserifdisplay-Bold.woff2);font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#1C140B;color:#F3EADB;font-family:TS,Tahoma,sans-serif}
+.bar{position:sticky;top:0;z-index:5;background:#271C10;border-bottom:1px solid #3B2814;padding:14px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bar h1{font-size:22px;margin-inline-end:auto}
+.btn{font-family:inherit;font-weight:700;font-size:15px;border:0;border-radius:999px;padding:10px 18px;background:#DDB76C;color:#1C140B;cursor:pointer;text-decoration:none}
+.btn.l{background:transparent;color:#F3EADB;border:1.5px solid #4C3720}
+label{font-size:15px;color:#B9AC98;display:inline-flex;gap:6px;align-items:center}
+.note{color:#B9AC98;font-size:14px;padding:10px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;padding:10px 20px 40px}
+.card{background:#271C10;border:1px solid #3B2814;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.card img{width:100%;border-radius:10px;display:block}
+.card .row{display:flex;gap:8px;flex-wrap:wrap}
+.card .row .btn{font-size:13px;padding:8px 12px}
+.card .link{direction:ltr;text-align:center;color:#DDB76C;font-size:13px;word-break:break-all}
+.card.off{opacity:.45}
+#load{padding:60px;text-align:center;color:#B9AC98}
+@media print{
+  @page{size:A5 portrait;margin:0}
+  body{background:#fff}
+  .bar,.note,.card .row,.card .link,.card.skip{display:none!important}
+  .grid{display:block;padding:0}
+  .card{border:0;padding:0;background:none;break-after:page;page-break-after:always;border-radius:0}
+  .card img{width:148mm;height:210mm;border-radius:0}
+}
+</style></head><body>
+<div class="bar">
+  <h1>باركود المجمعات والدور</h1>
+  <label><input type="checkbox" id="hideDone" checked> إخفاء المجمعات المكتملة</label>
+  <button class="btn" onclick="print()">طباعة الكل (A5)</button>
+  <a class="btn l" href="index.html">الموقع الداخلي</a>
+</div>
+<p class="note">كل بطاقة فيها رابط مختصر وباركود يفتح صفحة المجمع للمتبرعين مباشرة، والزيارات تنحسب في الإحصائيات بمصدر «باركود». اطبعها مقاس A5 أو نزّلها صورة.</p>
+<div id="load">جاري تجهيز البطاقات…</div>
+<div class="grid" id="grid"></div>
+<script src="qr.js"></script>
+<script>
+(function () {
+  var LIVE = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
+  try { localStorage.setItem('rh-team', '1'); } catch (e) {}
+  var BASE = location.href.split('#')[0].split('?')[0].replace(/[^\/]*$/, '');
+  var W = 1240, H = 1748; // A5 بدقة 150
+  function loadImg(src) { return new Promise(function (ok) { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = function () { ok(null); }; i.src = src; }); }
+  function fit(g, text, font, size, maxW) { do { g.font = font.replace('#', size); if (g.measureText(text).width <= maxW) break; size -= 4; } while (size > 30); return size; }
+  function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+  function draw(p, logo, pat) {
+    var c = document.createElement('canvas'); c.width = W; c.height = H; var g = c.getContext('2d');
+    var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#F6EEE1'); bg.addColorStop(1, '#EDE0C8'); g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    if (pat) { g.globalAlpha = .08; for (var y = 0; y < H; y += 150) for (var x = 0; x < W; x += 150) g.drawImage(pat, x, y, 150, 150); g.globalAlpha = 1; }
+    g.strokeStyle = '#C49958'; g.lineWidth = 6; rr(g, 40, 40, W - 80, H - 80, 46); g.stroke();
+    g.strokeStyle = 'rgba(196,153,88,.45)'; g.lineWidth = 2; rr(g, 58, 58, W - 116, H - 116, 34); g.stroke();
+    g.direction = 'rtl'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    if (logo) { var lw = 300, lh = lw * logo.height / logo.width; g.drawImage(logo, (W - lw) / 2, 110, lw, lh); }
+    // شريحة
+    g.font = '700 46px TS'; var chip = 'اكفل حلقة قرآنية', cw = g.measureText(chip).width + 90;
+    g.fillStyle = '#3B2814'; rr(g, (W - cw) / 2, 400, cw, 84, 42); g.fill(); g.fillStyle = '#F3EADB'; g.fillText(chip, W / 2, 458);
+    // اسم المجمع
+    var s = fit(g, p.place, '700 #px TS', 118, W - 200); g.fillStyle = '#3B2814'; g.font = '700 ' + s + 'px TS'; g.fillText(p.place, W / 2, 610);
+    g.fillStyle = '#6E5A43'; g.font = '500 44px TS'; g.fillText(p.count + ' حلقة · امسح الباركود وساهم في كفالتها', W / 2, 690);
+    // الباركود
+    var m = window.RHQR.matrix(p.url), n = m.length, qs = 680, cell = Math.floor(qs / (n + 6)), real = cell * (n + 6), qx = Math.round((W - real) / 2), qy = 760;
+    g.fillStyle = '#FFFFFF'; g.shadowColor = 'rgba(59,40,20,.18)'; g.shadowBlur = 40; g.shadowOffsetY = 14; rr(g, qx - 10, qy - 10, real + 20, real + 20, 34); g.fill(); g.shadowColor = 'transparent';
+    g.fillStyle = '#2B1C0C'; for (var yy = 0; yy < n; yy++) for (var xx = 0; xx < n; xx++) if (m[yy][xx]) g.fillRect(qx + (xx + 3) * cell, qy + (yy + 3) * cell, cell, cell);
+    // الرابط
+    g.direction = 'ltr'; g.fillStyle = '#8C5E25'; g.font = '500 ' + fit(g, p.short, '500 #px TS', 40, W - 220) + 'px TS'; g.fillText(p.short, W / 2, qy + real + 90);
+    g.direction = 'rtl'; g.fillStyle = '#3B2814'; g.font = '700 40px TS'; g.fillText('جمعية رتّل لتحفيظ القرآن الكريم بنجران', W / 2, H - 140);
+    g.fillStyle = '#6E5A43'; g.font = '400 32px TS'; g.fillText('تبرعاتكم تذهب لكفالة الحلقات القرآنية', W / 2, H - 92);
+    return c;
+  }
+  Promise.all([
+    fetch('places.json', { cache: 'no-store' }).then(function (r) { return r.json(); }),
+    fetch(LIVE + '?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).catch(function () { return fetch('data.json').then(function (r) { return r.json(); }); }),
+    fetch('brand.json').then(function (r) { return r.json(); }),
+    document.fonts.load('700 40px TS'), document.fonts.load('500 40px TS'), document.fonts.load('400 40px TS')
+  ]).then(function (res) {
+    var places = res[0], rows = res[1].rows, brand = res[2];
+    return Promise.all([loadImg(brand.logo), loadImg(brand.pattern)]).then(function (im) {
+      var grid = document.getElementById('grid');
+      places.forEach(function (p) {
+        var rs = rows.filter(function (h) { return h.place === p.place; }); if (!rs.length) return;
+        var done = rs.every(function (h) { return h.cost && h.received >= h.cost; });
+        p.count = rs.length; p.url = BASE + 'm/' + p.slug + '/?s=qr'; p.short = (BASE + 'm/' + p.slug).replace(/^https?:\/\//, '');
+        var c = draw(p, im[0], im[1]), card = document.createElement('div'); card.className = 'card' + (done ? ' done' : '');
+        var img = document.createElement('img'); img.src = c.toDataURL('image/png'); img.alt = 'بطاقة باركود ' + p.place; card.appendChild(img);
+        var ln = document.createElement('div'); ln.className = 'link'; ln.textContent = p.short; card.appendChild(ln);
+        var row = document.createElement('div'); row.className = 'row';
+        var dl = document.createElement('a'); dl.className = 'btn'; dl.textContent = 'تنزيل صورة'; dl.href = img.src; dl.download = 'باركود-' + p.place + '.png'; row.appendChild(dl);
+        var cp = document.createElement('button'); cp.className = 'btn l'; cp.textContent = 'نسخ الرابط'; cp.onclick = function () { navigator.clipboard.writeText('https://' + p.short).then(function () { cp.textContent = 'تم النسخ ✓'; }); }; row.appendChild(cp);
+        card.appendChild(row); grid.appendChild(card);
+      });
+      var hd = document.getElementById('hideDone');
+      function apply() { grid.querySelectorAll('.card.done').forEach(function (c) { c.classList.toggle('skip', hd.checked); c.style.display = hd.checked ? 'none' : ''; }); }
+      hd.addEventListener('change', apply); apply();
+      document.getElementById('load').remove();
+    });
+  }).catch(function (e) { document.getElementById('load').textContent = 'تعذّر التحميل، حدّث الصفحة.'; console.warn(e); });
+})();
+</script>
+</body></html>
