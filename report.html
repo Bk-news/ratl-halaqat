@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>التقرير الأسبوعي — كفالات الحلقات · جمعية رتّل</title>
+<link rel="icon" href="icons/icon-192.png">
+<style>
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Regular.woff2);font-weight:400}
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Medium.woff2);font-weight:500}
+@font-face{font-family:TS;src:url(fonts/thmanyahsans-Bold.woff2);font-weight:700}
+@font-face{font-family:TSD;src:url(fonts/thmanyahserifdisplay-Bold.woff2);font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9DDC8;font-family:TS,Tahoma,sans-serif;color:#2B2925}
+.page{max-width:900px;margin:24px auto;background:#FBF8F2;border-radius:18px;padding:40px 44px;box-shadow:0 10px 40px rgba(59,40,20,.15)}
+.top{display:flex;align-items:center;gap:18px;border-bottom:3px solid #C49958;padding-bottom:18px}
+.top img{width:84px}
+.top h1{font-size:30px;color:#3B2814;line-height:1.2}
+.top .per{color:#6E5A43;font-size:16px;margin-top:4px}
+.tools{margin-inline-start:auto;display:flex;gap:8px}
+.btn{font-family:inherit;font-weight:700;font-size:15px;border:0;border-radius:999px;padding:10px 20px;background:#3B2814;color:#F3EADB;cursor:pointer;text-decoration:none}
+.btn.l{background:#F3EADB;color:#3B2814;border:1.5px solid #DCC29B}
+h2{font-size:21px;color:#3B2814;margin:28px 0 12px;display:flex;align-items:center;gap:10px}
+h2:before{content:"";width:6px;height:22px;border-radius:4px;background:#C49958}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.k{background:#F3EADB;border:1px solid #E7D6BC;border-radius:14px;padding:14px 16px}
+.k small{color:#6E5A43;font-size:14px;display:block}
+.k b{font-family:TSD;font-size:32px;color:#3B2814;line-height:1.2}
+.k i{font-style:normal;color:#8C8173;font-size:13px}
+.k.hi{background:#3B2814;border-color:#3B2814}.k.hi small,.k.hi i{color:#DDB76C}.k.hi b{color:#FBF8F2}
+.bar{height:12px;background:#E7D6BC;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#C49958,#8C5E25);border-radius:99px}
+.sec{display:grid;grid-template-columns:70px 1fr 260px;gap:12px;align-items:center;margin:10px 0;font-size:15px}
+.sec b{color:#3B2814}.sec span{color:#6E5A43;font-size:14px}
+.sec.w .bar i{background:linear-gradient(90deg,#D98C82,#7A2E2A)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{background:#3B2814;color:#F3EADB;font-weight:700;padding:9px 10px;text-align:right}
+th:first-child{border-radius:0 10px 0 0}th:last-child{border-radius:10px 0 0 0}
+td{padding:8px 10px;border-bottom:1px solid #EFE3CF}
+tr:nth-child(even) td{background:#F8F2E7}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td .mini{display:inline-block;width:70px;height:7px;background:#E7D6BC;border-radius:9px;vertical-align:middle;margin-inline-start:6px;overflow:hidden}
+td .mini i{display:block;height:100%;background:#C49958}
+.done td{color:#1B7F5B}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#DCEEE5;color:#1B7F5B;border:1px solid #9fd2bb;border-radius:999px;padding:5px 14px;font-weight:500;font-size:14px}
+.empty{color:#8C8173;background:#F3EADB;border-radius:12px;padding:14px 16px;font-size:15px}
+.note{color:#8C8173;font-size:13px;margin-top:6px}
+.foot{margin-top:34px;padding-top:14px;border-top:1px solid #E7D6BC;color:#8C8173;font-size:13px;display:flex;justify-content:space-between}
+#load{text-align:center;padding:80px;color:#6E5A43;font-size:18px}
+@media (max-width:700px){.page{margin:0;border-radius:0;padding:22px 16px}.kpis{grid-template-columns:repeat(2,1fr)}.sec{grid-template-columns:56px 1fr}.sec span{grid-column:1/-1}.top{flex-wrap:wrap}.tools{margin:0}.top h1{font-size:24px}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff}
+  .page{box-shadow:none;margin:0;max-width:none;padding:0;border-radius:0}
+  .tools{display:none}
+  h2{break-after:avoid}
+  tr,.k,.sec{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body>
+<div class="page">
+  <div class="top">
+    <img id="logo" alt="شعار جمعية رتّل">
+    <div><h1>التقرير الأسبوعي لكفالات الحلقات</h1><div class="per" id="per">—</div></div>
+    <div class="tools"><button class="btn" onclick="print()">تنزيل PDF</button><a class="btn l" href="index.html">الموقع الداخلي</a></div>
+  </div>
+  <div id="load">جاري تجهيز التقرير…</div>
+  <div id="body" hidden>
+    <div class="kpis" id="kpis"></div>
+    <h2>التقدم حسب القسم</h2><div id="secs"></div>
+    <h2>الحلقات اللي وصلها دعم هذا الأسبوع</h2><div id="moved"></div>
+    <h2>حلقات اكتملت كفالتها هذا الأسبوع</h2><div id="newly"></div>
+    <h2>المجمعات والدور</h2><div id="places"></div>
+    <h2>زيارات صفحة المتبرعين (آخر 7 أيام)</h2><div id="visits"></div>
+    <h2>حلقات ما وصلها شي بعد</h2><div id="zero"></div>
+  </div>
+  <div class="foot"><span>جمعية رتّل لتحفيظ القرآن الكريم بنجران</span><span id="gen"></span></div>
+</div>
+<script>
+(function () {
+  var U = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
+  try { localStorage.setItem('rh-team', '1'); } catch (e) {}
+  var MON = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var f = function (n) { return Math.round(n || 0).toLocaleString('en-US'); };
+  var d8 = function (d) { d = new Date(d); return d.toLocaleDateString('en-GB', { timeZone: 'Asia/Riyadh', day: 'numeric' }) + ' ' + MON[Number(d.toLocaleDateString('en-GB', { timeZone: 'Asia/Riyadh', month: 'numeric' })) - 1] + ' ' + d.toLocaleDateString('en-GB', { timeZone: 'Asia/Riyadh', year: 'numeric' }); };
+  var pc = function (a, b) { return b ? Math.round(a / b * 1000) / 10 : 0; };
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function table(head, rows, rowCls) {
+    var t = el('table'), tr = el('tr'); head.forEach(function (h) { tr.appendChild(el('th', null, h)); }); t.appendChild(tr);
+    rows.forEach(function (r, i) { var tr = el('tr', rowCls ? rowCls(i) : null); r.forEach(function (c) { var td = el('td'); if (c && c.nodeType) td.appendChild(c); else { td.textContent = c; if (/^[\d,.٪%+ ]+$/.test(String(c))) td.className = 'n'; } tr.appendChild(td); }); t.appendChild(tr); });
+    return t;
+  }
+  function mini(p) { var s = el('span'); s.appendChild(document.createTextNode(p + '٪')); var m = el('span', 'mini'), i = el('i'); i.style.width = Math.min(100, p) + '%'; m.appendChild(i); s.appendChild(m); return s; }
+  fetch('brand.json').then(function (r) { return r.json(); }).then(function (b) { $('logo').src = b.logo; }).catch(function () {});
+  Promise.all([
+    fetch(U + '?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }),
+    fetch(U + '?stats=1&t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).catch(function () { return null; })
+  ]).then(function (res) {
+    var j = res[0], st = res[1], rows = j.rows, wk = j.week || { since: null, m: {} };
+    var tot = 0, rec = 0, done = 0, gain = 0, moved = [], newly = [], places = {}, secs = {};
+    rows.forEach(function (h) {
+      var before = Number(wk.m[h.id] || 0), d = h.received - before, full = h.cost && h.received >= h.cost;
+      tot += h.cost; rec += h.received; if (full) done++;
+      if (d > 0) { gain += d; moved.push({ h: h, d: d }); if (full && before < h.cost) newly.push(h); }
+      var p = places[h.place] || (places[h.place] = { name: h.place, sec: h.section, n: 0, cost: 0, rec: 0, done: 0 }); p.n++; p.cost += h.cost; p.rec += h.received; if (full) p.done++;
+      var s = secs[h.section] || (secs[h.section] = { cost: 0, rec: 0, n: 0, done: 0 }); s.n++; s.cost += h.cost; s.rec += h.received; if (full) s.done++;
+    });
+    $('per').textContent = (wk.since ? 'من ' + d8(wk.since) + ' إلى ' + d8(Date.now()) : d8(Date.now()));
+    $('gen').textContent = 'أُعدّ في ' + d8(Date.now()) + ' · مباشر من جدول الحلقات';
+    var K = [['وصل هذا الأسبوع', f(gain), 'ريال', 1], ['اكتملت هذا الأسبوع', newly.length, 'حلقة', 1], ['حلقات تحركت هذا الأسبوع', moved.length, 'حلقة', 1],
+      ['إجمالي الواصل', f(rec), 'من ' + f(tot) + ' ريال'], ['نسبة الإكمال', pc(rec, tot) + '٪', 'من الإجمالي'], ['الحلقات المكتملة', done, 'من ' + rows.length + ' حلقة']];
+    K.forEach(function (k) { var d = el('div', 'k' + (k[3] ? ' hi' : '')); d.appendChild(el('small', null, k[0])); d.appendChild(el('b', null, String(k[1]))); d.appendChild(el('i', null, ' ' + k[2])); $('kpis').appendChild(d); });
+    ['رجال', 'نساء'].forEach(function (n) { var s = secs[n]; if (!s) return; var r = el('div', 'sec' + (n === 'نساء' ? ' w' : '')), b = el('div', 'bar'), i = el('i');
+      i.style.width = Math.min(100, pc(s.rec, s.cost)) + '%'; b.appendChild(i); r.appendChild(el('b', null, n)); r.appendChild(b);
+      r.appendChild(el('span', null, pc(s.rec, s.cost) + '٪ · ' + f(s.rec) + ' من ' + f(s.cost) + ' · اكتملت ' + s.done + ' من ' + s.n)); $('secs').appendChild(r); });
+    moved.sort(function (a, b) { return b.d - a.d; });
+    $('moved').appendChild(moved.length ? table(['الحلقة', 'المجمع / الدار', 'وصل هذا الأسبوع', 'النسبة الآن'], moved.map(function (m) { return [m.h.name, m.h.place, '+' + f(m.d), mini(pc(m.h.received, m.h.cost))]; })) : el('div', 'empty', 'ما وصل دعم جديد هذا الأسبوع.'));
+    if (newly.length) { var c = el('div', 'chips'); newly.forEach(function (h) { c.appendChild(el('span', 'chip', '✓ ' + h.name)); }); $('newly').appendChild(c); } else $('newly').appendChild(el('div', 'empty', 'ما اكتملت حلقات جديدة هذا الأسبوع.'));
+    var pl = Object.keys(places).map(function (k) { return places[k]; }).sort(function (a, b) { return pc(b.rec, b.cost) - pc(a.rec, a.cost) || b.n - a.n; });
+    $('places').appendChild(table(['المجمع / الدار', 'الحلقات', 'الواصل', 'النسبة', 'اكتملت'], pl.map(function (p) { return [p.name, p.n, f(p.rec), mini(pc(p.rec, p.cost)), p.done + ' من ' + p.n]; }), function (i) { return pl[i].done === pl[i].n ? 'done' : null; }));
+    if (st && st.week) {
+      var t = table(['المؤشر', 'العدد'], [['زوار', f(st.week.visitors)], ['زيارات', f(st.week.views)], ['ضغطات التبرع', f(st.week.clicks)]].concat((st.sources || []).slice(0, 5).map(function (s) { return ['جوا من ' + s.name, f(s.n)]; })));
+      $('visits').appendChild(t); $('visits').appendChild(el('div', 'note', 'زيارات الفريق ما تنحسب. المصادر لآخر 30 يوم.'));
+    } else $('visits').appendChild(el('div', 'empty', 'ما فيه بيانات زيارات للحين.'));
+    var zero = rows.filter(function (h) { return !h.received; });
+    $('zero').appendChild(el('div', 'empty', zero.length + ' حلقة ما وصلها أي دعم للحين — تفاصيلها في الموقع الداخلي.'));
+    $('load').remove(); $('body').hidden = false;
+  }).catch(function () { $('load').textContent = 'تعذّر الاتصال بالجدول، حدّث الصفحة.'; });
+})();
+</script>
+</body></html>
