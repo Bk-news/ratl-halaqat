@@ -1,6 +1,6 @@
 try { importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js'); } catch (e) {}
 // تطبيق كفالات رتّل: يجيب دائمًا آخر نسخة من الإنترنت، ويحتفظ بنسخة يفتحها بدون نت
-var CACHE = 'ratl-app-v12';
+var CACHE = 'ratl-app-v13';
 var SHELL = ['./', './index.html', './page.html', './shim.js', './qr.js', './app.js', './theme.js', './brand.json', './data.json', './kafala.html', './kafala-page.html', './kafala.js', './push.js',
   './fonts/thmanyahsans-Regular.woff2', './fonts/thmanyahsans-Medium.woff2', './fonts/thmanyahsans-Bold.woff2',
   './fonts/thmanyahserifdisplay-Regular.woff2', './fonts/thmanyahserifdisplay-Bold.woff2', './icons/icon-192.png'];

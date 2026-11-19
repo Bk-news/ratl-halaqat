@@ -334,6 +334,49 @@ body.dark{background:#1C140B}
   .rh-tools .rh-btn{flex:1 1 0;min-width:0;padding:0 8px}
   .rh-tools .rh-ic{flex:none}
 }
+
+/* كروت الحلقات مثل صفحة المتبرعين */
+.rh-kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.rh-kgrid .rh-empty{grid-column:1/-1}
+.rh-kc{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:18px;display:flex;flex-direction:column;box-shadow:0 10px 24px var(--shadow)}
+.rh-kc .t{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.rh-kc .tg{font-size:12px;font-weight:700;border-radius:99px;padding:4px 11px;background:var(--menbg);color:var(--men)}
+.rh.dark .rh-kc .tg{color:#DDB76C}
+.rh-kc .st{font-size:13px;color:var(--muted)}
+.rh-kc .near{font-size:11px;font-weight:700;color:#2B1C0C;background:#E8C27A;border-radius:99px;padding:3px 9px}
+.rh-kc h3{margin:12px 0 2px;font-size:20px;color:var(--head);font-weight:700}
+.rh-kc .pl{font-size:13px;color:var(--muted)}
+.rh-kc .row{display:flex;align-items:flex-end;justify-content:space-between;margin-top:18px;gap:8px}
+.rh-kc .pc{font-family:TD,serif;font-size:36px;line-height:1;color:var(--head);direction:ltr}
+.rh-kc .lf{font-size:13px;color:var(--muted)}.rh-kc .lf b{color:var(--head)}
+.rh-kc .bar{height:8px;background:var(--line);border-radius:4px;margin-top:10px;overflow:hidden}
+.rh-kc .bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.rh-kc .go{margin-top:16px;height:46px;border-radius:23px;border:0;background:var(--ink);color:var(--inkFg);font-family:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.rh-kc .ac{display:flex;gap:8px;margin-top:8px}
+.rh-kc .sm{flex:1;height:38px;border-radius:19px;border:1px solid var(--line2);background:transparent;color:var(--head);font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.rh-kc .sm.wa{background:#1B7F5B;border-color:#1B7F5B;color:#fff}
+.rh-kc.w{background:#F6E9E8;border-color:#E2C4C1}
+.rh-kc.w .tg{background:#F0D8D6;color:#7A2E2A}
+.rh-kc.w h3,.rh-kc.w .pc,.rh-kc.w .lf b{color:#5E1F22}
+.rh-kc.w .pl,.rh-kc.w .st,.rh-kc.w .lf{color:#7E4E4F}
+.rh-kc.w .bar{background:#EBD3D1}.rh-kc.w .bar i{background:#7A2E2A}
+.rh-kc.w .go{background:#7A2E2A;color:#fff}
+.rh-kc.w .sm:not(.wa){border-color:#E2C4C1;color:#5E1F22}
+.rh-kc.done{background:var(--donebg);border-color:color-mix(in srgb,var(--done) 40%,transparent)}
+.rh-kc.done .tg{background:var(--panel);color:var(--done)}
+.rh-kc.done h3,.rh-kc.done .pc{color:var(--done)}
+.rh-kc.done .st.ok{color:var(--done);font-weight:700}
+.rh-kc.done .bar{background:color-mix(in srgb,var(--done) 20%,transparent)}.rh-kc.done .bar i{background:var(--done)}
+.rh-kc.done .go{background:var(--done);color:#fff}
+.rh.dark .rh-kc.w{background:#2B1517;border-color:#4A2427}
+.rh.dark .rh-kc.w .tg{background:#3D1D1F;color:#E3A49B}
+.rh.dark .rh-kc.w h3,.rh.dark .rh-kc.w .pc,.rh.dark .rh-kc.w .lf b{color:#F6DEDD}
+.rh.dark .rh-kc.w .pl,.rh.dark .rh-kc.w .st,.rh.dark .rh-kc.w .lf{color:#C9A0A0}
+.rh.dark .rh-kc.w .bar{background:#4A2427}.rh.dark .rh-kc.w .bar i{background:#D98C82}
+.rh.dark .rh-kc.w .go{background:#C46A62;color:#fff}
+.rh.dark .rh-kc.w .sm:not(.wa){border-color:#4A2427;color:#F6DEDD}
+.rh.dark .rh-kc.done .go{color:#11261C}
+@media (max-width:700px){.rh-kgrid{gap:12px}}
 </style>
 <div class="rh" id="rh-root" lang="ar">
   <div class="rh-pat" data-draw="pattern" aria-hidden="true"></div>
@@ -456,7 +499,7 @@ body.dark{background:#1C140B}
       <button type="button" class="rh-band" data-band="75" aria-pressed="false">75٪ <small>قربت تكتمل</small> <i>—</i></button>
       <button type="button" class="rh-band done" data-band="100" aria-pressed="false">100٪ <small>مكتملة</small> <i>—</i></button>
     </div>
-    <div class="rh-tbl" data-draw="cards"></div>
+    <div class="rh-kgrid" data-draw="cards"></div>
     <div class="rh-moreb" data-draw="cards_more"></div>
   </section>
   <div class="rh-two">

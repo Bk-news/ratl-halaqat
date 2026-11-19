@@ -426,29 +426,33 @@ dash.calc('zero', {
     var rows = filtered() || [];
     if (!rows.length) { var e1 = document.createElement('div'); e1.className = 'rh-empty'; e1.textContent = 'ما فيه حلقات تطابق البحث'; el.appendChild(e1); return; }
     var mk = function (tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
-    var hd = mk('div', 'rh-tr hd'); ['الحلقة', 'المجمع / الدار', 'الواصل', 'النسبة', 'إجراءات'].forEach(function (t) { hd.appendChild(mk('span', null, t)); }); el.appendChild(hd);
-    var lim = RH.showAll ? rows.length : 40;
+    var lim = RH.showAll ? rows.length : 24;
     rows.slice(0, lim).forEach(function (h) {
       var women = h.section === 'نساء', done = h.pct >= 100;
-      var r = mk('div', 'rh-tr' + (women ? ' w' : '') + (done ? ' done' : ''));
-      var nm = mk('div', 'nm');
-      nm.appendChild(mk('span', 'tg' + (!done && h.pct >= 75 ? ' near' : ''), done ? 'مكتملة' : (h.pct >= 75 ? 'قربت تكتمل' : h.section)));
-      nm.appendChild(mk('b', null, h.name)); r.appendChild(nm);
-      r.appendChild(mk('div', 'pl', h.place + ' · ' + h.students + (women ? ' طالبة' : ' طالب')));
-      r.appendChild(mk('div', 'rc', RH.fmt(h.received) + ' من ' + RH.fmt(h.cost)));
-      var pr = mk('div', 'pr'); pr.appendChild(barEl(h.pct, women ? 'w' : 'm')); pr.appendChild(mk('span', 'pc', h.pct + '%')); r.appendChild(pr);
-      var pc2 = mk('span', 'pc', h.pct + '%'); r.insertBefore(pc2, r.children[1]);
+      var c = mk('article', 'rh-kc' + (women ? ' w' : '') + (done ? ' done' : ''));
+      var t = mk('div', 't'); t.appendChild(mk('span', 'tg', h.section));
+      if (done) t.appendChild(mk('span', 'st ok', '✓ مكتملة'));
+      else if (h.pct >= 75) t.appendChild(mk('span', 'near', 'قربت تكتمل'));
+      else t.appendChild(mk('span', 'st', h.students + (women ? ' طالبة' : ' طالب')));
+      c.appendChild(t);
+      c.appendChild(mk('h3', null, h.name)); c.appendChild(mk('div', 'pl', h.place));
+      var row = mk('div', 'row'); row.appendChild(mk('span', 'pc', h.pct + '%'));
+      var lf = mk('span', 'lf');
+      if (done) lf.textContent = 'وصل ' + RH.fmt(h.received) + ' ريال';
+      else { lf.appendChild(document.createTextNode('باقي ')); lf.appendChild(mk('b', null, RH.fmt(h.remaining))); lf.appendChild(document.createTextNode(' ريال')); }
+      row.appendChild(lf); c.appendChild(row);
+      var bar = mk('div', 'bar'), bi = mk('i'); bi.style.width = Math.max(h.pct > 0 ? 2 : 0, Math.min(100, h.pct)) + '%'; bar.appendChild(bi); c.appendChild(bar);
+      var op = mk('button', 'go', 'صفحة الحلقة'); op.type = 'button'; op.addEventListener('click', function () { window.rhOpen(h.id); }); c.appendChild(op);
       var ac = mk('div', 'ac');
-      var op = mk('button', 'rh-btn p', 'صفحة الحلقة'); op.type = 'button'; op.addEventListener('click', function () { window.rhOpen(h.id); });
-      var cp = mk('button', 'rh-btn', 'نسخ الرابط'); cp.type = 'button';
+      var cp = mk('button', 'sm', 'نسخ الرابط'); cp.type = 'button';
       cp.addEventListener('click', function () { copyText(storeOf(h)).then(function () { cp.textContent = 'تم النسخ ✓'; }, function () { window.open(storeOf(h), '_blank'); }); setTimeout(function () { cp.textContent = 'نسخ الرابط'; }, 2200); });
-      var wa = link('واتساب', 'https://wa.me/?text=' + encodeURIComponent(shareMsg(h)), 'wa');
-      ac.appendChild(op); ac.appendChild(cp); ac.appendChild(wa); r.appendChild(ac);
-      el.appendChild(r);
+      var wa = mk('a', 'sm wa', 'واتساب'); wa.href = 'https://wa.me/?text=' + encodeURIComponent(shareMsg(h)); wa.target = '_blank'; wa.rel = 'noopener';
+      ac.appendChild(cp); ac.appendChild(wa); c.appendChild(ac);
+      el.appendChild(c);
     });
   });
   dash.draw('cards_more', function (el) {
-    el.replaceChildren(); var rows = filtered(); if (!rows || rows.length <= 40) return;
+    el.replaceChildren(); var rows = filtered(); if (!rows || rows.length <= 24) return;
     var b = document.createElement('button'); b.type = 'button'; b.textContent = RH.showAll ? 'عرض أقل' : 'عرض كل الحلقات (' + rows.length + ')';
     b.addEventListener('click', function () { RH.showAll = !RH.showAll; dash.draw('cards'); dash.draw('cards_more'); if (!RH.showAll) document.getElementById('list').scrollIntoView({ block: 'start' }); });
     el.appendChild(b);
