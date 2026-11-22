@@ -70,6 +70,9 @@ body.dark .logo img{filter:brightness(0) invert(1) sepia(.3)}
 .pin.m{background:#8C5E25}.pin.w{background:#7A2E2A}.pin.h{background:#4D6B4A;width:22px;height:22px}
 .pin.sel{outline:3px solid #E8C27A}
 .leaflet-top.leaflet-left{top:0}
+.leaflet-tile-pane{filter:sepia(.25) saturate(.85)}
+body.dark .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) sepia(.35) saturate(.7)}
+body.dark #map{background:#1C140B}
 .leaflet-container{font-family:TS,system-ui,sans-serif}
 body.dark .leaflet-control-zoom a{background:#271C10;color:#F3EADB;border-color:#3B2814}
 body.dark .leaflet-control-attribution{background:rgba(28,20,11,.8);color:#B9AC98}
@@ -203,13 +206,12 @@ body.dark .leaflet-control-attribution a{color:#DDB76C}
   function applyTheme() {
     document.body.classList.toggle('dark', dark); $('sun').hidden = !dark; $('moon').hidden = dark;
     document.querySelector('meta[name=theme-color]').content = dark ? '#1C140B' : '#F3EADB';
-    if (tiles) tiles.setUrl(tileUrl());
   }
-  function tileUrl() { return 'https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png'; }
+  function tileUrl() { return 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'; }
 
   var map = L.map('map', { zoomControl: true, attributionControl: true }).setView([17.54, 44.24], 12);
   map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
-  var tiles = L.tileLayer(tileUrl(), { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>' }).addTo(map);
+  var tiles = L.tileLayer(tileUrl(), { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
   applyTheme();
   $('mode').onclick = function () { dark = !dark; try { localStorage.setItem('k-theme', dark ? 'dark' : 'light'); } catch (e) {} applyTheme(); };
 
