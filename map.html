@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>خريطة حلقات رتّل — جمعية رتّل لتحفيظ القرآن الكريم بنجران</title>
+<meta name="description" content="خريطة مجمعات ودور وحلقات جمعية رتّل لتحفيظ القرآن الكريم بنجران: الموقع، طريقة التسجيل، وكفالة الحلقات.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:site_name" content="جمعية رتّل لتحفيظ القرآن الكريم بنجران">
+<meta property="og:title" content="خريطة حلقات رتّل في نجران">
+<meta property="og:description" content="اعرف أقرب حلقة لك، سجّل فيها، أو اكفلها.">
+<meta property="og:url" content="https://bk-news.github.io/ratl-halaqat/map.html">
+<meta property="og:image" content="https://bk-news.github.io/ratl-halaqat/icons/og-kafala.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#1C140B">
+<link rel="preload" href="fonts/thmanyahsans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<style>
+@font-face{font-family:TS;font-weight:400;font-display:swap;src:url("fonts/thmanyahsans-Regular.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:500;font-display:swap;src:url("fonts/thmanyahsans-Medium.woff2") format("woff2")}
+@font-face{font-family:TS;font-weight:700;font-display:swap;src:url("fonts/thmanyahsans-Bold.woff2") format("woff2")}
+@font-face{font-family:TD;font-weight:700;font-display:swap;src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2")}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{--bg:#F3EADB;--panel:#FBF8F2;--line:#E7D6BC;--line2:#DCC29B;--fg:#2B2925;--head:#3B2814;--muted:#6E5A43;--accent:#A8772F;--chip:#EBDDC4;--chipFg:#8C5E25;
+  --ink:#3B2814;--inkFg:#F3EADB;--men:#8C5E25;--women:#7A2E2A;--mosq:#4D6B4A;--done:#1B7F5B;--donebg:#DCEEE5;--shadow:rgba(59,40,20,.16);
+  background:var(--bg);color:var(--fg);font-family:TS,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;display:flex;flex-direction:column}
+body.dark{--bg:#1C140B;--panel:#271C10;--line:#3B2814;--line2:#4C3720;--fg:#F3EADB;--head:#FBF8F2;--muted:#B9AC98;--accent:#DDB76C;--chip:#2E2213;--chipFg:#DDB76C;
+  --ink:#E8C27A;--inkFg:#1C140B;--men:#DDB76C;--women:#D98C82;--mosq:#93B98E;--done:#4FB58C;--donebg:#11261C;--shadow:rgba(0,0,0,.45)}
+a{color:var(--accent)}
+.top{position:relative;isolation:isolate;padding:12px clamp(12px,3vw,28px) 10px;border-bottom:1px solid var(--line);background:var(--bg);z-index:5}
+.pat{position:absolute;inset:0;z-index:-1;opacity:.07;background-size:120px;pointer-events:none}
+body.dark .pat{opacity:.05}
+.row1{display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.logo img{width:46px;height:38px;object-fit:contain;display:block}
+body.dark .logo img{filter:brightness(0) invert(1) sepia(.3)}
+.brand b{display:block;font-family:TD,TS,serif;font-size:19px;color:var(--head);line-height:1.2}
+.brand small{display:block;font-size:12px;color:var(--muted)}
+.tools{margin-inline-start:auto;display:flex;gap:8px}
+.ic{width:42px;height:42px;border-radius:50%;border:1px solid var(--line2);background:var(--panel);color:var(--head);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;text-decoration:none}
+.ic svg{width:20px;height:20px}
+.row2{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:36px;padding:0 14px;border-radius:18px;border:1px solid var(--line2);background:var(--panel);color:var(--head);font:500 14px TS,system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chip.on{background:var(--ink);color:var(--inkFg);border-color:var(--ink)}
+.search{flex:1 1 220px;max-width:340px;height:36px;border-radius:18px;border:1px solid var(--line2);background:var(--panel);color:var(--fg);padding:0 14px;font:14px TS,system-ui,sans-serif}
+.search::placeholder{color:var(--muted)}
+.main{flex:1;display:flex;min-height:0;position:relative}
+#map{flex:1;min-height:0;background:var(--bg)}
+.list{width:360px;flex:none;overflow-y:auto;border-inline-start:1px solid var(--line);background:var(--bg);padding:10px}
+.li{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px;cursor:pointer;color:var(--fg);font:inherit}
+.li:hover,.li.sel{border-color:var(--accent)}
+.li .dot{margin-top:5px}
+.li b{display:block;font-size:15px;color:var(--head)}
+.li small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.d-m{background:var(--men)}.d-w{background:var(--women)}.d-h{background:var(--mosq)}
+.empty{color:var(--muted);text-align:center;padding:30px 10px}
+/* markers */
+.pin{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+.pin span{transform:rotate(45deg);color:#fff;font:700 13px TS,sans-serif}
+.pin.m{background:#8C5E25}.pin.w{background:#7A2E2A}.pin.h{background:#4D6B4A;width:22px;height:22px}
+.pin.sel{outline:3px solid #E8C27A}
+.leaflet-top.leaflet-left{top:0}
+.leaflet-container{font-family:TS,system-ui,sans-serif}
+body.dark .leaflet-control-zoom a{background:#271C10;color:#F3EADB;border-color:#3B2814}
+body.dark .leaflet-control-attribution{background:rgba(28,20,11,.8);color:#B9AC98}
+body.dark .leaflet-control-attribution a{color:#DDB76C}
+/* sheet */
+.sheet{position:absolute;z-index:1000;inset-inline-start:12px;top:12px;bottom:12px;width:380px;max-width:calc(100% - 24px);background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+.sh-head{padding:16px 16px 12px;border-bottom:1px solid var(--line);position:relative}
+.sh-x{position:absolute;inset-inline-end:10px;top:10px;width:34px;height:34px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:12px;background:var(--chip);color:var(--chipFg)}
+.sh-head h2{margin:8px 0 4px;font:700 20px/1.35 TD,TS,serif;color:var(--head);padding-inline-end:36px}
+.sh-head p{margin:2px 0;font-size:13.5px;color:var(--muted)}
+.sh-body{overflow-y:auto;padding:14px 16px 18px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{height:44px;border-radius:22px;border:1px solid var(--line2);background:var(--bg);color:var(--head);text-decoration:none;font:700 14px TS,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
+.btn svg{width:18px;height:18px}
+.btn.pri{background:var(--ink);color:var(--inkFg);border-color:var(--ink)}
+.btn.full{grid-column:1/-1}
+.sec{margin-top:18px}
+.sec h3{margin:0 0 4px;font-size:15px;color:var(--head)}
+.sec .sub{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.hq{border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px;background:var(--bg)}
+.hq-top{display:flex;align-items:center;gap:8px}
+.hq-top b{font-size:14.5px;color:var(--head);flex:1}
+.hq-top small{font-size:12px;color:var(--muted)}
+.bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;margin:8px 0 6px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.hq-meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.hq-meta span{flex:1}
+.give{height:32px;padding:0 16px;border-radius:16px;background:var(--ink);color:var(--inkFg)!important;text-decoration:none;font:700 13px TS,sans-serif;display:inline-flex;align-items:center}
+.ok{font-weight:700;color:var(--done);background:var(--donebg);padding:4px 10px;border-radius:12px;font-size:12.5px}
+.note{font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--line2);border-radius:12px;padding:10px 12px;margin-top:14px}
+@media (max-width:860px){
+  .list{display:none}
+  .sheet{inset-inline:0;top:auto;bottom:0;width:auto;max-width:none;max-height:72%;border-radius:20px 20px 0 0;border-bottom:0}
+  .sh-head::before{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--line2);margin:-6px auto 10px}
+  .brand b{font-size:17px}
+  .search{max-width:none}
+  .listbtn{display:inline-flex!important}
+  body.showlist .list{display:block;position:absolute;inset:0;width:auto;z-index:900;border:0}
+}
+.listbtn{display:none!important}
+</style>
+</head>
+<body class="dark">
+<header class="top">
+  <span class="pat" id="pat"></span>
+  <div class="row1">
+    <a class="brand" href="kafala.html"><span class="logo" id="logo"></span><span><b>خريطة حلقات رتّل</b><small>جمعية رتّل لتحفيظ القرآن الكريم بنجران</small></span></a>
+    <div class="tools">
+      <button type="button" class="ic listbtn" id="listbtn" aria-label="عرض القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
+      <button type="button" class="ic" id="mode" aria-label="تبديل الثيم">
+        <svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        <svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="chips" id="chips">
+      <button class="chip on" data-f="">الكل</button>
+      <button class="chip" data-f="m"><i class="d-m"></i>مجمعات الرجال</button>
+      <button class="chip" data-f="w"><i class="d-w"></i>الدور النسائية</button>
+      <button class="chip" data-f="h"><i class="d-h"></i>حلقات الجوامع</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="ابحث باسم المجمع أو الدار أو الحي…" aria-label="بحث">
+  </div>
+</header>
+<div class="main">
+  <div id="map" role="application" aria-label="الخريطة"></div>
+  <aside class="list" id="list" aria-label="قائمة المواقع"></aside>
+  <section class="sheet" id="sheet" hidden aria-live="polite"></section>
+</div>
+<script>
+(function () {
+  var REG = '966537033553', REG_SHOW = '0537033553';
+  var LIVE = 'https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec';
+  var W_HOURS = 'من الأحد إلى الأربعاء، 4:00 – 6:00 مساءً';
+  var FARD = 'الحلقات الفردية بجمعية رتّل';
+  // t: m = مجمع رجال، w = دار نسائية، h = حلقة في جامع
+  // place = اسم المكان في جدول الكفالات، names = أسماء الحلقات (للحلقات الفردية)
+  var PINS = [
+    {id:'furqan',t:'m',n:'مجمع الفرقان',at:'جامع آل الجميح',d:'المخيم',lat:17.556960,lng:44.219830,place:'مجمع الفرقان'},
+    {id:'bayan',t:'m',n:'مجمع البيان',at:'جامع الإمام محمد بن سعود',d:'الفيصلية',lat:17.524929,lng:44.188927,place:'مجمع البيان'},
+    {id:'aqwam',t:'m',n:'مجمع أقوم',at:'جامع محمد بن صالح الوادعي',d:'الفهد الشمالي',lat:17.575071,lng:44.229370,place:'مجمع أقوم'},
+    {id:'azzam',t:'m',n:'مجمع العزّام',at:'جامع سليمان العزام',d:'الأمير مشعل',lat:17.551797,lng:44.229557,place:'مجمع العزّام'},
+    {id:'rahma',t:'m',n:'مجمع الرحمة',at:'جامع الإمام الشافعي',d:'الفهد الجنوبي',lat:17.565887,lng:44.215851,place:'مجمع الرحمة'},
+    {id:'ibnbaz',t:'m',n:'مجمع ابن باز',at:'جامع عبدالله بن جعفر',d:'العريسة',lat:17.560698,lng:44.309822,place:'مجمع ابن باز'},
+    {id:'othaimeen',t:'m',n:'مجمع ابن عثيمين',at:'جامع محمد بن عثيمين',d:'الخالدية',lat:17.5425375,lng:44.230485,place:'مجمع ابن عثيمين'},
+
+    {id:'jalawi',t:'w',n:'دار والدة الأمير جلوي بن مساعد',d:'الفهد الجنوبي',lat:17.566073,lng:44.215443,place:'دار والدة الأمير جلوي بن عبدالعزيز'},
+    {id:'wadei',t:'w',n:'دار فاطمة الوادعي',d:'الضباط',lat:17.529519,lng:44.206584,place:'دار فاطمة الوادعي'},
+    {id:'khadija',t:'w',n:'دار خديجة بنت خويلد',d:'الغويلا',lat:17.569668,lng:44.442368,place:'دار خديجة بنت خويلد'},
+    {id:'dughaish1',t:'w',n:'دار زهراء آل دغيش 1',d:'الأمير مشعل',lat:17.551097,lng:44.229044,place:'دار زهراء آل دغيش 1'},
+    {id:'dughaish2',t:'w',n:'دار زهراء آل دغيش 2',d:'الفهد الشمالي',lat:17.574051,lng:44.225180,place:'دار زهراء آل دغيش 2'},
+    {id:'dughaish3',t:'w',n:'دار زهراء آل دغيش 3',d:'الفهد الجنوبي',lat:17.564444,lng:44.209278,place:'دار زهراء آل دغيش 3'},
+    {id:'thunayan',t:'w',n:'دار الشيخ صالح بن ثويني الثنيان',d:'الفهد الشمالي',lat:17.584855,lng:44.225604,place:'دار صالح الثنيان'},
+    {id:'jumaih',t:'w',n:'دار آل الجميح',d:'المخيم',lat:17.556031,lng:44.219845,place:'دار آل الجميح'},
+    {id:'zahra',t:'w',n:'دار الزهراء',d:'الشرفة',lat:17.515436,lng:44.277825,place:'دار الزهراء'},
+    {id:'ihsan',t:'w',n:'دار الإحسان',d:'العريسة',lat:17.560088,lng:44.304966,place:'دار الإحسان'},
+    {id:'noor',t:'w',n:'دار النور',d:'الضباط',lat:17.535033,lng:44.205657,place:'دار النور'},
+    {id:'khansa',t:'w',n:'دار الخنساء',d:'شعب رير',lat:17.463125,lng:44.162434,place:'دار الخنساء'},
+
+    {id:'h-olayan',t:'h',n:'حلقة جامع عليّان العمر',lat:17.530504,lng:44.206200,place:FARD,names:['عليّان العمر']},
+    {id:'h-alfaris',t:'h',n:'حلقة جامع أم إبراهيم الفارس',lat:17.535547,lng:44.210680,place:'جامع أم إبراهيم الفارس'},
+    {id:'h-affan',t:'h',n:'حلقة جامع يوسف محمد عفان',lat:17.534690,lng:44.203343},
+    {id:'h-khudri',t:'h',n:'حلقة مسجد أبي سعيد الخدري',lat:17.528204,lng:44.196570,place:FARD,names:['أبو سعيد الخدري']},
+    {id:'h-muawiya',t:'h',n:'حلقة مسجد معاوية بن أبي سفيان',lat:17.529009,lng:44.202243,place:FARD,names:['معاوية بن أبي سفيان']},
+    {id:'h-abuhanifa',t:'h',n:'حلقة جامع أبي حنيفة',lat:17.543833,lng:44.214687},
+    {id:'h-luhaidan',t:'h',n:'حلقة جامع أبي عبدالله اللحيدان',lat:17.559651,lng:44.268585},
+    {id:'h-ibnauf',t:'h',n:'حلقة جامع عبدالرحمن بن عوف',lat:17.582335,lng:44.244748},
+    {id:'h-matrudi',t:'h',n:'حلقة جامع المطرودي',lat:17.551993,lng:44.295519},
+    {id:'h-khudair',t:'h',n:'حلقة مسجد إبراهيم الخضير',lat:17.513183,lng:44.277942},
+    {id:'h-sahaba',t:'h',n:'حلقة جامع الصحابة',lat:17.569860,lng:44.442442},
+    {id:'h-hafsa',t:'h',n:'حلقة مسجد حفصة بنت عمر',lat:17.572325,lng:44.418932},
+    {id:'h-nurayn',t:'h',n:'حلقة مسجد ذو النورين',lat:17.516925,lng:44.157338,place:FARD,names:['ذو النورين']},
+    {id:'h-bishr',t:'h',n:'حلقة مسجد بشر بن الحارث',lat:17.491436,lng:44.137854,place:FARD,names:['بشر بن الحارث']},
+    {id:'h-siddiq',t:'h',n:'حلقة جامع أبو بكر الصديق',lat:17.514225,lng:44.152196,place:FARD,names:['أبو بكر الصديق']},
+    {id:'h-dughaither',t:'h',n:'حلقة جامع نورة الدغيثر',lat:17.466373,lng:44.164254},
+    {id:'h-hasanain',t:'h',n:'حلقة مسجد أبو الحسنين',lat:17.520907,lng:44.148071},
+    {id:'h-hasan',t:'h',n:'حلقة جامع الحسن بن علي (أبا السعود)',lat:17.489500,lng:44.129089},
+    {id:'h-sanani',t:'h',n:'حلقة مسجد الإمام عبدالرزاق الصنعاني',lat:17.571984,lng:44.217017,place:FARD,names:['الإمام عبدالرزاق الصنعاني']}
+  ];
+  var TYPE = {m:'مجمع حلقات رجال',w:'دار نسائية',h:'حلقة رجال في جامع'};
+  var ROWS = [], FILTER = '', Q = '', SEL = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n) { return Math.round(Number(n) || 0).toLocaleString('en-US'); };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  var norm = function (s) { return String(s || '').replace(/[ًٌٍَُِّْـ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').trim(); };
+
+  // ثيم: الداكن هو الأساس
+  var dark = true; try { dark = localStorage.getItem('k-theme') !== 'light'; } catch (e) {}
+  function applyTheme() {
+    document.body.classList.toggle('dark', dark); $('sun').hidden = !dark; $('moon').hidden = dark;
+    document.querySelector('meta[name=theme-color]').content = dark ? '#1C140B' : '#F3EADB';
+    if (tiles) tiles.setUrl(tileUrl());
+  }
+  function tileUrl() { return 'https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'rastertiles/voyager') + '/{z}/{x}/{y}{r}.png'; }
+
+  var map = L.map('map', { zoomControl: true, attributionControl: true }).setView([17.54, 44.24], 12);
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  var tiles = L.tileLayer(tileUrl(), { maxZoom: 19, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>' }).addTo(map);
+  applyTheme();
+  $('mode').onclick = function () { dark = !dark; try { localStorage.setItem('k-theme', dark ? 'dark' : 'light'); } catch (e) {} applyTheme(); };
+
+  function icon(p, sel) {
+    var s = p.t === 'h' ? 22 : 30;
+    return L.divIcon({ className: '', iconSize: [s, s], iconAnchor: [s / 2, s], html: '<div class="pin ' + p.t + (sel ? ' sel' : '') + '"><span>' + (p.t === 'h' ? '' : (p.t === 'm' ? 'م' : 'د')) + '</span></div>' });
+  }
+  PINS.forEach(function (p) {
+    p.mk = L.marker([p.lat, p.lng], { icon: icon(p), title: p.n, alt: p.n }).addTo(map);
+    p.mk.on('click', function () { open(p, true); });
+  });
+
+  function halaqatOf(p) {
+    if (!p.place) return [];
+    return ROWS.filter(function (r) {
+      if (r.place !== p.place) return false;
+      if (p.names && p.names.indexOf(r.name) < 0) return false;
+      return /^https?:\/\//.test(r.store || '');   // اللي رابطه موجود فقط
+    }).map(function (r) {
+      var pct = r.cost > 0 ? Math.min(Math.round(r.received / r.cost * 1000) / 10, 100) : 0;
+      return { name: r.name, students: r.students, cost: r.cost, received: r.received, remaining: Math.max(r.cost - r.received, 0), pct: pct, store: r.store, women: r.section === 'نساء' };
+    }).sort(function (a, b) { return (a.pct >= 100) - (b.pct >= 100) || b.pct - a.pct; });
+  }
+
+  var IC = {
+    map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+    wa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.5z"/><path d="M9 9.5c.3 2.3 2.2 4.3 4.6 4.8l1.1-1.1 1.8.8-.3 1.6c-3.8.2-7.6-3.4-7.6-7.4l1.6-.4.9 1.8z"/></svg>',
+    tel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
+    share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>'
+  };
+  function a(cls, href, html, blank) { var e = el('a', cls); e.href = href; e.innerHTML = html; if (blank) { e.target = '_blank'; e.rel = 'noopener'; } return e; }
+
+  function open(p, fly) {
+    if (SEL && SEL !== p) SEL.mk.setIcon(icon(SEL));
+    SEL = p; p.mk.setIcon(icon(p, true)); p.mk.setZIndexOffset(1000);
+    if (fly) map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 15), { duration: .6 });
+    try { history.replaceState(null, '', '#' + p.id); } catch (e) {}
+    var s = $('sheet'); s.replaceChildren(); s.hidden = false;
+    var h = el('div', 'sh-head');
+    var x = el('button', 'ic sh-x'); x.type = 'button'; x.setAttribute('aria-label', 'إغلاق'); x.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    x.onclick = close; h.appendChild(x);
+    var tg = el('span', 'tag'); tg.appendChild(el('i', 'dot d-' + p.t)); tg.appendChild(document.createTextNode(TYPE[p.t])); h.appendChild(tg);
+    h.appendChild(el('h2', null, p.n));
+    if (p.at) h.appendChild(el('p', null, 'في ' + p.at));
+    if (p.d) h.appendChild(el('p', null, 'حي ' + p.d));
+    if (p.t === 'w') h.appendChild(el('p', null, '🕓 ' + W_HOURS));
+    s.appendChild(h);
+    var b = el('div', 'sh-body');
+    var acts = el('div', 'acts');
+    acts.appendChild(a('btn pri full', 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng, IC.map + 'افتح الموقع في قوقل ماب', true));
+    b.appendChild(acts);
+
+    var reg = el('div', 'sec');
+    reg.appendChild(el('h3', null, 'التسجيل في ' + (p.t === 'w' ? 'الدار' : p.t === 'm' ? 'المجمع' : 'الحلقة')));
+    reg.appendChild(el('p', 'sub', 'تواصل مع الشؤون التعليمية بالجمعية على الرقم ' + REG_SHOW));
+    var ra = el('div', 'acts');
+    var msg = 'السلام عليكم، أبغى أسجّل في ' + p.n + (p.d ? ' بحي ' + p.d : '') + '، وش الطريقة؟';
+    ra.appendChild(a('btn', 'https://wa.me/' + REG + '?text=' + encodeURIComponent(msg), IC.wa + 'واتساب', true));
+    ra.appendChild(a('btn', 'tel:+' + REG, IC.tel + 'اتصال'));
+    reg.appendChild(ra); b.appendChild(reg);
+
+    var hs = halaqatOf(p);
+    if (hs.length) {
+      var sec = el('div', 'sec');
+      sec.appendChild(el('h3', null, 'اكفل حلقة هنا'));
+      sec.appendChild(el('p', 'sub', 'تبرعك يروح للحلقات — السهم 50 ريال أو بأي مبلغ.'));
+      hs.forEach(function (q) {
+        var c = el('div', 'hq'), t = el('div', 'hq-top');
+        t.appendChild(el('b', null, 'حلقة ' + q.name));
+        if (q.students) t.appendChild(el('small', null, q.students + (q.women ? ' طالبة' : ' طالب')));
+        c.appendChild(t);
+        var bar = el('div', 'bar'), bi = el('i'); bi.style.width = q.pct + '%'; bar.appendChild(bi); c.appendChild(bar);
+        var m = el('div', 'hq-meta');
+        if (q.pct >= 100) { m.appendChild(el('span', null, 'اكتملت كفالتها ' + fmt(q.cost) + ' ريال')); m.appendChild(el('em', 'ok', 'مكفولة ✓')); }
+        else { m.appendChild(el('span', null, q.pct + '% · باقي ' + fmt(q.remaining) + ' ريال')); m.appendChild(a('give', q.store, 'تبرّع', true)); }
+        c.appendChild(m); sec.appendChild(c);
+      });
+      b.appendChild(sec);
+    }
+    var sh = el('div', 'acts'); sh.style.marginTop = '16px';
+    var sb = el('button', 'btn full'); sb.type = 'button'; sb.innerHTML = IC.share + 'شارك هذا الموقع';
+    sb.onclick = function () {
+      var url = location.origin + location.pathname + '#' + p.id, txt = p.n + ' — جمعية رتّل لتحفيظ القرآن الكريم بنجران';
+      if (navigator.share) navigator.share({ title: txt, url: url }).catch(function () {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(url).then(function () { sb.lastChild.textContent = 'انسخ الرابط ✓'; });
+    };
+    sh.appendChild(sb); b.appendChild(sh);
+    s.appendChild(b);
+    document.body.classList.remove('showlist');
+    renderList();
+  }
+  function close() {
+    $('sheet').hidden = true;
+    if (SEL) { SEL.mk.setIcon(icon(SEL)); SEL.mk.setZIndexOffset(0); SEL = null; }
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    renderList();
+  }
+
+  function visible(p) {
+    if (FILTER && p.t !== FILTER) return false;
+    if (!Q) return true;
+    return norm(p.n + ' ' + (p.d || '') + ' ' + (p.at || '')).indexOf(norm(Q)) >= 0;
+  }
+  function renderList() {
+    var L2 = $('list'); L2.replaceChildren();
+    var vs = PINS.filter(visible);
+    if (!vs.length) { L2.appendChild(el('div', 'empty', 'ما فيه نتائج')); return; }
+    vs.forEach(function (p) {
+      var it = el('button', 'li' + (SEL === p ? ' sel' : '')); it.type = 'button';
+      it.appendChild(el('i', 'dot d-' + p.t));
+      var tx = el('span'); tx.appendChild(el('b', null, p.n));
+      var n = halaqatOf(p).filter(function (q) { return q.pct < 100; }).length;
+      tx.appendChild(el('small', null, [p.d ? 'حي ' + p.d : (p.at || TYPE[p.t]), n ? n + ' حلقة تنتظر الكفالة' : ''].filter(Boolean).join(' · ')));
+      it.appendChild(tx);
+      it.onclick = function () { open(p, true); };
+      L2.appendChild(it);
+    });
+  }
+  function applyFilter() {
+    var b = [];
+    PINS.forEach(function (p) { var v = visible(p); if (v) { p.mk.addTo(map); b.push([p.lat, p.lng]); } else map.removeLayer(p.mk); });
+    if (SEL && !visible(SEL)) close();
+    if (b.length && (FILTER || Q)) map.fitBounds(b, { padding: [40, 40], maxZoom: 15 });
+    renderList();
+  }
+  $('chips').onclick = function (e) {
+    var c = e.target.closest('.chip'); if (!c) return;
+    [].forEach.call(document.querySelectorAll('.chip'), function (x) { x.classList.toggle('on', x === c); });
+    FILTER = c.dataset.f; applyFilter();
+  };
+  $('q').oninput = function () { Q = this.value.trim(); applyFilter(); };
+  $('listbtn').onclick = function () { document.body.classList.toggle('showlist'); };
+  map.on('click', function () { if (window.innerWidth <= 860) close(); });
+
+  map.fitBounds(PINS.map(function (p) { return [p.lat, p.lng]; }), { padding: [30, 30] });
+  renderList();
+  var first = location.hash.slice(1);
+  var pf = PINS.filter(function (p) { return p.id === first; })[0];
+  if (pf) open(pf, true);
+
+  // الهوية + الأرقام (الجدول مباشرة، والنسخة المحفوظة احتياط)
+  function getJSON(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); }); }
+  getJSON('brand.json').then(function (br) {
+    if (br.pattern) $('pat').style.backgroundImage = 'url("' + br.pattern + '")';
+    if (br.logo) { var i = el('img'); i.src = br.logo; i.alt = 'شعار جمعية رتّل'; $('logo').appendChild(i); }
+  }).catch(function () {});
+  function setRows(rows) { ROWS = rows || []; renderList(); if (SEL) open(SEL, false); }
+  getJSON('data.json').then(function (j) { setRows(j.rows); }).catch(function () {});
+  function live() {
+    fetch(LIVE + '?t=' + Date.now(), { cache: 'no-store', redirect: 'follow' }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && Array.isArray(j.rows) && j.rows.length >= 70 && j.rows.every(function (h) { return h.name && (h.section === 'رجال' || h.section === 'نساء'); })) setRows(j.rows);
+    }).catch(function () {});
+  }
+  live(); setInterval(function () { if (document.visibilityState !== 'hidden') live(); }, 60000);
+})();
+</script>
+</body>
+</html>
