@@ -84,6 +84,7 @@ body.dark .leaflet-control-attribution a{color:#DDB76C}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:12px;background:var(--chip);color:var(--chipFg)}
 .sh-head h2{margin:8px 0 4px;font:700 20px/1.35 TD,TS,serif;color:var(--head);padding-inline-end:36px}
 .sh-head p{margin:2px 0;font-size:13.5px;color:var(--muted)}
+.sh-head p.mosq{margin-top:-2px;font-size:13px}
 .sh-body{overflow-y:auto;padding:14px 16px 18px}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .btn{height:44px;border-radius:22px;border:1px solid var(--line2);background:var(--bg);color:var(--head);text-decoration:none;font:700 14px TS,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
@@ -174,25 +175,25 @@ body.dark .leaflet-control-attribution a{color:#DDB76C}
     {id:'noor',t:'w',n:'دار النور',d:'الضباط',lat:17.535033,lng:44.205657,place:'دار النور'},
     {id:'khansa',t:'w',n:'دار الخنساء',d:'شعب رير',lat:17.463125,lng:44.162434,place:'دار الخنساء'},
 
-    {id:'h-olayan',t:'h',n:'حلقة جامع عليّان العمر',lat:17.530504,lng:44.206200,place:FARD,names:['عليّان العمر']},
-    {id:'h-alfaris',t:'h',n:'حلقة جامع أم إبراهيم الفارس',lat:17.535547,lng:44.210680,place:'جامع أم إبراهيم الفارس'},
-    {id:'h-affan',t:'h',n:'حلقة جامع يوسف محمد عفان',lat:17.534690,lng:44.203343},
-    {id:'h-khudri',t:'h',n:'حلقة مسجد أبي سعيد الخدري',lat:17.528204,lng:44.196570,place:FARD,names:['أبو سعيد الخدري']},
-    {id:'h-muawiya',t:'h',n:'حلقة مسجد معاوية بن أبي سفيان',lat:17.529009,lng:44.202243,place:FARD,names:['معاوية بن أبي سفيان']},
-    {id:'h-abuhanifa',t:'h',n:'حلقة جامع أبي حنيفة',lat:17.543833,lng:44.214687},
-    {id:'h-luhaidan',t:'h',n:'حلقة جامع أبي عبدالله اللحيدان',lat:17.559651,lng:44.268585},
-    {id:'h-ibnauf',t:'h',n:'حلقة جامع عبدالرحمن بن عوف',lat:17.582335,lng:44.244748},
-    {id:'h-matrudi',t:'h',n:'حلقة جامع المطرودي',lat:17.551993,lng:44.295519},
-    {id:'h-khudair',t:'h',n:'حلقة مسجد إبراهيم الخضير',lat:17.513183,lng:44.277942},
-    {id:'h-sahaba',t:'h',n:'حلقة جامع الصحابة',lat:17.569860,lng:44.442442},
-    {id:'h-hafsa',t:'h',n:'حلقة مسجد حفصة بنت عمر',lat:17.572325,lng:44.418932},
-    {id:'h-nurayn',t:'h',n:'حلقة مسجد ذو النورين',lat:17.516925,lng:44.157338,place:FARD,names:['ذو النورين']},
-    {id:'h-bishr',t:'h',n:'حلقة مسجد بشر بن الحارث',lat:17.491436,lng:44.137854,place:FARD,names:['بشر بن الحارث']},
-    {id:'h-siddiq',t:'h',n:'حلقة جامع أبو بكر الصديق',lat:17.514225,lng:44.152196,place:FARD,names:['أبو بكر الصديق']},
-    {id:'h-dughaither',t:'h',n:'حلقة جامع نورة الدغيثر',lat:17.466373,lng:44.164254},
-    {id:'h-hasanain',t:'h',n:'حلقة مسجد أبو الحسنين',lat:17.520907,lng:44.148071},
-    {id:'h-hasan',t:'h',n:'حلقة جامع الحسن بن علي (أبا السعود)',lat:17.489500,lng:44.129089},
-    {id:'h-sanani',t:'h',n:'حلقة مسجد الإمام عبدالرزاق الصنعاني',lat:17.571984,lng:44.217017,place:FARD,names:['الإمام عبدالرزاق الصنعاني']}
+    {id:'h-olayan',t:'h',n:'حلقة عليّان العمر',at:'جامع عليّان العمر',lat:17.530504,lng:44.206200,place:FARD,names:['عليّان العمر']},
+    {id:'h-alfaris',t:'h',n:'حلقتا سعيد بن خالد وسنان بن أبي سنان',at:'جامع أم إبراهيم الفارس',lat:17.535547,lng:44.210680,place:'جامع أم إبراهيم الفارس'},
+    {id:'h-affan',t:'h',n:'حلقة يوسف محمد عفان',at:'جامع يوسف محمد عفان',lat:17.534690,lng:44.203343},
+    {id:'h-khudri',t:'h',n:'حلقة أبو سعيد الخدري',at:'مسجد أبي سعيد الخدري',lat:17.528204,lng:44.196570,place:FARD,names:['أبو سعيد الخدري']},
+    {id:'h-muawiya',t:'h',n:'حلقة معاوية بن أبي سفيان',at:'مسجد معاوية بن أبي سفيان',lat:17.529009,lng:44.202243,place:FARD,names:['معاوية بن أبي سفيان']},
+    {id:'h-abuhanifa',t:'h',n:'حلقة أبي حنيفة',at:'جامع أبي حنيفة',lat:17.543833,lng:44.214687},
+    {id:'h-luhaidan',t:'h',n:'حلقة أبي عبدالله اللحيدان',at:'جامع أبي عبدالله اللحيدان',lat:17.559651,lng:44.268585},
+    {id:'h-ibnauf',t:'h',n:'حلقة عبدالرحمن بن عوف',at:'جامع عبدالرحمن بن عوف',lat:17.582335,lng:44.244748},
+    {id:'h-matrudi',t:'h',n:'حلقة المطرودي',at:'جامع المطرودي',lat:17.551993,lng:44.295519},
+    {id:'h-khudair',t:'h',n:'حلقة إبراهيم الخضير',at:'مسجد إبراهيم الخضير',lat:17.513183,lng:44.277942},
+    {id:'h-sahaba',t:'h',n:'حلقة الصحابة',at:'جامع الصحابة',lat:17.569860,lng:44.442442},
+    {id:'h-hafsa',t:'h',n:'حلقة حفصة بنت عمر',at:'مسجد حفصة بنت عمر',lat:17.572325,lng:44.418932},
+    {id:'h-nurayn',t:'h',n:'حلقة ذو النورين',at:'مسجد ذو النورين',lat:17.516925,lng:44.157338,place:FARD,names:['ذو النورين']},
+    {id:'h-bishr',t:'h',n:'حلقة بشر بن الحارث',at:'مسجد بشر بن الحارث',lat:17.491436,lng:44.137854,place:FARD,names:['بشر بن الحارث']},
+    {id:'h-siddiq',t:'h',n:'حلقة أبو بكر الصديق',at:'جامع أبو بكر الصديق',lat:17.514225,lng:44.152196,place:FARD,names:['أبو بكر الصديق']},
+    {id:'h-dughaither',t:'h',n:'حلقة نورة الدغيثر',at:'جامع نورة الدغيثر',lat:17.466373,lng:44.164254},
+    {id:'h-hasanain',t:'h',n:'حلقة أبو الحسنين',at:'مسجد أبو الحسنين',lat:17.520907,lng:44.148071},
+    {id:'h-hasan',t:'h',n:'حلقة الحسن بن علي',at:'جامع الحسن بن علي (أبا السعود)',lat:17.489500,lng:44.129089},
+    {id:'h-sanani',t:'h',n:'حلقة الإمام عبدالرزاق الصنعاني',at:'مسجد الإمام عبدالرزاق الصنعاني',lat:17.571984,lng:44.217017,place:FARD,names:['الإمام عبدالرزاق الصنعاني']}
   ];
   var TYPE = {m:'مجمع حلقات رجال',w:'دار نسائية',h:'حلقة رجال في جامع'};
   var ROWS = [], FILTER = '', Q = '', SEL = null;
@@ -255,7 +256,7 @@ body.dark .leaflet-control-attribution a{color:#DDB76C}
     x.onclick = close; h.appendChild(x);
     var tg = el('span', 'tag'); tg.appendChild(el('i', 'dot d-' + p.t)); tg.appendChild(document.createTextNode(TYPE[p.t])); h.appendChild(tg);
     h.appendChild(el('h2', null, p.n));
-    if (p.at) h.appendChild(el('p', null, 'في ' + p.at));
+    if (p.at) h.appendChild(el('p', p.t === 'h' ? 'mosq' : null, p.t === 'h' ? p.at : 'في ' + p.at));
     if (p.d) h.appendChild(el('p', null, 'حي ' + p.d));
     if (p.t === 'w') h.appendChild(el('p', null, '🕓 ' + W_HOURS));
     s.appendChild(h);
@@ -324,7 +325,7 @@ body.dark .leaflet-control-attribution a{color:#DDB76C}
       it.appendChild(el('i', 'dot d-' + p.t));
       var tx = el('span'); tx.appendChild(el('b', null, p.n));
       var n = halaqatOf(p).filter(function (q) { return q.pct < 100; }).length;
-      tx.appendChild(el('small', null, [p.d ? 'حي ' + p.d : (p.at || TYPE[p.t]), n ? n + ' حلقة تنتظر الكفالة' : ''].filter(Boolean).join(' · ')));
+      tx.appendChild(el('small', null, [p.at || '', p.d ? 'حي ' + p.d : '', n ? n + ' حلقة تنتظر الكفالة' : ''].filter(Boolean).join(' · ') || TYPE[p.t]));
       it.appendChild(tx);
       it.onclick = function () { open(p, true); };
       L2.appendChild(it);
