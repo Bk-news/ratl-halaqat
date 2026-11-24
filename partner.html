@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أثر الشراكة — جمعية رتّل لتحفيظ القرآن الكريم بنجران</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="حلقات قرآنية مكفولة بشراكة مع جمعية رتّل">
+<meta property="og:image" content="https://bk-news.github.io/ratl-halaqat/icons/og-kafala.jpg">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="theme-color" content="#3A2416">
+<link rel="preload" href="fonts/thmanyahserifdisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="companies.css">
+<style>
+.ptop{padding:clamp(30px,6vw,70px) 0 clamp(30px,5vw,56px)}
+.plogo{background:var(--lime);border-radius:22px;padding:14px 22px;display:inline-flex;align-items:center;justify-content:center;min-height:86px;margin-bottom:22px}
+.plogo img{max-height:60px;max-width:180px;object-fit:contain}
+.ptop h1{font:700 clamp(40px,6.6vw,84px)/1.1 TD,TS,serif;margin:0}
+.ptop p{color:var(--muted);font-size:clamp(17px,1.8vw,20px);max-width:32em;margin:18px 0 0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,40px);margin-top:36px;border-top:1.5px solid var(--fg);padding-top:20px}
+.kpis b{display:block;font:700 clamp(34px,5vw,60px)/1 TD,serif;color:var(--gold)}
+body.light .kpis b{color:var(--goldD)}
+.kpis span{color:var(--muted);font-size:15px}
+.hl{border-top:1px solid var(--line)}
+.hrow{display:grid;grid-template-columns:1.2fr 2fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.hrow b{font-size:18px}.hrow small{display:block;color:var(--muted);font-size:14px}
+.hrow .track{height:9px;border-radius:5px;background:var(--line);overflow:hidden}
+.hrow .track i{display:block;height:100%;background:var(--gold)}
+.hrow em{font-style:normal;font-weight:700;white-space:nowrap}
+@media (max-width:640px){.hrow{grid-template-columns:1fr auto}.hrow .track{grid-column:1/-1;grid-row:2}.kpis{grid-template-columns:1fr 1fr 1fr}}
+.none{padding:80px 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="w">
+  <header class="bar">
+    <a class="brand" href="companies.html"><span data-logo></span><span><b>جمعية رتّل</b><small>لتحفيظ القرآن الكريم بنجران</small></span></a>
+    <button type="button" class="ic" id="share" aria-label="شارك الصفحة" style="margin-inline-start:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg></button>
+    <button type="button" class="ic" id="mode" aria-label="تبديل الثيم">
+      <svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    </button>
+  </header>
+  <main id="page" hidden>
+    <section class="ptop">
+      <div class="plogo" id="plogo" hidden></div>
+      <h1 id="title"></h1>
+      <p id="sub"></p>
+      <div class="kpis"><div><b id="k-h">—</b><span>حلقة مكفولة بشراكتكم</span></div><div><b id="k-s">—</b><span>طالب وطالبة يحفظون كتاب الله</span></div><div><b id="k-p">—</b><span>نسبة اكتمال الكفالة</span></div></div>
+    </section>
+    <section class="s">
+      <div class="mosaic-wrap"><div class="mosaic" id="mosaic" style="grid-template-columns:repeat(auto-fill,minmax(26px,1fr))"></div><div class="tip" id="tip"><span>كل نافذة حلقة من حلقاتكم. الذهبية اكتملت كفالتها.</span></div></div>
+    </section>
+    <section class="s">
+      <h2>الحلقات</h2>
+      <div class="hl" id="list"></div>
+    </section>
+  </main>
+  <div class="none" id="none" hidden><h2 style="font:700 34px TD,serif">ما لقينا صفحة الشراكة هذي</h2><p style="color:var(--muted)">تأكدوا من الرابط، أو <a href="companies.html">تعرفوا على شراكات الجمعية</a>.</p></div>
+  <footer class="foot"><span>جمعية رتّل لتحفيظ القرآن الكريم بنجران — الأرقام مباشرة من سجلات الجمعية</span><a href="companies.html">شراكات الشركات</a></footer>
+</div>
+<script src="companies.js"></script>
+<script>
+(function () {
+  var $ = CP.$, fmt = CP.fmt, el = CP.el;
+  CP.theme(); CP.brand();
+  var slug = (new URLSearchParams(location.search).get('c') || '').trim(), CO = null, first = true;
+  $('share').onclick = function () { var u = location.href; if (navigator.share) navigator.share({ title: document.title, url: u }).catch(function () {}); else if (navigator.clipboard) navigator.clipboard.writeText(u); };
+  CP.getJSON('companies.json').then(function (c) {
+    CO = (c.companies || {})[slug];
+    if (!CO) { $('none').hidden = false; return; }
+    $('page').hidden = false;
+    document.title = 'حلقات ' + CO.name + ' — جمعية رتّل';
+    $('title').textContent = 'حلقات ' + CO.name;
+    $('sub').textContent = CO.message || ('شكرًا لـ' + CO.name + ' على كفالة هذه الحلقات في جمعية رتّل لتحفيظ القرآن الكريم بنجران. تتحدث الأرقام هنا مباشرة طوال الفصل.');
+    if (CO.logo) { var i = el('img'); i.src = CO.logo; i.alt = CO.name; $('plogo').appendChild(i); $('plogo').hidden = false; }
+    CP.data(render);
+  }).catch(function () { $('none').hidden = false; });
+  function mine(h) {
+    if ((CO.halaqat || []).some(function (x) { return x === h.name || x === h.place + '/' + h.name; })) return true;
+    return (CO.places || []).indexOf(h.place) >= 0;
+  }
+  function render(rows) {
+    var hs = rows.filter(mine), cost = 0, rec = 0, st = 0;
+    hs.forEach(function (h) { cost += h.cost; rec += h.rec; st += h.students; });
+    $('k-h').textContent = fmt(hs.length); $('k-s').textContent = fmt(st); $('k-p').textContent = (cost ? Math.round(rec / cost * 100) : 0) + '٪';
+    CP.mosaic($('mosaic'), $('tip'), hs, first); first = false;
+    var L = $('list'); L.replaceChildren();
+    hs.slice().sort(function (a, b) { return b.pct - a.pct; }).forEach(function (h) {
+      var r = el('div', 'hrow'), a = el('div');
+      a.appendChild(el('b', null, 'حلقة ' + h.name)); a.appendChild(el('small', null, h.place + ' — ' + fmt(h.students) + (h.section === 'نساء' ? ' طالبة' : ' طالب')));
+      var t = el('div', 'track'), i = el('i'); i.style.width = h.pct + '%'; t.appendChild(i);
+      r.appendChild(a); r.appendChild(t); r.appendChild(el('em', null, h.pct >= 100 ? 'مكتملة ✓' : Math.round(h.pct) + '٪'));
+      L.appendChild(r);
+    });
+  }
+})();
+</script>
+</body>
+</html>
