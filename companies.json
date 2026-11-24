@@ -1,15 +1,25 @@
 {
   "_note": "إعدادات صفحة الشركات. أي قسم فاضي ما يطلع في الصفحة. صفحة كل شركة: أضفها في companies بالشكل: \"slug\": {\"name\": \"اسم الشركة\", \"logo\": \"رابط الشعار\", \"places\": [\"مجمع البيان\"], \"halaqat\": [\"اسم حلقة\"]} ورابطها partner.html?c=slug",
   "phone": "966551480225",
-  "manager": { "name": "أ. خالد المصعبي", "title": "مسؤول الشراكات", "phone": "0557278884" },
+  "manager": {
+    "name": "أ. خالد المصعبي",
+    "title": "مسؤول الشراكات",
+    "phone": "0557278884"
+  },
   "benefits": [
     "شهادة شكر رسمية من الجمعية باسم شركتكم",
     "تقارير عن الحلقات المكفولة وأثرها",
     "ذكر شركتكم والإشادة بها في حسابات الجمعية",
     "تسمية فرصة أو حلقة باسم شركتكم، حسب الوضع"
   ],
-  "trust": { "license": "3609", "supervisor": "", "bank": "", "iban": "SA04 8000 0205 6080 1006 6556", "holder": "" },
+  "trust": {
+    "license": "3609",
+    "supervisor": "",
+    "bank": "",
+    "iban": "SA04 8000 0205 6080 1006 6556",
+    "holder": ""
+  },
   "partners": [],
-  "formEndpoint": "",
+  "formEndpoint": "https://script.google.com/macros/s/AKfycbyXs0jKcR9Xlt-Wd1OXl8RYFrlqQWsw3w4CeLTSZ6QTRpqnaQs7iCsRObuXrLBfdjtT/exec",
   "companies": {}
 }
