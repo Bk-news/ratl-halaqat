@@ -106,23 +106,32 @@ h1{margin:0;font:700 clamp(40px,5.6vw,80px)/1.08 TD,TS,serif;letter-spacing:-.01
 .cgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(30px,5vw,70px);align-items:center;margin-top:48px}
 @media (max-width:980px){.cgrid{grid-template-columns:1fr}}
 .stagec{perspective:1400px}
-.cert{position:relative;isolation:isolate;aspect-ratio:1.414/1;border-radius:14px;padding:clamp(14px,2.6vw,30px);background:linear-gradient(145deg,#4A2F1D,#24160D);box-shadow:0 40px 90px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.3);transform-style:preserve-3d;transition:transform .6s var(--ease);will-change:transform}
+.cert{position:relative;isolation:isolate;border-radius:14px;padding:clamp(14px,2.6vw,30px);background:linear-gradient(145deg,#4A2F1D,#24160D);box-shadow:0 40px 90px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.3);transform-style:preserve-3d;transition:transform .6s var(--ease);will-change:transform}
 .cert>.zk{--zc:var(--gold);--zo:.8;--zs:clamp(64px,9vw,112px);z-index:0;border-radius:14px}
-.sheet{position:relative;z-index:1;isolation:isolate;height:100%;background:var(--paper);border-radius:6px;box-shadow:0 0 0 2px var(--goldD),0 0 0 7px var(--paper),0 0 0 8px var(--goldD),0 10px 30px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--mud);padding:clamp(8px,1.6vw,20px) clamp(14px,3vw,40px) clamp(52px,9vw,118px);overflow:hidden}
+.sheet{position:relative;z-index:1;isolation:isolate;background:var(--paper);border-radius:6px;box-shadow:0 0 0 2px var(--goldD),0 0 0 7px var(--paper),0 0 0 8px var(--goldD),0 10px 30px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--mud);padding:clamp(12px,2.2vw,28px) clamp(14px,3vw,36px);overflow:hidden}
 .sheet::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 50% 45%,rgba(232,194,122,.18),transparent 70%)}
 .sheet>.zk{--zc:var(--goldD);--zo:.06;--zs:clamp(54px,7vw,92px)}
-.org{display:flex;align-items:center;gap:8px;font-size:clamp(9px,1.05vw,13px);font-weight:500;opacity:.85}
-.org img{width:clamp(22px,3vw,38px);height:auto;display:block}
-.ct{margin:clamp(4px,1vw,12px) 0 0;font:700 clamp(22px,3.6vw,46px)/1.1 TD,serif}
+.chead{align-self:stretch;margin-bottom:clamp(4px,1vw,12px);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.corg{text-align:right;line-height:1.5;font-size:clamp(7.5px,.95vw,12px)}
+.corg b{display:block;font-weight:700}.corg span{opacity:.7}
+.bsm{font:700 clamp(10px,1.4vw,18px)/1.4 TD,serif;color:var(--goldD);padding-top:2px}
+.clogo img{width:clamp(26px,3.6vw,46px);height:auto;display:block}
+.verse{margin-top:clamp(3px,.7vw,8px);font:400 clamp(9.5px,1.15vw,14.5px)/1.7 TD,serif;color:var(--goldD)}
+.cfoot{align-self:stretch;margin-top:clamp(8px,1.6vw,20px);display:flex;align-items:flex-end;justify-content:space-between}
+.cdate,.csign{display:flex;flex-direction:column;font-size:clamp(7.5px,.95vw,12px);line-height:1.5;min-width:24%}
+.cdate{text-align:right}.csign{text-align:center;align-items:center}
+.cdate b,.csign b{font-weight:700;font-size:1.1em}
+.csign i{display:block;width:80%;height:clamp(12px,2.4vw,28px);border-bottom:1px solid rgba(58,36,22,.45)}
+.csign span{margin-top:2px}
+.seal{position:relative;width:clamp(46px,7vw,90px);transform:rotate(-8deg)}
+.ct{margin:0;font:700 clamp(22px,3.8vw,48px)/1.1 TD,serif}
 .cline{display:flex;align-items:center;gap:10px;width:min(70%,420px);margin:clamp(4px,.9vw,10px) 0;color:var(--goldD)}
 .cline::before,.cline::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,currentColor,transparent)}
 .cline svg{width:clamp(10px,1.4vw,16px);height:auto;fill:currentColor}
-.cto{font-size:clamp(10px,1.2vw,15px);opacity:.8}
-.cn{font:700 clamp(26px,4.6vw,62px)/1.2 TD,serif;margin:clamp(2px,.6vw,8px) 0;background:linear-gradient(100deg,#8A5F22,#C99848 35%,#F0D394 50%,#C99848 65%,#8A5F22);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:sh 6s ease-in-out infinite;padding-inline:.1em;max-width:100%;overflow-wrap:anywhere}
+.cto{font-size:clamp(9px,1.12vw,14px);opacity:.85;max-width:34em}
+.cn{font:700 clamp(22px,3.8vw,52px)/1.2 TD,serif;margin:clamp(1px,.4vw,6px) 0;background:linear-gradient(100deg,#8A5F22,#C99848 35%,#F0D394 50%,#C99848 65%,#8A5F22);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:sh 6s ease-in-out infinite;padding-inline:.1em;max-width:100%;overflow-wrap:anywhere}
 @keyframes sh{0%,100%{background-position:100% 0}50%{background-position:0 0}}
-.cw{font-size:clamp(10px,1.2vw,15px);line-height:1.8;max-width:27em;opacity:.9}
-.seal{position:absolute;left:clamp(14px,3vw,38px);bottom:clamp(12px,2.4vw,30px);width:clamp(52px,8vw,104px);transform:rotate(-8deg)}
-.cdate{position:absolute;right:clamp(16px,3vw,40px);bottom:clamp(14px,2.6vw,32px);font-size:clamp(8.5px,1vw,12.5px);opacity:.7;text-align:right;line-height:1.5}
+.cw{font-size:clamp(9px,1.1vw,14px);line-height:1.75;max-width:36em;opacity:.9}
 .seal svg{width:100%;height:auto;display:block;filter:drop-shadow(0 3px 6px rgba(58,36,22,.35))}
 .seal span{position:absolute;inset:30%;display:flex;align-items:center;justify-content:center}
 .seal img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(.92) sepia(.4)}
@@ -235,18 +244,26 @@ form .msg.err{color:#9B2C22}
             <div class="zk" aria-hidden="true"></div>
             <div class="sheet">
               <div class="zk" aria-hidden="true"></div>
-              <div class="org"><span data-logo-plain></span>جمعية رتّل لتحفيظ القرآن الكريم بنجران</div>
-              <div class="ct">شهادة شكر وتقدير</div>
+              <div class="chead">
+                <div class="corg"><b>جمعية رتّل لتحفيظ القرآن الكريم بنجران</b><span>شهادة تسجيل رقم 3609</span></div>
+                <div class="bsm">بسم الله الرحمن الرحيم</div>
+                <span class="clogo" data-logo-plain></span>
+              </div>
+              <div class="ct">شكر وتقدير</div>
               <div class="cline"><svg viewBox="0 0 100 100"><polygon points="50,0 61,23 85,15 77,39 100,50 77,61 85,85 61,77 50,100 39,77 15,85 23,61 0,50 23,39 15,15 39,23"/></svg></div>
-              <div class="cto">تتقدم الجمعية بخالص الشكر والتقدير إلى</div>
+              <div class="cto">تتقدّم الجمعية بجزيل الشكر وخالص التقدير ووافر العرفان إلى</div>
               <div class="cn" data-name>شركتكم</div>
-              <div class="cw">على كفالتهم <b data-what>حلقات الجمعية</b> للفصل الدراسي، وإسهامهم في تعليم كتاب الله لأبناء وبنات نجران. جعله الله في موازين حسناتهم.</div>
-              <div class="cdate">الفصل الدراسي الأول<br>١٤٤٨هـ</div>
-              <div class="seal" aria-hidden="true">
-                <svg viewBox="0 0 100 100"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0D394"/><stop offset=".5" stop-color="#C99848"/><stop offset="1" stop-color="#8A5F22"/></linearGradient></defs>
-                  <polygon fill="url(#sg)" points="50,0 61,23 85,15 77,39 100,50 77,61 85,85 61,77 50,100 39,77 15,85 23,61 0,50 23,39 15,15 39,23"/>
-                  <circle cx="50" cy="50" r="28" fill="#3A2416"/><circle cx="50" cy="50" r="24" fill="none" stroke="#E8C27A" stroke-width="1.2"/></svg>
-                <span data-logo-seal></span>
+              <div class="cw">على كفالتهم <b data-what>حلقات الجمعية</b>، ودعمهم المبارك لمشاريع القرآن الكريم، سائلين المولى عز وجل أن تكون حسناتٍ جارية، وآثارًا باقية، وتلاواتٍ شاهدة.</div>
+              <div class="verse">﴿ وَمَا تُقَدِّمُوا لِأَنفُسِكُم مِّنْ خَيْرٍ تَجِدُوهُ عِندَ اللَّهِ هُوَ خَيْرًا وَأَعْظَمَ أَجْرًا ﴾</div>
+              <div class="cfoot">
+                <div class="cdate"><b>التاريخ</b><span id="hdate"></span><span id="gdate"></span></div>
+                <div class="seal" aria-hidden="true">
+                  <svg viewBox="0 0 100 100"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0D394"/><stop offset=".5" stop-color="#C99848"/><stop offset="1" stop-color="#8A5F22"/></linearGradient></defs>
+                    <polygon fill="url(#sg)" points="50,0 61,23 85,15 77,39 100,50 77,61 85,85 61,77 50,100 39,77 15,85 23,61 0,50 23,39 15,15 39,23"/>
+                    <circle cx="50" cy="50" r="28" fill="#3A2416"/><circle cx="50" cy="50" r="24" fill="none" stroke="#E8C27A" stroke-width="1.2"/></svg>
+                  <span data-logo-seal></span>
+                </div>
+                <div class="csign"><b>المدير التنفيذي للجمعية</b><i></i><span>عبدالله بن سعيد الجليل</span></div>
               </div>
             </div>
             <div class="glare" aria-hidden="true"></div>
@@ -448,6 +465,14 @@ form .msg.err{color:#9B2C22}
     });
   }
   setName($('name').value);
+
+  // التاريخ بالهجري (أم القرى) والميلادي
+  (function () {
+    var d = new Date();
+    function f(loc) { try { var o = {}; new Intl.DateTimeFormat(loc, { day: '2-digit', month: '2-digit', year: 'numeric' }).formatToParts(d).forEach(function (x) { o[x.type] = x.value; }); return o.day + ' / ' + o.month + ' / ' + o.year; } catch (e) { return ''; } }
+    var hj = f('ar-SA-u-ca-islamic-umalqura-nu-latn'), gr = f('en-GB-u-nu-latn');
+    $('hdate').textContent = hj ? hj + 'هـ' : ''; $('gdate').textContent = gr ? 'الموافق ' + gr + 'م' : '';
+  })();
 
   // ===== الشهادة تميل مع المؤشر =====
   var cert = $('cert');
